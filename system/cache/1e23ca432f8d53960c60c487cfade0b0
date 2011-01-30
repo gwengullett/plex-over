@@ -1,0 +1,3025 @@
+1296265738TS---><!DOCTYPE >
+<html>
+	<head>
+		<title>Music</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="http://localhost/plex_explorer/css/styles.css" type="text/css">
+		<link rel="stylesheet" href="http://localhost/plex_explorer/css/tiptip.css" type="text/css">
+		<link rel="stylesheet" href="http://localhost/plex_explorer/css/colorbox.css" type="text/css">
+		<script type="text/javascript" src="http://localhost/plex_explorer/js/jquery.js"></script>
+		<script type="text/javascript" src="http://localhost/plex_explorer/js/lazyload.js"></script>
+		<script type="text/javascript" src="http://localhost/plex_explorer/js/plex_explorer.js"></script>
+		<script type="text/javascript" src="http://localhost/plex_explorer/js/tiptip.js"></script>
+		<script type="text/javascript" src="http://localhost/plex_explorer/js/colorbox.js"></script>
+		<script type="text/javascript" charset="utf-8">
+  		$(function() {
+  			var sum_length = 400;
+  		  var grid = null,hsort_flg = false;         
+  		  	$("img[original]").lazyload({
+  		  		placeholder : 'http://localhost/plex_explorer/css/images/grey.gif',
+  		  		effect: 'fadeIn',
+  		  		effectspeed: 200
+  		  	});
+  		 /*
+			  if ($(".grid").length > 0) {
+			  	var grid = $(".grid").vgrid({
+			  		easeing: "easeOutExpo",
+			  		time: 500,
+			  		delay: 0
+			  	});
+			  }
+				*/		
+			  // tooltip (show title attr content)
+			  $('.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
+			  
+			  if ($('.summary').text().length > sum_length)
+			  {
+			  	$('#sum-hide').html($('.summary').html());
+			  	to_append = '... <br /><br /><a class="cb button dark-gradient rounded-st"> &#10145; lire la suite</a>';
+			  	$('#details-text .summary').html(function(i, t) { return t.substr(0, sum_length); }).append(to_append);
+			  	//alert($('.summary').text().length);
+			  }
+			  $('.cb').colorbox({
+			  	inline: true,
+			  	href: '#sum-hide',
+			  	width: '500px',
+			  	opacity: 0.5
+			  });
+			  
+			  $('input[name="search"]').search('div.item', function(on) {
+  		  on.all(function(results) {
+  		    var size = results ? results.size() : 0
+  		    $(this).next('span').find('a').text(size);
+  		  });
+			
+  		  on.reset(function() {
+  		    $('#none').hide();
+  		    $('div.item').show();
+  		  });
+			
+  		  on.empty(function() {
+  		    $('#none').show();
+			  	$('div.item').hide();
+			  	//grid.vgrefresh();
+  		  });
+			
+  		  on.results(function(results) {
+  		    $('#none').hide();
+			  	//grid.vgrefresh();
+			  	$('div.item').hide();
+  		    results.show();
+  		  });
+  		});
+  		
+  		function sort()
+  		{
+  			hsort_flg = !hsort_flg;
+			  $("#browser").vgsort(function(a, b){
+			  	var _a = $(b).css('display');
+			  	var _b = $(a).css('display');
+			  	var _c = hsort_flg ? 1 : -1 ;
+			  	return (_a > _b) ? _c * -1 : _c ;
+			  }, "easeInOutExpo", 300, 0);
+			  return false;
+  		}
+  	});
+	</script>
+	</head>
+	
+	<body><div id="sidebar" class="fit">
+	
+	<h4>3 libraries</h4>
+	<ul>
+			<a href="http://localhost/plex_explorer/library/sections/movie/4/all" >
+			<li class="sb-movie ">
+				Films			</li>
+		</a>
+			<a href="http://localhost/plex_explorer/library/sections/artist/7/all" >
+			<li class="sb-artist ">
+				Musique			</li>
+		</a>
+			<a href="http://localhost/plex_explorer/library/sections/show/5/all" >
+			<li class="sb-show ">
+				Series			</li>
+		</a>
+		</ul>
+	
+	<h4>2 tierce parties</h4>
+	<ul>
+			<a href="http://localhost/plex_explorer/music" >
+			<li class="sb-music selected">
+				musique			</li>
+		</a>
+			<a href="http://localhost/plex_explorer/photos" >
+			<li class="sb-photos ">
+				photos			</li>
+		</a>
+		</ul>
+
+</div><div id="content" class="fit">
+<div id="music">
+	
+	<script type="text/javascript">
+$(function(){
+	var plex_uri = 'http://localhost/plex_explorer/';
+	
+	var current_val = $('#top_nav option:selected').val();
+	
+	$('#top_nav').click(function() {
+		var new_val = $('#top_nav option:selected').val();
+		if (current_val != new_val)
+		{
+  		$(location).attr('href',plex_uri + new_val);
+  	}
+	});
+});
+
+</script>
+<div id="breadcrumb" class=" gradient fixed">
+
+	<div class="b-path left">
+		
+		<input type="search" name="search" id="search" placeholder="rechercher" />	
+	</div>
+	
+	<div class="b-filter right">
+			    	<select name="top_nav" id="top_nav">
+<option value="music/itunes/Artists" selected="selected">Artistes</option>
+<option value="music/itunes/Albums">albums</option>
+<option value="music/itunes/Podcasts">Podcasts</option>
+<option value="music/itunes/Genre">Genre</option>
+<option value="music/itunes/Ratings">Classement</option>
+</select>	   	</div>
+
+</div>	
+	<div id="browser" class="grid">
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f14acbdda41887ad60241a376ba66871.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> </h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/2%20unlimited">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/93224bfb9239acf605075ba233eb2512.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> 2 Unlimited</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/afternoons%20in%20stereo">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/d2a19a3bcf9daf8d046608cdea7f7799.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Afternoons In Stereo</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/afx">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a50103bf3005e2466e62b8b7465a1bcc.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> AFX</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/aha">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/93e2906d1f66df3614b0d9a52a7a69e2.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Aha</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/alias">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/041d5af5a1d92cdc2c397a0eb5f6cdf3.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Alias</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/alias%20%26%20ehren">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7fd4c32040a2b9b36049f5a55c603602.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Alias & Ehren</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/alias%20%26%20tarsier">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e1da838ef94f2cd9a76e0641879c9f41.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Alias & Tarsier</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/amon%20tobin">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/dbf692fd72cd48dc199d55e169710f81.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Amon Tobin</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/amon%20tobin%2fmc%20decimal%20r">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a199e9f2cb02957902fbbdf043d39830.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Amon Tobin/MC Decimal&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/the%20andrews%20sisters">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/cb807b0ed2c3d88f0d47cc8de980c117.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> The Andrews Sisters</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/angelina%20esparza%2fdj%20krush">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/914323a56a5b2539a509276cb1684bbe.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Angelina Esparza/DJ&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/anna%20netrebko">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/0e3956ee6e47a0f935c355b59d336281.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Anna Netrebko</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/anne%20sofie%20von%20otter">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/58cffdbdf25c0c4c5d3920105b2e77c8.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Anne Sofie von&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/anticon%2fdj%20krush">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ed88511f9b5299610498403bc1c3c401.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Anticon/DJ Krush</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/antipop%20consortium%2fdj%20krush">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/50c2ecbfe70871186a7bc2c86df9d248.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Antipop Consortium/DJ&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/antonio%20vivaldi">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/99ce0f476cfad8691d902baca736e165.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Antonio Vivaldi</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/anton%c3%adn%20dvor%c3%a1k">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/5b24d0ef7742877d5d6ed81fe82903d3.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Antonín Dvorák</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/anton%c3%adn%20dvo%c5%99%c3%a1k">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f72223f782bacc497970caad151584c0.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Antonín Dvořák</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/aphex%20twin">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/2164f14dd15a536d3778e4f57abc11c9.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Aphex Twin</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/apparat">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/d935213b5af7c9fe874ad0a115e2f5e6.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Apparat</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/arrested%20development">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/0900fa53e08623f2a5ae024ccfd267ca.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Arrested Development</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/autechre">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/02aabda2da8b09a2f1b65e8189343a6f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Autechre</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/badboe">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/879354761d3f4eb261c8e97ae7a8d3a8.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> BadboE</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/basement%20freaks">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/9d0e6cb655cb4e1a585eec8040adcfd3.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Basement Freaks</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/beastie%20boys">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e44676a883ae80e334aa1218a5e2517d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Beastie Boys</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/the%20beatles">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/24d52631b361bd8c329ef44887962f0b.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> The Beatles</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/beck">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/222789543d709e692b9682603fff5108.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Beck</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/beethoven">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7e74111bec4bdc2bcc643eb2415072fc.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Beethoven</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/beethoven%20">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/612bcd87eaa0b87cf11d7fe237a2feb3.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Beethoven </h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/beirut">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ee0dc97f8d34a597653f23a8046a2d95.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Beirut</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/bellemou%20messaoud%20%26%20cheb%20ourrad%20houarri">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/28c3473f7ad82e183ce3405487b7887c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Bellemou Messaoud&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/billie%20holiday">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/9b297e64ab81673c2629a4017b6a701f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Billie Holiday</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/billie%20holiday%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f9b9f046700a1d83448c9c1e64255eb2.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Billie Holiday </h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/billie%20holyday">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/db0a3640bd9e02949eb916ebd832c527.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Billie Holyday</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/bj%c3%b6rk">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ca2d13f3deb98e11ac5e88cfef0930a4.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Björk</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/black%20eyed%20peas">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/1d61ec2551ede4140c50d2a01ddd54aa.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Black Eyed Peas</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/black%20eyes%20peas">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e63c902be9ca67ab9ce365b88fb1c834.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Black Eyes peas</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/blendcrafters">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/3b56ed20334fbe62241204bd2bf5c24f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Blendcrafters</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/bloodhound%20gang">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/fe1151157c3edc2c0ba400866e279f3f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Bloodhound Gang</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/boards%20of%20canada">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/53bb08d2ec332d0c00e873589bc6c85d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Boards of Canada</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/brainfuzz">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a2e2d0cad5ce7f351a2b253f8111b65b.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Brainfuzz</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/bryn%20terfel">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/1a92a3c71609161576f1553782cdef11.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Bryn Terfel</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/buck%2065">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f7415fb5c4953531c0b17a0b389208cb.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Buck 65</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/buddy,%20felli">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/8d13bb8e03b3928f6558c5620228f912.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Buddy, Felli</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/carl%20orff">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e624c759d3410c145772beb10007aa8b.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Carl Orff</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/cb's">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/8cf7849af9c6fbd72ca25cfdadbe14e2.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> CB's</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/charles,%20ray">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/d0bbd9fbcc848b18362714ca0f9e7938.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Charles, Ray</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/charlie%20parker,%20miles%20davis">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7d44de91a4c96db2a9a29531e6527e4d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Charlie Parker,&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/cheyenne's%20comin'">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/930a78ed23bf3cf3f651071bf7bb3224.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> cheyenne's comin'</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/chinese%20man">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/45b227ed224fd3da6b41fcbfe292c41f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Chinese Man</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/chris%20joss">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/b9d39bf02b659ef23fbc6f42eb8dd8f1.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Chris Joss</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/claude%20debussy">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7d9ea679e5251b5361a87b3f052db361.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Claude Debussy</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/claudio%20monteverdi">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/903107274579562880043c13226de69e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Claudio Monteverdi</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/crystal%20distorsion">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/2a85dadc3a89cb050e082c262da8db85.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> crystal distorsion</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/crystal%20distortion">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/758f7fd359a74a22ae2c305d49f10004.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Crystal Distortion</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/curtis%20mayfield">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/cf3b908d5bb8d9b07fe3b8c17a340b3c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Curtis Mayfield</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/curtis%20mayfield%2fthe%20impressions">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/61b9bba6c9f119d902892447a1b0059e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Curtis Mayfield/The&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/david%20oistrach">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ebe84b0373979a06a4403974432baede.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> David Oistrach</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/ddamage">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/d3b98ef9ca2bca68d18f1e28d1a4bf24.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> dDamage</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/debussy">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/dae233a04c45cb1d6734330420a06894.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Debussy</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20krush">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/8b5fb5193a38e2836560deb5b133c8b4.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Krush</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20krush%2finden">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ecccc0b38d1c5280600db0a75b661a26.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Krush/Inden</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20krush%2fopus">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/57c465d009d4237cc3652c52156415e1.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Krush/Opus</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20krush%2fras%20abijah">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a2633fe290bb5e3d4f5e5395b75dbe38.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Krush/Ras Abijah</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20krush%2fsly%20%26%20robbie">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/1f972571e020a3264580fdd43f34e507.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Krush/Sly &&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20nu%20mark">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/82b820fd542723ad02cae0115d780bd0.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Nu Mark</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20shadow">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/9c75aaeb51ad764fa15838e5d2edf01a.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Shadow</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20shadow%20%26%20cut%20chemist">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/280f578886c53a10313234fbe48934cb.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Shadow & Cut&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20shadow%20and%20cut%20chemist">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ceb51dc5d571e765b4795e63a97ac89c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Shadow and Cut&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20vadim">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ff14ae9c52943b01ad520257b40b8754.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Vadim</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dj%20wood">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/8c0bc5c97dee49f46c0507157aed1429.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> DJ Wood</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/django%20reinhardt">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ffa7409555aadb126202a260350da020.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Django Reinhardt</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/domenico%20scarlatti">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/d104e4fa4e418aceba6a25e88ddfe745.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Domenico Scarlatti</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dresden%20philharmonie%20-herbert">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/dfb608bfbff19a654a09a2429e084a0a.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Dresden Philharmonie&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/dresden%20philharmonie%20-herbert%20kegel">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/dc1155259bdb83d9ff503db663f221f4.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Dresden Philharmonie&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/eight%20frozen%20modules">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/9119ebc80634712bfa6824080cd781f1.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Eight Frozen Modules</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/exile">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/874b1c756819b230b8204548a3a4247e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Exile</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/fab%20samperi">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7ca602ae7577400533e9f4bb5f403f65.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Fab Samperi</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/felix%20mendelssohn">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/df408d233804aa7db30f1c228bf3b16c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Felix Mendelssohn</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/four%20tet">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/6751f43694ddae8b0f9d225b7f86ac6f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Four Tet</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/franz%20liszt">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a84852bfd956c11a7f85a04a34e3274c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Franz Liszt</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/franz%20schubert">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/56cfb7117a3a6b68dda4f325c1d7c4d0.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Franz Schubert</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/fritz%20wunderlich">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/1e06bcd01a6dd90220fb215784973d26.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Fritz Wunderlich</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/fr%c3%a9d%c3%a9ric%20chopin">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a2d738af8fa2acca1c19e5cebeaba22a.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Frédéric Chopin</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/funckarma">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/189d4f8a5dbd67f9736fea812bfa032f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Funckarma</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/georg%20friedrich%20handel">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/cf82d87aa73402b5c9a2f6fbdd6fbb36.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Georg Friedrich&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/gheorghe%20lambru">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/4d365d9547e102926396aec05d54ad5f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> GHEORGHE LAMBRU</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/giuseppe%20verdi">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/50208283bb9243091f868045913cf1e0.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Giuseppe Verdi</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/gonzales">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/75b899575a5f2d9fb74c28d81c0c1997.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Gonzales</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/goran%20bregovic">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/4e70936a6a32d17d679ab402208f82d9.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Goran Bregovic</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/gramatik">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/585dcaca687601d812cb79ff9727e0ef.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Gramatik</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/the%20groovologists%20(dj%20goodka%20%26%20dj%20moar)">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/01652d46cf0dd16aebc0fd28c4adfd29.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> The Groovologists&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/gustav%20mahler">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/97ad0d89e788f0cfe3395661c95a360d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Gustav Mahler</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/haddaway">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f8d4201b7ea953eb76976661acf92fe6.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Haddaway</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/hector%20berlioz">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/1aa4e47acb4fe5c1c00da69ee078deb3.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Hector Berlioz</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/the%20herbaliser">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f06a96a1de11e8cd3a0df0f5eadc680e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> The Herbaliser</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/human%20boot%20project">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/b5e669aabdbe160330db2c3ad473cb76.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Human Boot Project</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/h%c3%a9l%c3%a8ne%20grimaud">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/5461f4f88fa5acd6e9773bf68c3bd2b7.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Hélène Grimaud</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/igor%20stravinsky">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a729e028464715829fdab171bde00314.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Igor Stravinsky</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/interlope">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f4c3c4abf3b47c7452b13773dccc42b6.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Interlope</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/jayl%20funk">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/093861fbe5e8825e14454a823f2fe468.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Jayl Funk</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/jean%20pierre%20francois">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/43fc01fd69a52d8a6e8c80207a7bbf6c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Jean Pierre Francois</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/jean-philippe%20rameau">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/eaffc41f954f5e6b589a2f66f6bf15be.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Jean-Philippe Rameau</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/jeff%20berlin">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/55341826bd0d49e6f72d81df36e60a7d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Jeff Berlin</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/jel">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/84a61dc86d1bde793a733c35aeae058c.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Jel</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/johann%20sebastian%20bach">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7c8bbb756b0a05ab849ff985225a7117.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Johann Sebastian&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/johannes%20brahms">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/08ab5fbc05af5d5d3f8f9a220d071918.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Johannes Brahms</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/johnny%20cash">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/8400804951c25c1a5f78763e478604d6.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Johnny Cash</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/jurassic%205">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/023edef0267cc819be35169935f9d0c7.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Jurassic 5</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/kelpe">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/3d5bf7eafb421544596c9baba4e7fa8d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Kelpe</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/kid%20koala">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/891be54f1a1cb19f63d8b538b7dee9fb.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Kid Koala</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/kraak%20%26%20smaak">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/0cd8477a00774509fa35a3f8e15aacc8.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Kraak & Smaak</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/lab%20waste">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/648e3128c58d271bcc05ae612f724694.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Lab Waste</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/lawrence%20burden">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/2a2ab04fd9f61385d03103d7698344c9.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Lawrence Burden</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/leonard%20bernstein">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/cdfc34495d983d00a859f570db62fbc9.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Leonard Bernstein</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/limahl">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/cd8fd6963748ce11da4ca4b8e8eeee5a.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> limahl</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/louis%20armstrong">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/207fc43bb3c0f602125a939f4a2f88d5.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Louis Armstrong</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/ludwig%20van%20beethoven">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/398de8372fc4f3691ed8a64ac75eebcc.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Ludwig van Beethoven</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/luna%20parker">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/c6650bbb07cccf304f4aa96c0d455ef0.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Luna parker</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/maceo%20parker">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/0f20a794567014f171066d05966af225.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Maceo Parker</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/madona">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/474bddc6cf8698da77e0db2c9609db32.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Madona</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/mark%20farina%20">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7322aa481659501c1c94e9ccfeeb7baa.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Mark Farina </h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/mash%20%26%20munkee">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/b8629ce58948c6d40b244f5b8226dc15.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Mash & Munkee</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/matthew%20shipp">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/3469bc3c6f12837f39b067f98871170d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Matthew Shipp</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/maurice%20ravel">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/b712a3fa4ab5dadb50c772d3e825004b.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Maurice Ravel</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/michael%20praetorius">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/5564ba07f9542fb31ab25a13b013cb58.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Michael Praetorius</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/mike%20devellis">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f2f66ca524594e7c517bea5182b22c08.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Mike DeVellis</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/mischa%20maisky">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/67d7be5d8d3ce92043641f3f50fec302.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Mischa Maisky</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/monolake">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/4698f257677eb7a9bc6b54f28fffc5d3.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Monolake</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/musica%20antiqua%20k%c3%b6ln">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/008d25130d11bb0ff7ee6466606ec753.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Musica Antiqua&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/one%20self">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/fd9698f9e76260efcd996976186a5016.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> One Self</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/pan%20sonic">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a4aad6b12a6b7fb9f90ae5e5d8ba7526.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Pan Sonic</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/parliament">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f758dc02c05ca823b4fe99c83cb8e32e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Parliament</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/patrick%20pesnot">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/32857a1d5ebe085509ac3a7f36d6fe03.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Patrick PESNOT</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/peabird">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/73ca765b275ad19fd4f88c4cf15f958a.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Peabird</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/peter%20br%c3%b6tzmann%20%26%20keiji%20haino">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/b4fc419566e770705ea77a364ba1f1d7.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Peter Brötzmann&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/peter%20tchaikovsky">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e5dfaf4670ca75d920e21d863a65ae15.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Peter Tchaikovsky</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/photek">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/bb6177df42a4591726b66edf3ecc74a1.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Photek</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/pl%c3%a1cido%20domingo%20-%20carlo%20maria%20giulini">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/733b4515f697d6de528d6a6391303040.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Plácido Domingo&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/prefuse%2073">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/bd45ba6bba93b2cbc331e248422d05bb.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Prefuse 73</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/prosper">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/df992ff595ed2f639764eb3fd3ad1d11.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Prosper</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/prosper,%20badboe">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a86a50dc020083e692403b65fb36f7e8.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Prosper, BadboE</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/les%20quatre%20barbus">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e532d8c799cc91908485df572dca74f7.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Les Quatre Barbus</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/radiohead">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/95d9a5727ae93fe6582e4b2e9e0f74ed.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Radiohead</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/ray%20charles">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/3695849efe1b85ea5872622ef02eff4a.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Ray Charles</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/regg'lyss">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/92182a9516c43366f0522f30bf23dd1f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Regg'Lyss</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/rihanna">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f0b109183c1647c4b4fb842b458d1193.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Rihanna</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/robert%20le%20magnifique">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/8815bd238165ae1194a4a046ab9bec7e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Robert Le Magnifique</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/robert%20schumann">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/08ba556519ff7365be7790d12c432ef6.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Robert Schumann</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/rolando%20villazon">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/c21e169dddfc1891118119a5f246e4ca.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Rolando Villazon</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/rory%20hoy">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/7b59f624cdf5b3cfd384868d7cd01915.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Rory Hoy</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/selda">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/c9e2e537fcb7857a7a6c57545da37975.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Selda</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/sergey%20rachmaninov">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/da4a1d4d6a6393c19db338e4f28666cb.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Sergey Rachmaninov</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/smooth">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/eac912a2cc12fcf04698ecd5364f9779.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Smooth</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/sole">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/110b5319a3e56348bd3b494fdae5355d.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Sole</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/sonotone">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/5854fbf4b05809d732caffeb4db52589.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Sonotone</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/sporto%20kantes">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/cceb61d727f95cc33b7cd3fe60e387b8.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Sporto Kantes</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/squarepusher">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/4bda8a6501d36845b67e685f81ea10ed.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Squarepusher</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/tchaikovsky">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/17ba5d8f290b366022f7e2bdad3f825f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Tchaikovsky</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/team%20shadetek">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/a93bd939915539a1686629c1ba23cbdd.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Team Shadetek</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/thavius%20beck">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ffd8225011b7d67f3b3b824066b80001.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Thavius Beck</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/themselves">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/64a8da13cd5322af6c516643bf563e27.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Themselves</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/thomas%20quasthoff">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/2db7bc0d33a3a671a02309ab286cfa87.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Thomas Quasthoff</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/timewarp%20inc%2e">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/07ade21570ab1ec4c0a83171e0884706.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Timewarp Inc.</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/tipper">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/9a11a911922ba5eae77aa10ebe22614f.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Tipper</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/tom%20waits">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/20307e42d84966446f2662c157197dfa.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Tom Waits</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/ugly%20duckling">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/245e0d018eb1fa98c859e84a9d59c85e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Ugly Duckling</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/various">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/811793dc0e30ed41b8c20e73b5a67151.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Various</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/various%20artists">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/687404389c23fd5ad60ad9efddfd4300.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Various Artists</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/venetian%20snares">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/f082bc508654809338e738d656181459.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Venetian Snares</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/vengaboys">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/6e16cdee8f45802af45a110046a7b526.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Vengaboys</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/vladimir%20horowitz">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/c51e32bd4c5a35c75930e447930f61bc.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Vladimir Horowitz</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/vuneny">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e65ce9cf9866c9060029789bae6c6ef2.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Vuneny</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/wagon%20christ">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/bd053e0d620727287bf9dad8029200ef.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Wagon Christ</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/whigfield">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/ab7bfe1542a2137a249af75664575f2e.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Whigfield</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/why%3f">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/e50c7ae2ad0f6e4657875de8562cf4f7.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Why?</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/the%20wiseguys">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/946b04cec94de5fed9f66efefba07e25.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> The Wiseguys</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+					
+			<div class="item rounded-st _">
+				
+				<a href="http://localhost/plex_explorer/music/itunes/artists/wolfgang%20amadeus%20mozart">
+					<div class="img" >
+						<div class="rounded">
+							<img class="rounded" original="http://localhost/plex_explorer/plex_cache/thumbs/9feec4568fdd2eecc88181687b26f0f9.jpeg" width="200" />
+						</div>
+					</div>
+					<div class="h3">
+						<h3 class="h4"> Wolfgang Amadeus&#8230;</h3>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		
+			
+	</div>
+
+</div>
+</div>

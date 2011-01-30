@@ -1,0 +1,349 @@
+Array
+(
+    [0] => stdClass Object
+        (
+            [directory] => SimpleXMLElement Object
+                (
+                    [@attributes] => Array
+                        (
+                            [key] => Events
+                            [title] => Events
+                        )
+
+                )
+
+            [content] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 135
+                                    [title] => 9 août 2010
+                                )
+
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 133
+                                    [title] => 8 août 2010
+                                )
+
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 123
+                                    [title] => 11 juin 2010
+                                )
+
+                        )
+
+                    [3] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 129
+                                    [title] => 7 mai 2010
+                                )
+
+                        )
+
+                    [4] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 1
+                                    [title] => 25 avr. 2010
+                                )
+
+                        )
+
+                    [5] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 121
+                                    [title] => 25 avr. 2010
+                                )
+
+                        )
+
+                    [6] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 25
+                                    [title] => anniversaire claire et ronan 2010
+                                )
+
+                        )
+
+                    [7] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 13
+                                    [title] => 24 avr. 2010
+                                )
+
+                        )
+
+                    [8] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 15
+                                    [title] => 23 avr. 2010
+                                )
+
+                        )
+
+                    [9] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 17
+                                    [title] => 23 avr. 2010
+                                )
+
+                        )
+
+                    [10] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 11
+                                    [title] => 22 avr. 2010
+                                )
+
+                        )
+
+                    [11] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 9
+                                    [title] => 21 avr. 2010
+                                )
+
+                        )
+
+                    [12] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 19
+                                    [title] => 21 avr. 2010
+                                )
+
+                        )
+
+                    [13] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 21
+                                    [title] => 21 avr. 2010
+                                )
+
+                        )
+
+                    [14] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 7
+                                    [title] => 14 avr. 2010
+                                )
+
+                        )
+
+                    [15] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 5
+                                    [title] => 12 avr. 2010
+                                )
+
+                        )
+
+                    [16] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 3
+                                    [title] => 12 avr. 2010
+                                )
+
+                        )
+
+                    [17] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 23
+                                    [title] => 10 avr. 2010
+                                )
+
+                        )
+
+                    [18] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 131
+                                    [title] => 2 mars 2010
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [1] => stdClass Object
+        (
+            [directory] => SimpleXMLElement Object
+                (
+                    [@attributes] => Array
+                        (
+                            [key] => Albums
+                            [title] => Albums
+                        )
+
+                )
+
+            [content] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 999000
+                                    [title] => Photos
+                                )
+
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 999042
+                                    [title] => anniversaire claire et ronan 2010
+                                )
+
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 999002
+                                    [title] => 12 derniers mois
+                                )
+
+                        )
+
+                    [3] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 999001
+                                    [title] => Dernière importation
+                                )
+
+                        )
+
+                    [4] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 999035
+                                    [title] => Signalées
+                                )
+
+                        )
+
+                    [5] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 122
+                                    [title] => vrac
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [2] => stdClass Object
+        (
+            [directory] => SimpleXMLElement Object
+                (
+                    [@attributes] => Array
+                        (
+                            [key] => Keywords
+                            [title] => Keywords
+                        )
+
+                )
+
+            [content] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 8
+                                    [label] => Photo Booth
+                                    [title] => Photo Booth
+                                    [subtitle] => 1 photo
+                                )
+
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [key] => 9
+                                    [label] => Séquence
+                                    [title] => Séquence
+                                    [subtitle] => 1 photo
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [3] => stdClass Object
+        (
+            [directory] => SimpleXMLElement Object
+                (
+                    [@attributes] => Array
+                        (
+                            [key] => Rating
+                            [title] => Rating
+                        )
+
+                )
+
+            [content] => Array
+                (
+                )
+
+        )
+
+)

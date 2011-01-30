@@ -1,0 +1,203 @@
+ [size] => SimpleXMLElement Object
+        (
+            [0] => 2
+        )
+
+    [grandparentTitle] => SimpleXMLElement Object
+        (
+            [0] => Gang Gang Dance
+        )
+
+    [mediaTagPrefix] => SimpleXMLElement Object
+        (
+            [0] => /system/bundle/media/flags/
+        )
+
+    [mediaTagVersion] => SimpleXMLElement Object
+        (
+            [0] => 1292846448
+        )
+
+    [nocache] => SimpleXMLElement Object
+        (
+            [0] => 1
+        )
+
+    [parentIndex] => SimpleXMLElement Object
+        (
+            [0] => 1
+        )
+
+    [parentTitle] => SimpleXMLElement Object
+        (
+            [0] => Saint Dymphna
+        )
+
+    [viewGroup] => SimpleXMLElement Object
+        (
+            [0] => track
+        )
+
+    [viewMode] => SimpleXMLElement Object
+        (
+            [0] => 65593
+        )
+
+    [key] => SimpleXMLElement Object
+        (
+            [0] => 4737
+        )
+
+    [art] => SimpleXMLElement Object
+        (
+            [0] => /:/resources/artist-fanart.jpg
+        )
+
+    [title1] => SimpleXMLElement Object
+        (
+            [0] => Gang Gang Dance
+        )
+
+    [title2] => SimpleXMLElement Object
+        (
+            [0] => Saint Dymphna
+        )
+
+    [identifier] => SimpleXMLElement Object
+        (
+            [0] => com.plexapp.plugins.library
+        )
+
+    [content] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4738
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4738
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => track
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Bebey
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => 
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 1
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 296000
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4156
+                                    [duration] => 296000
+                                    [bitrate] => 250
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [container] => mp3
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4170/01%20Bebey.mp3
+                                            [file] => /Users/ronan/Desktop/js_music/Gang Gang Dance  Saint Dymphna 2008/01 Bebey.mp3
+                                            [size] => 9480393
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4739
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4739
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => track
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => First Communion
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => 
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 2
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 185000
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4157
+                                    [duration] => 185000
+                                    [bitrate] => 250
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [container] => mp3
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4171/02%20First%20Communion.mp3
+                                            [file] => /Users/ronan/Desktop/js_music/Gang Gang Dance  Saint Dymphna 2008/02 First Communion.mp3
+                                            [size] => 5930540
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)

@@ -1,0 +1,1246 @@
+stdClass Object
+(
+    [size] => SimpleXMLElement Object
+        (
+            [0] => 13
+        )
+
+    [banner] => SimpleXMLElement Object
+        (
+            [0] => /library/metadata/4680/banner?t=1294693567
+        )
+
+    [grandparentContentRating] => SimpleXMLElement Object
+        (
+            [0] => TV-14
+        )
+
+    [grandparentStudio] => SimpleXMLElement Object
+        (
+            [0] => AMC
+        )
+
+    [grandparentTitle] => SimpleXMLElement Object
+        (
+            [0] => Breaking Bad
+        )
+
+    [mediaTagPrefix] => SimpleXMLElement Object
+        (
+            [0] => /system/bundle/media/flags/
+        )
+
+    [mediaTagVersion] => SimpleXMLElement Object
+        (
+            [0] => 1292846448
+        )
+
+    [nocache] => SimpleXMLElement Object
+        (
+            [0] => 1
+        )
+
+    [parentIndex] => SimpleXMLElement Object
+        (
+            [0] => 3
+        )
+
+    [parentTitle] => SimpleXMLElement Object
+        (
+            [0] => 
+        )
+
+    [theme] => SimpleXMLElement Object
+        (
+            [0] => /library/metadata/4680/theme?t=1294693567
+        )
+
+    [thumb] => SimpleXMLElement Object
+        (
+            [0] => /library/metadata/4681/thumb?t=1294693565
+        )
+
+    [viewGroup] => SimpleXMLElement Object
+        (
+            [0] => episode
+        )
+
+    [viewMode] => SimpleXMLElement Object
+        (
+            [0] => 65592
+        )
+
+    [key] => SimpleXMLElement Object
+        (
+            [0] => 4681
+        )
+
+    [art] => SimpleXMLElement Object
+        (
+            [0] => /library/metadata/4680/art?t=1294693567
+        )
+
+    [title1] => SimpleXMLElement Object
+        (
+            [0] => Breaking Bad
+        )
+
+    [title2] => SimpleXMLElement Object
+        (
+            [0] => Season 3
+        )
+
+    [identifier] => SimpleXMLElement Object
+        (
+            [0] => com.plexapp.plugins.library
+        )
+
+    [content] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4682
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4682
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Crash
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Alors que la ville est toujours sous le choc du crash du vol 515, Walter doit dÃ©mÃ©nager et gÃ©rer la sÃ©paration avec Skyler. Jesse prÃ©pare sa sortie aprÃ¨s avec Ã©tÃ© dÃ©sintoxiquÃ©. Une nouvelle menace sâ€™approche doucement.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 1
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.9
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4682/thumb?t=1294693565
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2824000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-03-21
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693565
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4107
+                                    [duration] => 2824000
+                                    [bitrate] => 1014
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4119/Breaking%2EBad%2ES03E01%2EHDTV%2EXviD-LOL.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E01.HDTV.XviD-LOL.avi
+                                            [size] => 366780070
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4683
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4683
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Tensions
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => La tension monte entre les White quand Jr. nâ€™arrive pas Ã  comprendre les choix de sa mÃ¨re et que Walt espÃ¨re toujours retourner auprÃ¨s des siens alors que Skyler ne change pas dâ€™avis. Avec lâ€™aide de Saul, Jesse fait un investissement.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 2
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.8
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4683/thumb?t=1294693565
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2823000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-03-28
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693565
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4108
+                                    [duration] => 2823000
+                                    [bitrate] => 1015
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4120/Breaking%2EBad%2ES03E02%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E02.HDTV.XviD-FQM.avi
+                                            [size] => 366933336
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [2] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4684
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4684
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => I.F.T.
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Quand Skyler rentre chez elle, elle y trouve Walter qui nâ€™a pas lâ€™intention de repartir. Ce dernier ignore quâ€™il est passÃ© si prÃ¨s de la mort et que son avenir se nÃ©gocie entre Gus et les reprÃ©sentants du Cartel auquel appartenait Tuco.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 3
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.7
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4684/thumb?t=1294693565
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2817000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-04-04
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693565
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4109
+                                    [duration] => 2817000
+                                    [bitrate] => 1018
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4121/Breaking%2EBad%2ES03E03%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E03.HDTV.XviD-FQM.avi
+                                            [size] => 367318310
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [3] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4685
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4685
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Green Light
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Jesse a repris le travail et veut que Walt lui donne accÃ¨s Ã  son client. Ce dernier est en pleine crise, dÃ©cidant de confronter lâ€™amant de sa femme. Saul tente de lui venir en aide, mais il ne le prend pas trÃ¨s bien. Hank est sur le point de partir quand il pense quâ€™Heisenberg fait son retour.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 4
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.5
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4685/thumb?t=1294693566
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2818000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-04-11
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693566
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4110
+                                    [duration] => 2818000
+                                    [bitrate] => 1017
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4122/Breaking%2EBad%2ES03E04%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E04.HDTV.XviD-FQM.avi
+                                            [size] => 367149506
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [4] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4686
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4686
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Mas
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Hank poursuit sa recherche du camping-car. Gus fait une offre Ã  Walter quâ€™il ne peut pas refuser. Skyler commence Ã  avoir des doutes. Jesse veut son argent.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 5
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.6
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4686/thumb?t=1294693566
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2818000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-04-18
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693566
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4111
+                                    [duration] => 2818000
+                                    [bitrate] => 1017
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4123/Breaking%2EBad%2ES03E05%2EHDTV%2EXviD-FEVER.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E05.HDTV.XviD-FEVER.avi
+                                            [size] => 367210448
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [5] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4687
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4687
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Sunset
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Walt commence sa nouvelle carriÃ¨re dans lâ€™industrialisation de la mÃ©thamphÃ©tamine, tandis quâ€™Hank se rapproche de plus en plus de Jesse, alors que ce dernier essaie de lancer son propre business. Les cousins sont de retour et Gus doit sâ€™occuper dâ€™eux.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 6
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 8.1
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4687/thumb?t=1294693566
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2824000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-04-25
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693566
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4112
+                                    [duration] => 2824000
+                                    [bitrate] => 1015
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4124/Breaking%2EBad%2ES03E06%2EHDTV%2EXviD-LOL.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E06.HDTV.XviD-LOL.avi
+                                            [size] => 366997534
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [6] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4688
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4688
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => One Minute
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Hank perd son contrÃ´le et va se dÃ©chainer sur Jesse qui va alors atterrir Ã  lâ€™hÃ´pital. Plein de rancÅ“ur, il dÃ©cide de se venger. Les cousins sâ€™Ã©quipent pour attaquer lâ€™agent de la DEA.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 7
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 8.8
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4688/thumb?t=1294693566
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2824000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-05-02
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693566
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4113
+                                    [duration] => 2824000
+                                    [bitrate] => 1014
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4125/Breaking%2EBad%2ES03E07%2EHDTV%2EXviD-LOL.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E07.HDTV.XviD-LOL.avi
+                                            [size] => 366676714
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [7] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4689
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4689
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => I See You
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Quand Walt apprend par Jesse quâ€™Hank est Ã  lâ€™hÃ´pital, il part rejoindre sa famille. Lâ€™un des cousins a survÃ©cu et la DEA le surveille de prÃ¨s. Gus reÃ§oit des menaces de la part des mexicains.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 8
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.7
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4689/thumb?t=1294693566
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2819000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-05-09
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693566
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4114
+                                    [duration] => 2819000
+                                    [bitrate] => 1017
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4126/Breaking%2EBad%2ES03E08%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E08.HDTV.XviD-FQM.avi
+                                            [size] => 367058552
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [8] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4690
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4690
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Kafkaesque
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Jesse fait remarquer Ã  Walt que leur patron tire Ã©normÃ©ment de profits de leur travail, alors quâ€™eux non. Walt rend visite Ã  Gus pour parler de son avenir. Marie veut ce quâ€™il y a de mieux pour Hank, mais son assurance ne va pas couvrir le meilleur traitement.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 9
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.6
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4690/thumb?t=1294693566
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2818000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-05-16
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693566
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4115
+                                    [duration] => 2818000
+                                    [bitrate] => 1017
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4127/Breaking%2EBad%2ES03E09%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E09.HDTV.XviD-FQM.avi
+                                            [size] => 367071842
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [9] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4691
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4691
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Fly
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Walter se rend compte quâ€™il y a de la perte dans la production. Peu aprÃ¨s Ã§a, il devient obsÃ©dÃ© par une mouche qui se balade dans le laboratoire. Quand Jesse arrive le lendemain, il trouve son partenaire refusant de travailler tant que la mouche nâ€™a pas Ã©tÃ© exterminÃ©e.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 10
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.1
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4691/thumb?t=1294693567
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2819000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-05-23
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693567
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4116
+                                    [duration] => 2819000
+                                    [bitrate] => 1018
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4128/Breaking%2EBad%2ES03E10%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E10.HDTV.XviD-FQM.avi
+                                            [size] => 367550238
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [10] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4692
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4692
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Abiquiu
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Skyler sâ€™investit dans les activitÃ©s de Walter, dÃ©sirant savoir si lâ€™argent qui paie pour les soins de Hank est bien intraÃ§able. Jesse se lance dans une relation qui le mÃ¨nera Ã  faire des dÃ©couvertes inattendues.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 11
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 7.9
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4692/thumb?t=1294693567
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2818000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-05-30
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693567
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4117
+                                    [duration] => 2818000
+                                    [bitrate] => 1018
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4129/Breaking%2EBad%2ES03E11%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E11.HDTV.XviD-FQM.avi
+                                            [size] => 367497898
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [11] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4693
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4693
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Half Measures
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Jesse prÃ©pare son plan pour venger la mort de Combo et en parle Ã  Walt afin quâ€™il lui fournisse le poison dont il a besoin. Ce dernier ne sait pas quoi faire pour tout arrÃªter avant quâ€™il ne soit trop tard. Des mesures doivent Ãªtre prises.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 12
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 8.6
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4693/thumb?t=1294693567
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2823000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-06-06
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693567
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4118
+                                    [duration] => 2823000
+                                    [bitrate] => 1016
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4130/Breaking%2EBad%2ES03E12%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E12.HDTV.XviD-FQM.avi
+                                            [size] => 367548680
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [12] => stdClass Object
+                (
+                    [ratingKey] => SimpleXMLElement Object
+                        (
+                            [0] => 4694
+                        )
+
+                    [key] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4694
+                        )
+
+                    [type] => SimpleXMLElement Object
+                        (
+                            [0] => episode
+                        )
+
+                    [title] => SimpleXMLElement Object
+                        (
+                            [0] => Full Measure
+                        )
+
+                    [summary] => SimpleXMLElement Object
+                        (
+                            [0] => Walter rencontre Gus et tente de nÃ©gocier pour sa vie, sachant quâ€™il est trop tard pour Jesse. Il va donc reprendre le travail, mais sait que ses heures sont comptÃ©es et va devoir prendre des mesures pour Ã©viter le pire.
+                        )
+
+                    [index] => SimpleXMLElement Object
+                        (
+                            [0] => 13
+                        )
+
+                    [rating] => SimpleXMLElement Object
+                        (
+                            [0] => 8.6
+                        )
+
+                    [thumb] => SimpleXMLElement Object
+                        (
+                            [0] => /library/metadata/4694/thumb?t=1294693567
+                        )
+
+                    [duration] => SimpleXMLElement Object
+                        (
+                            [0] => 2818000
+                        )
+
+                    [originallyAvailableAt] => SimpleXMLElement Object
+                        (
+                            [0] => 2010-06-13
+                        )
+
+                    [updatedAt] => SimpleXMLElement Object
+                        (
+                            [0] => 1294693567
+                        )
+
+                    [media] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => 4119
+                                    [duration] => 2818000
+                                    [bitrate] => 1018
+                                    [aspectRatio] => 1.78
+                                    [audioChannels] => 2
+                                    [audioCodec] => mp3
+                                    [videoCodec] => mpeg4
+                                    [videoResolution] => sd
+                                    [container] => avi
+                                    [videoFrameRate] => 24p
+                                )
+
+                            [Part] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [key] => /library/parts/4131/Breaking%2EBad%2ES03E13%2EHDTV%2EXviD-FQM.avi
+                                            [file] => /Users/ronan/Movies/series/breaking bad/Breaking.Bad.S03.HDTV.XviD-BTN/Breaking.Bad.S03E13.HDTV.XviD-FQM.avi
+                                            [size] => 367516434
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
