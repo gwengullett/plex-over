@@ -9,7 +9,7 @@
 		<script type="text/javascript" src="<?=site_url('js/jquery.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/jquery-ui.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/lazyload.js')?>"></script>
-		<script type="text/javascript" src="<?=site_url('js/plex_explorer.js')?>"></script>
+		<script type="text/javascript" src="<?=site_url('js/application.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/tiptip.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/colorbox.js')?>"></script>
 		<script type="text/javascript" charset="utf-8">

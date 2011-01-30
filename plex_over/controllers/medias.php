@@ -146,7 +146,8 @@ class Medias extends PE_Controller {
 	public function movie($item)
 	{
 		$this->breadcrumb[''] = $item->title2;
-	  $data['item'] = $this->media->find_details($item->key);
+		$data['convert']			= $this->config->item('video_conv');
+	  $data['item']					= $this->media->find_details($item->key);
 		$data['views']->top_nav	= $this->topnav_view();
 		$data['active_sb']	= 'movie';
 		$this->render('media/'.__FUNCTION__, $data);

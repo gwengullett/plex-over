@@ -20,6 +20,8 @@ $config['home_section']	= null;
 $config['debug_uri']		= false;
 // General Codeigniter debugging
 $config['debug_ci']			= false;
+// primitive bool for video conversion
+$config['video_conv']		= true;
 
 /*
 | -------------------------------------------------------------------
@@ -51,7 +53,7 @@ $config['itunes_url']		= 'music/iTunes/';
 // Music
 $config['artist_filters']	= array('albums', 'genre', 'all', 'recentlyAdded');
 // Itunes
-$config['itunes_filters'] = array_push($config['artist_filters'], 'artists','podcasts', 'ratings');
+$config['itunes_filters']	= array_push($config['artist_filters'], 'artists','podcasts', 'ratings');
 // Movies
 $config['movie_filters']	= array('all', 'genre', 'recentlyadded', 'recentlyviewed', 'actor', 'director');
 // TV Shows

@@ -3,7 +3,7 @@ var uiEffect = 'slide';
 var uiSpeed = 400;
 var toMove = '#details-sub';
 var dirMove = 'up';
-var isMobile = false;
+var convertVideo = '<?= $convert ?>';
 var player = null;
 
 $(function(){
@@ -21,7 +21,7 @@ $(function(){
 	// update the player with parts
 	$('.playlist-section a').click(function(){
 		$('#video-player').append('<h2 class="txt-shadow-d"></h2>');
-		if (! isMobile)
+		if (convertVideo)
 		{
 			convert_vid($(this).attr('data-file'), $(this).attr('data-ratio'));
 			return false;
