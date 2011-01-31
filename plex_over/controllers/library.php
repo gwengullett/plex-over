@@ -43,7 +43,6 @@ class Library extends PE_Controller {
 			$data['items']		= $this->section->find_by($segments);
 			$data['filters']	= $this->_top_nav($filters, $section_type);
 		}
-		
 		// try to get correct back links for medias if secondary viewGroup is found
 		// (actors don't even have a viewGroup property)
 		if (! isset($data['items']->viewGroup) OR $data['items']->viewGroup == 'secondary')

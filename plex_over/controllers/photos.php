@@ -33,16 +33,18 @@ class Photos extends PE_Controller {
 
 		if ($key = $this->uri->segment(4))
 		{
-			$this->breadcrumb[$this->controller.'iPhoto'] = lang('library');
 			$data['link']	= $this->plex_url.$this->uri->uri_string();
 			$data['item'] = $this->photo->load(implode('/', $this->segments));
+			$this->breadcrumb[$this->controller.__FUNCTION__] = 'iPhoto';
+			$this->breadcrumb[] = lang(strtolower($data['item']->attributes()->title1));
 			$render = 'photo/iphoto_gallery';
 		}
 		else
 		{
+			$this->breadcrumb[] = 'iPhoto';
 			$data['link']		= implode('/', $this->segments);
 			$data['items']	= $this->photo->directory_scan($data['link'].'/');
-			$data['filters']	= $this->_top_nav($this->directory, 'events');
+			$data['filters']= $this->_top_nav($this->directory, 'events');
 			$render = 'photo/iphoto';
 		}
 		$data['views']->top_nav	= $this->topnav_view();
@@ -64,6 +66,7 @@ class Photos extends PE_Controller {
 		
 		if (method_exists($this, $arg))
 		{
+			$this->breadcrumb[$this->controller] = lang('photos');
 			$data	= $this->_prepare_links();
 			$data['title'] = __CLASS__.' '.$arg;
 			$data['active_sb'] = 'photos';

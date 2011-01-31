@@ -1,13 +1,15 @@
 <script type="text/javascript">
 $(function(){
 	
+	// local storage for playlist
+	$('.song').audioPlaylist({key : 'audio'});
+	
 	// declare current a.play in relative scope
 	var current;
 	var player = $('audio');
 	// Listenner to switch to the next song automatically
 	player[0].addEventListener('ended', nextSong, true);
 
-	
 	// clickable links into html
 	$('.track a').click(function(){
 		// show the player if hidden
@@ -70,7 +72,10 @@ $e = 0;
 				
 		<div id="details-main">
 				<h1 class="txt-shadow "><?= $item->title2 ?></h1>
-				<h2 class="txt-shadow "><?= $item->title1 ?>, <small><?= @$item->parentYear ?></small></h2>
+				<h2 class="txt-shadow ">
+					<span id="artist"><?= $item->title1 ?></span>, 
+					<small><?= @$item->parentYear ?></small>
+				</h2>
 			<div class="clear"></div>
 		</div>
 	
@@ -86,7 +91,7 @@ $e = 0;
 				  	<?php $i = 0; foreach ($item->content as $track): ?>
 		        		<li class="index_<?=$i?> <?=css_alt($i)?>">
 		        			<span><?=$track->index?>.</span>
-		        			<a href="<?= $this->plex_url.$track->media->Part->attributes()->key ?>"
+		        			<a class="song" href="<?= $this->plex_url.$track->media->Part->attributes()->key ?>"
 		        				id="song_<?=$e?>"
 		        				art="<?= $item->title1 ?>" 
 		        				rel="<?= $item->title2 ?>"

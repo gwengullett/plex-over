@@ -86,12 +86,18 @@ class Medias extends PE_Controller {
 	  		return;
 	  	}
 	  }
-	  // get episodes index
-	  else
+	  else if ($item->viewGroup == 'unknown')
 	  {
-				$this->breadcrumb[''] = $item->title2;
+	  	$this->segments[] = 'season';
+			$this->_section_breadcrumb();
+	  	$this->breadcrumb[''] = $item->grandparentTitle.' '.$item->title2;
+	  	$data['episode'] = $this->media->find_details($this->uri->segment(3));
+			$data['views']->top_nav	= $this->topnav_view();
+	  	$this->render('media/episode_watch', $data);
+			return;
 	  }
-		
+	  // get episodes index
+		$this->breadcrumb[''] = $item->title2;
 		$data['views']->top_nav	= $this->topnav_view();
 		$this->render('media/'.__FUNCTION__, $data);
 	}
@@ -106,10 +112,10 @@ class Medias extends PE_Controller {
 	 */
 	public function album($item)
 	{
-	  $data['item']		= $item;
+	  $data['item']					= $item;
 	  $data['artist_link']	= '/artist/'.$item->key;
 	  $data['views']->top_nav	= $this->topnav_view();
-	  $data['active_sb']	= 'artist';
+	  $data['active_sb']		= 'artist';
 	  $this->render('media/'.__FUNCTION__, $data);
 	}
 	
@@ -129,7 +135,11 @@ class Medias extends PE_Controller {
 			$this->breadcrumb[$link] = $artist->title2;
 			$this->breadcrumb[''] = $item->title2;
 		}
-	  
+		if (! in_array('artist', $this->segments)) {
+			$this->segments[] = 'artist';
+			$this->_section_breadcrumb();
+			$this->breadcrumb[] = $item->grandparentTitle.' - '.$item->parentTitle;
+		}
 	  $data['item'] = $item;
 	  $data['views']->top_nav	= $this->topnav_view();
 	  $data['active_sb']	= 'artist';
@@ -188,10 +198,10 @@ class Medias extends PE_Controller {
 		 // section the sections object for sidebar
 	  if ($item = $this->media->find_children($this->media_id))
 	  {
-	  	$data							= $this->_prepare_links($item);
-	  	$data['title']		= @$item->title1.' - '.@$item->title2;
+	  	$data	= $this->_prepare_links($item);
+	  	$data['title'] = @$item->title1.' - '.@$item->title2;
 			$this->load->vars($data);
-			$this->_section_breadcrumb($this->sidebar_library, $item);
+			$this->_section_breadcrumb();
 	  	// run the apppropriate function
 	  	$this->{strtolower($item->viewGroup)}($item);
 	  }
@@ -208,7 +218,7 @@ class Medias extends PE_Controller {
 	 * @param mixed $data['section']
 	 * @return void
 	 */
-	private function _section_breadcrumb($sections, $item)
+	private function _section_breadcrumb()
 	{
 		//print_r($item);
 		// spécifique pour les séries
@@ -217,8 +227,7 @@ class Medias extends PE_Controller {
 		{
 			$segs[] = 'show';
 		}
-		
-		foreach ($sections->content as $section)
+		foreach ($this->sidebar_library->content as $section)
 		{
 			if (in_array($section->type, $segs))
 			{

@@ -35,7 +35,7 @@ $config['video_conv']		= true;
 $config['plex_local']		= 'http://localhost:32400';
 // the PUBLIC url of the Plex Server (no trailing slash !!!!)
 // used in frontend for downloads and images
-$config['plex_url']			= 'http://localhost:32400';
+$config['plex_url']			= 'http://eglou-team.dyndns.org:32400';
 // path to sections
 $config['section_url']	= 'library/sections/';
 // path to metadata

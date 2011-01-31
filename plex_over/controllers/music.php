@@ -27,24 +27,28 @@ class Music extends PE_Controller {
 	public function itunes($type = 'Artists')
 	{
 		if (count($this->segments) < 3) array_push($this->segments, $type);
-
+				
 		if ($key = $this->uri->segment(4))
-		{
+		{			
 			$data['link']	= $this->plex_url.itunes_url($this->uri->uri_string());
 			$data['item'] = $this->_load_content('/iTunes/'.$this->uri->segment(3).'/'.$key);
+			$this->breadcrumb[$this->controller.__FUNCTION__] = 'iTunes';
+			$this->breadcrumb[] = $data['item']->title2;
+			$data['views']->top_nav	= $this->topnav_view();
+
 			$data['content_type'] = $this->content_type;
 			$this->render('media/artist', $data);
-			return;
 		}
 		else
 		{
+			$this->breadcrumb[] = 'iTunes';
+			$data['views']->top_nav	= $this->topnav_view();
 			$data['link']			= implode('/', $this->segments);
 			$data['items']		= $this->audio->find_by($this->segments);
 			$data['filters']	= $this->_top_nav($this->directory, 'artist');
+			$data['id'] = 'music';
+			$this->render('music/itunes', $data);
 		}
-		$data['id'] = 'music';
-
-		$this->render('music/itunes', $data);
 	}
 	
 	/**
@@ -88,6 +92,8 @@ class Music extends PE_Controller {
 	{
 		$url = ($arg == 'index') ? '' : '/'.$arg;
 		$this->directory = $this->audio->find($url);
+		$this->breadcrumb[$this->controller] = lang('music');
+
 		//print_r($this->directory);
 		//return;
 		

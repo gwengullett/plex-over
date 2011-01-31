@@ -12,7 +12,7 @@
 					<?=$item->title2?>
 					<small><?= pluralize(childs_count($item->size), lang('album')) ?></small>
 				</h1>
-				<div class="summary"><?= nl2br($item->summary) ?></div>
+				<div class="summary"><?= nl2br(@$item->summary) ?></div>
 			</div>
 			<div class="clear"></div>
 		</div>

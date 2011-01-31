@@ -14,23 +14,22 @@ $(function(){
 });
 
 </script>
-<div id="breadcrumb" class=" gradient fixed">
+<div id="breadcrumb" class="gradient fixed">
 
 	<div class="b-path left">
 		<?php if (isset($this->breadcrumb)): ?>
-			
+			<ul>
 			<?php foreach ($this->breadcrumb as $key => $title):?>
-					<?= ($key) ? anchor($key, $title) : $title ?>
+					<li><?= ($key) ?  anchor($key, $title) : $title ?></li>
 			<?php endforeach ?>
+			</ul>
 		<?php endif ?>
-
-		<input type="search" name="search" id="search" placeholder="<?= lang('search') ?>" />	
-	</div>
-	
+	</div>	
 	<div class="b-filter right">
 		<?php if (isset($filters)): ?>
 	    	<?= topnav_select($links->top_nav, $filters, $this->segments) ?>
 	   <?php endif ?>
+			<input type="search" name="search" id="search" placeholder="<?= lang('search') ?>" />
 	</div>
 
 </div>

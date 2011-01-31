@@ -51,8 +51,6 @@
 	cursor:pointer;
 }
 
-
-	
 /* 
     ColorBox example user style
     The following rules are ordered and tabbed in a way that represents the
@@ -73,13 +71,17 @@
 
 #cboxLoadedContent {
 	background:#000;
-	border:3px solid #f5f5f5;
+	border:2px solid #e1e1e1;
 		border-radius: 10px;
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	overflow-y: auto;
+}
 
+#cboxLoadedContent #sum-hide {
+	padding: 20px;
+	max-height: 500px;
 }
 
 #cboxTitle {
@@ -143,8 +145,8 @@
 
 #cboxClose {
 	position:absolute;
-	top:10px;
-	right:20px;
+	top:5px;
+	right:5px;
 	display:block;
 	background:url(images/controls.png) no-repeat top center;
 	width:38px;

@@ -1,7 +1,7 @@
 <div id="content" class="fit">
 <div id="<?= (! isset($id)) ? 'section' : $id ?>">
 	
-	<?php $this->load->view($this->template.'/layouts/top_nav');?>
+	<?= $views->top_nav ?>
 	
 	<div id="browser" class="grid">
 		
