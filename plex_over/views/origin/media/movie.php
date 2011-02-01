@@ -121,7 +121,7 @@ $('.playlist-section a').click(function(){
 						$this->plex_url.$part->key, 
 						lang('playlist.part').' '.$i, 
 						'class="block" data-file="'.$part->file.'"
-						data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitle.'"'
+						data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitles.'"'
 					)?>
 				</div>
 			<?php $i++; endforeach ?>

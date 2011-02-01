@@ -113,6 +113,36 @@ class PE_Controller extends CI_Controller {
 		}
 		return $items;
 	}
+	
+	/**
+	 * add_subtitles function.
+	 * Check if the media have subtitles, then copy it 
+	 * to have an access under apache, and add the ref to items
+	 * 
+	 * @access protected
+	 * @param mixed $items
+	 * @return void
+	 */
+	protected function add_subtitles($items)
+	{
+		foreach ($items->media->part as $part)
+		{
+			$subtitle = subtitle($part->file); 
+			
+			if (file_exists($subtitle))
+			{
+				$subtitle_path = $this->config->item('subtitles_folder').basename($subtitle);
+				@copy($subtitle, FCPATH.$subtitle_path);
+				$part->subtitles = site_url($subtitle_path);
+			}
+			else
+			{
+				$part->subtitles = '';
+			}
+		}
+		
+		return $items;
+	}
 
 	
 	/**

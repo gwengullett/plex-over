@@ -24,6 +24,7 @@
 		<div class="video-js-box">
 			<video id="show-player" class="video-js" controls="controls" poster="<?= $this->plex_url.thumb($episode) ?>" >
 				<source src="<?=$this->plex_url.$episode->media->part[0]->key?>"  type="video/mp4" />
+				<track kind="subtitles" src="<?= $episode->media->part[0]->subtitles ?>" srclang="en-US" label="English"></track>
 			</video>
 		</div>
 		

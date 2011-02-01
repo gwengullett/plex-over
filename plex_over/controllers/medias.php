@@ -75,7 +75,7 @@ class Medias extends PE_Controller {
 	  	
 	  	if (is_numeric($segment))
 	  	{
-				$data['episode'] = $this->media->find_details($segment);
+				$data['episode'] = $this->add_subtitles($this->media->find_details($segment));
 
 	  		unset($this->segments[$key], $this->segments[$key-1]);
 	  		$this->breadcrumb[implode('/', $this->segments)] = $item->title2;				
@@ -91,7 +91,7 @@ class Medias extends PE_Controller {
 	  	$this->segments[] = 'season';
 			$this->_section_breadcrumb();
 	  	$this->breadcrumb[''] = $item->grandparentTitle.' '.$item->title2;
-	  	$data['episode'] = $this->media->find_details($this->uri->segment(3));
+	  	$data['episode'] = $this->add_subtitles($this->media->find_details($this->uri->segment(3)));
 			$data['views']->top_nav	= $this->topnav_view();
 	  	$this->render('media/episode_watch', $data);
 			return;
@@ -162,20 +162,8 @@ class Medias extends PE_Controller {
 		$data['active_sb']	= 'movie';
 		
 		// check subtitles and copy them under apache access
-		foreach ($data['item']->media->part as $part)
-		{
-			$subtitle = subtitle($part->file); 
-			if (file_exists($subtitle))
-			{
-				$subtitle_path = $this->config->item('subtitles_folder').basename($subtitle);
-				copy($subtitle, FCPATH.$subtitle_path);
-				$part->subtitle = site_url($subtitle_path);
-			}
-			else
-			{
-				$part->subtitle = '';
-			}
-		}
+		$data['item'] = $this->add_subtitles($data['item']);
+		
 		$this->render('media/'.__FUNCTION__, $data);
 	}
 	

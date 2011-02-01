@@ -12,7 +12,7 @@ class Music extends PE_Controller {
 	
 	public function index()
 	{
-		$data['items']			= $this->directory;
+		$data['items'] = $this->directory;
 		$this->render('third/index', $data);
 	}
 	
