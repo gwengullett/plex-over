@@ -419,12 +419,15 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 	margin-top: 10px;
 }
 
-#show-player {
-	width: 580px;
-	min-height: 300px;
+.video-js-box {
 	float: left;
 	border: 1px solid #444;
 	border-bottom: none;
+}
+
+#show-player {
+	width: 580px;
+	min-height: 320px;
 }
 
 #episodes {
@@ -525,7 +528,6 @@ audio {
 	width: 800px;
 	height: 300px;
 	margin: 10px auto 40px auto;
-	display: none;
 	overflow: hidden;
 	position: relative;
 }

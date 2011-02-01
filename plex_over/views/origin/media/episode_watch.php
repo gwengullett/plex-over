@@ -1,3 +1,9 @@
+<script type"text/jqvqscript">
+ VideoJS.DOMReady(function(){
+ 	   var myPlayer = VideoJS.setup("show-player");
+ });
+</script>
+
 <div id="content" class="fit">
 
 	<?= $views->top_nav ?>
@@ -15,11 +21,11 @@
 	</div>
 	
 	<div id="show-main">
-		<video id="show-player"
-			controls 
-			src="<?=$this->plex_url.$episode->media->part[0]->key?>"
-			poster="<?= $this->plex_url.thumb($episode) ?>" >
-		</video>
+		<div class="video-js-box">
+			<video id="show-player" class="video-js" controls="controls" poster="<?= $this->plex_url.thumb($episode) ?>" >
+				<source src="<?=$this->plex_url.$episode->media->part[0]->key?>"  type="video/mp4" />
+			</video>
+		</div>
 		
 		<div id="show-details" class="left">
 			<ul>

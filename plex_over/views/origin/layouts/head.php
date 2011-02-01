@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="<?=site_url('css/styles.css')?>" type="text/css">
 		<link rel="stylesheet" href="<?=site_url('css/tiptip.css')?>" type="text/css">
+		<link rel="stylesheet" href="<?=site_url('css/video.css')?>" type="text/css">
 		<link rel="stylesheet" href="<?=site_url('css/colorbox.css')?>" type="text/css">
 		<script type="text/javascript" src="<?=site_url('js/jquery.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/jquery-ui.js')?>"></script>
@@ -12,6 +13,7 @@
 		<script type="text/javascript" src="<?=site_url('js/application.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/tiptip.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/colorbox.js')?>"></script>
+		<script type="text/javascript" src="<?=site_url('js/video.js')?>"></script>
 		<script type="text/javascript" charset="utf-8">
   		$(function() {
   			var sum_length = 400;

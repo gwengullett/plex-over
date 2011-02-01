@@ -46,3 +46,48 @@ jQuery.expr[':'].contains = function(a, i, m) {
     $(this).bind('click', perform);
   }
 })(jQuery);
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+
+$.fn.audioPlaylist = function(options)
+{
+	var defOpts = {
+		key		: 'audioPlaylist'
+	}
+	opts = $.extend({}, defOpts, options);
+	
+	$(this).click(function(){
+		
+		var keyt = $.trim($(this).text());
+		
+		var attrs = { 
+			title : keyt,
+			album	: $(this).attr('rel'),
+			url		: $(this).attr('href'),
+			artist: $(this).attr('art')
+		};
+			//var currentStorage = $.parseJSON(sessionStorage.getItem(opts.key));
+			//currentStorage[keyt] = 'test';
+			//var toStore = JSON.stringify(attrs);
+			sessionStorage.setItem(opts.key, $(attrs).serializeArray());
+			//console.log(JSON.parse(sessionStorage.getItem(opts.key)));
+	});
+	
+	
+}

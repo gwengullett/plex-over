@@ -42,6 +42,15 @@ function css_alt($key, $class = ' alt ', $echo = true)
 	echo trim($alt); 
 }
 
+
+// check if a subtitle exist...
+function subtitle($file, $ext = 'srt')
+{
+	$x = explode('.', $file);
+	return substr($file, 0, - strlen('.'.end($x))).'.'.$ext;
+}
+
+
 /**
  * anchor_topnav function.
  * Top nav libks : we just remove the last portion of our url

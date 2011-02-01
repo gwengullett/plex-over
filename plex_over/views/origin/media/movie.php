@@ -7,6 +7,7 @@ var convertVideo = '<?= $convert ?>';
 var player = null;
 
 $(function(){
+	
 
 	$('#watch-btn').toggle(function(){
 		$(toMove).hide(uiEffect, { direction: dirMove }, uiSpeed, function(){
@@ -19,7 +20,8 @@ $(function(){
 	});
 	
 	// update the player with parts
-	$('.playlist-section a').click(function(){
+	/*
+$('.playlist-section a').click(function(){
 		$('#video-player').append('<h2 class="txt-shadow-d"></h2>');
 		if (convertVideo)
 		{
@@ -29,6 +31,7 @@ $(function(){
 		load_video($(this).attr('href'));
 		return false;
 	});
+*/
 	
 	function convert_vid(file, aRatio)
 	{
@@ -54,11 +57,30 @@ $(function(){
 		video[0].addEventListener("canplay", resize_player, false);
 	}
 	
+	$('.playlist-section a').click(function(){
+		var video = $('video');
+		//myPlayer.video.src = $(this).attr('href');
+		$('video').attr('src', $(this).attr('href'));
+		$('video').find('track').attr('src', $(this).attr('data-sub'));
+		
+		var myPlayer = VideoJS.setup("show-player");
+		myPlayer.subtitlesSource = $(this).attr('data-sub');
+		console.log(myPlayer);
+		myPlayer.video.load();
+		
+		$('#player').animate({'height': video.height()+'px'}, 'slow');
+		myPlayer.video.play();
+		
+		return false;
+
+		//video[0].addEventListener("canplay", resize_player, false);
+	});
+	
 	function resize_player()
 	{
 		var video = $('video');
-		$('#player').animate({'height': video.height()+'px'}, 'slow');
-		$('#video-player h2').fadeTo(0, 200, function(){$(this).remove()});
+		//$('#player').animate({'height': video.height()+'px'}, 'slow');
+		//$('#video-player h2').fadeTo(0, 200, function(){$(this).remove()});
 		video[0].play();
 	}	
 });
@@ -82,8 +104,31 @@ $(function(){
 			</div>
 			<div class="clear"></div>
 		</div>
-
-		<div id="details-sub">
+	</div>
+	
+	<div id="player" class="shadow gradient">
+		<div class="video-js-box">
+			<video id="show-player" controls="controls" class="video-js vim-css">
+				<source type="video/mp4" />
+				<track kind="subtitles" src="" srclang="en-US" label="English"></track>
+			</video>
+		</div>
+		
+		<div id="playlist" class="dark-gradient">
+			<?php $i = 1; foreach ($item->media->part as $part): ?>
+				<div class="playlist-section">
+					<?=anchor(
+						$this->plex_url.$part->key, 
+						lang('playlist.part').' '.$i, 
+						'class="block" data-file="'.$part->file.'"
+						data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitle.'"'
+					)?>
+				</div>
+			<?php $i++; endforeach ?>
+		</div>
+	</div>
+	
+			<div id="details-sub">
 			<ul>
 			<li>
 				<strong><?= lang('duration')?>: </strong>
@@ -97,24 +142,7 @@ $(function(){
 			<?php endforeach ?>
 			</ul>
 		</div>
-	</div>
-	
-	<div id="player" class="shadow gradient">
-		<div id="video-player">
-			<video controls></video>
-		</div>
-		<div id="playlist" class="dark-gradient">
-			<?php $i = 1; foreach ($item->media->part as $part): ?>
-				<div class="playlist-section">
-					<?=anchor(
-						$this->plex_url.$part->key, 
-						lang('playlist.part').' '.$i, 
-						'class="block" data-file="'.$part->file.'"
-						data-ratio="'.$item->attributes->aspectRatio.'"')?>
-				</div>
-			<?php $i++; endforeach ?>
-		</div>
-	</div>
+
 
 	<div id="content-bottom" class="dark-gradient">
 		<?php $i = 1; foreach ($item->media->part as $part): ?>

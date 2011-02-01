@@ -7,7 +7,10 @@
 */
 
 // Specify the template folder
-$config['template']			= "origin";
+$config['template'] = "origin";
+// subtitles folder
+$config['subtitles_folder'] = "cache/subtitles/";
+
 // Cache folder for thumbs
 $config['cache_folder']	= 'cache/thumbs/';
 // set the cache expiration (empty for no cache)
@@ -21,7 +24,7 @@ $config['debug_uri']		= false;
 // General Codeigniter debugging
 $config['debug_ci']			= false;
 // primitive bool for video conversion
-$config['video_conv']		= true;
+$config['video_conv']		= false;
 
 /*
 | -------------------------------------------------------------------
@@ -35,7 +38,8 @@ $config['video_conv']		= true;
 $config['plex_local']		= 'http://localhost:32400';
 // the PUBLIC url of the Plex Server (no trailing slash !!!!)
 // used in frontend for downloads and images
-$config['plex_url']			= 'http://eglou-team.dyndns.org:32400';
+//$config['plex_url']			= 'http://eglou-team.dyndns.org:32400';
+$config['plex_url']			= 'http://localhost:32400';
 // path to sections
 $config['section_url']	= 'library/sections/';
 // path to metadata

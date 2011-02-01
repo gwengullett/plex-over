@@ -160,6 +160,22 @@ class Medias extends PE_Controller {
 	  $data['item']					= $this->media->find_details($item->key);
 		$data['views']->top_nav	= $this->topnav_view();
 		$data['active_sb']	= 'movie';
+		
+		// check subtitles and copy them under apache access
+		foreach ($data['item']->media->part as $part)
+		{
+			$subtitle = subtitle($part->file); 
+			if (file_exists($subtitle))
+			{
+				$subtitle_path = $this->config->item('subtitles_folder').basename($subtitle);
+				copy($subtitle, FCPATH.$subtitle_path);
+				$part->subtitle = site_url($subtitle_path);
+			}
+			else
+			{
+				$part->subtitle = '';
+			}
+		}
 		$this->render('media/'.__FUNCTION__, $data);
 	}
 	
