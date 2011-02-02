@@ -11,8 +11,8 @@
 |
 */
 
-$config['username'] = 'sonotone';
-$config['password']	= 'coincoin';
+$config['username'] = '';
+$config['password']	= '';
 
 /*
 | -------------------------------------------------------------------
