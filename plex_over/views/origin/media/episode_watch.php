@@ -11,7 +11,7 @@
 	
 	<div id="details-main" class="details dark-gradient show-list">
 		<div id="details-cover" class="left">
-		<?= cover($this->plex_url.thumb($episode), 150) ?>
+			<?= $this->transcode->img($episode, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
 		</div>
 		
 		<div id="details-text" class="left">
@@ -55,7 +55,7 @@
 					title="<h3><?= $friend->title ?></h3> <?= $friend->summary ?>" 
 					class="tip" >
 					<div class="img <?= active_item((string)$episode->index, (string)$friend->index, 'current') ?>">
-					<?= img(array('original' => $this->thumb->get($this->plex_url.$friend->thumb), 'width' => 130, 'height' => 72, 'class' => 'rounded')) ?>
+					<?= $this->transcode->img($friend, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
 					<strong><?= ucwords(lang('episode'))." ".$friend->index ?></strong><br />
 					<span><?= $friend->title ?></span>
 					</div>

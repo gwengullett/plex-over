@@ -5,7 +5,7 @@
 	<div class="details">
 		<div id="details-main">
 			<div id="details-cover" class="left">
-			 <?= cover($this->thumb->get($this->plex_url.thumb($item))) ?>
+			 <?= $this->transcode->img($item, array('height' => 150)) ?>
 			 </div>
 			<div id="details-text" class="left">
 				<h1 class="txt-shadow ">
@@ -25,7 +25,7 @@
 	<?php foreach ($item->content as $season): if (@$season->ratingKey): ?>
 			<div class="left jacket">
 				<a href="<?=site_url($links->item.'/'.$season->ratingKey.$show_link)?>" />
-			 		<?= cover($this->thumb->get($this->plex_url.thumb($season)), 130) ?>
+					<?= $this->transcode->img($item, array('height' => 170, 'width' => 130)) ?>
 			 		<strong><?= character_limiter($season->title, 15) ?></strong><br />
 			 		<span><?= pluralize($season->leafCount, lang('episode')) ?></span>
 			 	</a>

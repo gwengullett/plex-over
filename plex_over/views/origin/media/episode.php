@@ -4,7 +4,7 @@
 	
 	<div class="details dark-gradient bb show-list">
 		<div id="details-cover" class="left">
-			<?= cover($this->thumb->get($this->plex_url.thumb($item)), 70) ?>
+			 <?= $this->transcode->img($item, array('height' => 100, 'scale' => 'height')) ?>
 		</div>
 		
 		<div id="details-text" class="left">
@@ -22,17 +22,17 @@
 	</div>
 	
 	<div class="dir">
-		<?php foreach ($item->content as $item): ?>
+		<?php foreach ($item->content as $episode): ?>
 			
-			<?php if (isset($item->ratingKey)): ?>
+			<?php if (isset($episode->ratingKey)): ?>
 				<div class="show-list bb">
-						<?=img(array('original' => $this->thumb->get($this->plex_url.$item->thumb), 'width' => 130, 'height' => 72, 'class' => 'rounded', 'align' => 'left'))?>
+						<?= $this->transcode->img($episode, array('width' => 130, 'height' => 72, 'align' => 'left'))?>
 					<div class="show-list-txt">
 						<h3><?=anchor(
-							$link.$item->ratingKey.$show_link,
-							$item->type." ".$item->index.": ".$item->title)?>
+							$link.$episode->ratingKey.$show_link,
+							$episode->type." ".$episode->index.": ".$episode->title)?>
 						</h3>
-						<span><?=$item->summary?></span>
+						<span><?=$episode->summary?></span>
 					</div>
 				</div>
 			<?php endif ?>

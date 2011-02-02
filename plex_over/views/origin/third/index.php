@@ -12,7 +12,7 @@
 					
 					<div class="img" >
 						<div class="rounded">
-							<img class="rounded" original="<?=$this->thumb->get($this->plex_url.$item->art)?>" width="250" />
+							<?= $this->transcode->img($item, array('width' => 230, 'force' => 'art'))?>
 						</div>
 					</div>
 					<div class="h3">

@@ -13,8 +13,10 @@ class Transcode {
 		'height'	=> 100,
 		'alt'			=> 'image',
 		'class'		=> 'rounded',
-		'type'		=> 'lazy',
-		'scale'		=> 'width',
+		'type'		=> 'lazy', // lazy load
+		'scale'		=> 'width', // html default yx scale
+		'align'		=> '',
+		'force'		=> '' // force the element to get (thumb, art ...etc)
 	);
 	
 	// default parameters for video transcoding
@@ -60,20 +62,30 @@ class Transcode {
 	  
 	  $params->width	= $opts->width;
 	  $params->height	= $opts->height;
-	  $params->url		= $this->ci->plex_url.thumb($item);
+	  $params->url		= $this->ci->plex_url.thumb($item, $opts->force);
 	  
 	  // define the source attribute
 	  $source = ($opts->type == 'lazy') ? 'original' : 'src';
 	  
 	  // create image
-	  $image = img(array(
+	  $image = array(
 	  	$source				=> $this->ci->plex_url.$this->img_transpath.http_build_query($params),
-			$opts->scale	=> $opts->{$opts->scale},
 	  	'alt'					=> (isset($item->title)) ? $item->title : 'image',
-	  	'class'				=> $opts->class
-	  ));
-	  
-	  return $image;
+	  	'class'				=> $opts->class,
+	  	'align'				=> $opts->align
+	  );
+	  // alignement
+		if ($opts->scale == 'both')
+		{
+			$image['width']		= $opts->width;
+			$image['height']	= $opts->height;
+		}
+		else
+		{
+			$image[$opts->scale] = $opts->{$opts->scale};
+		}  			
+
+	  return img($image);
 	}
 	
 	/**

@@ -48,7 +48,7 @@ $(function(){
 						<div class="item <?= css_alt($key) ?>">
 							<?= $this->transcode->img(
 								$content->attributes(), 
-								array('width' => 120, 'height' => 100, 'scale' => 'height')
+								array('width' => 150, 'height' => 100, 'scale' => 'height')
 							);?>
 							<h3><?= $content->attributes()->title ?></h3>
 						</div>

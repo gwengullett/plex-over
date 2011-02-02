@@ -94,8 +94,11 @@ function cover($image, $size = 150, $class = 'rounded shadow')
 }
 
 // lookink for thumb or alternalivelly for art
-function thumb($item)
+// $force = skip testing and go on
+function thumb($item, $force = null)
 {
+	if ($force) return $item->$force;
+	
 	if (isset($item->thumb))
 	{
 		return $item->thumb;

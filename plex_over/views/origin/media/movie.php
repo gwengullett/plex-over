@@ -94,7 +94,7 @@ $('.playlist-section a').click(function(){
 		<div id="details-main">
 			
 			<div id="details-cover" class="left">
-			<?= cover($this->thumb->get($this->plex_url.thumb($item))) ?>
+				<?= $this->transcode->img($item, array('height' => 220, 'width' => 150, 'class' => 'rounded shadow'))?>
 			</div>
 			
 			<div id="details-text" class="left">
