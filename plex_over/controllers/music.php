@@ -35,7 +35,7 @@ class Music extends PE_Controller {
 			
 			$this->breadcrumb[$this->controller.__FUNCTION__] = 'iTunes';
 			$this->breadcrumb[$this->controller.__FUNCTION__.'/'.$this->segments[3]] = $this->segments[3];
-			$this->breadcrumb[] = $data['item']->title2;
+			$this->breadcrumb[] = (isset($data['item']->title2)) ? $data['item']->title2 : $data['item']->title1;
 
 			$data['views']->top_nav	= $this->topnav_view();
 			$data['content_type'] = $this->content_type;
