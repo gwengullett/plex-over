@@ -30,7 +30,7 @@ $config['cache_folder']	= 'cache/thumbs/';
 // set the cache expiration (empty for no cache)
 $config['cache_expire']	= '';
 // Size of thumbs (fit the width)
-$config['thumb_width']	= 250;
+$config['thumb_width']	= 150;
 // You can set a specific section to load from your home page
 $config['home_section']	= null;
 // Debug plex server url request
@@ -52,7 +52,6 @@ $config['plex_local']		= 'http://localhost:32400';
 // the PUBLIC url of the Plex Server (no trailing slash !!!!)
 // used in frontend for downloads and images
 $config['plex_url']			= 'http://localhost:32400';
-//$config['plex_url']			= 'http://localhost:32400';
 
 // -------------------------------------------------------------------
 // Serveur sections path (if it change some time)
@@ -69,7 +68,7 @@ $config['meta_url']			= 'library/metadata/';
 // Music
 $config['artist_filters']	= array('albums', 'genre', 'all', 'recentlyAdded');
 // Itunes
-$config['itunes_filters']	= array_push($config['artist_filters'], 'artists','podcasts', 'ratings');
+$config['itunes_filters']	= array_push($config['artist_filters'], 'artists','podcasts', 'ratings', 'playlists');
 // Movies
 $config['movie_filters']	= array('all', 'genre', 'recentlyadded', 'recentlyviewed', 'actor', 'director');
 // TV Shows

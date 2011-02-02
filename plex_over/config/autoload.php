@@ -38,7 +38,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('thumb');
+$autoload['libraries'] = array('thumb', 'transcode');
 
 
 /*

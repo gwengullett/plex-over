@@ -32,8 +32,6 @@
 			  	});
 			  }
 				*/		
-			  // tooltip (show title attr content)
-			  $('.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
 			  
 			  if ($('.summary').text().length > sum_length)
 			  {

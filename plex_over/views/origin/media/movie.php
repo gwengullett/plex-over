@@ -118,7 +118,7 @@ $('.playlist-section a').click(function(){
 			<?php $i = 1; foreach ($item->media->part as $part): ?>
 				<div class="playlist-section">
 					<?=anchor(
-						$this->plex_url.$part->key, 
+						$this->transcode->video($part, array('ratingKey' => $item->ratingKey)), 
 						lang('playlist.part').' '.$i, 
 						'class="block" data-file="'.$part->file.'"
 						data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitles.'"'

@@ -96,9 +96,37 @@ function cover($image, $size = 150, $class = 'rounded shadow')
 // lookink for thumb or alternalivelly for art
 function thumb($item)
 {
-	if (! isset($item->thumb) AND ! isset($item->art))
+	if (isset($item->thumb))
 	{
-		return 'img.jpg';
+		return $item->thumb;
 	}
-	return (isset($item->thumb)) ? $item->thumb : $item->art;
+	else if (isset($item->art))
+	{
+		return $item->art;
+	}
+	else if (isset($item->key))
+	{
+		return $item->key;
+	}
+	else
+	{
+		return 'no-image.jpg';
+	}
+}
+
+/**
+ * img_resize function.
+ * 
+ * @access public
+ * @param mixed $server
+ * @param mixed $rel_path
+ * @param int $width. (default: 200)
+ * @return void
+ */
+function img_resize($server, $rel_path, $width = 200)
+{
+	$transcode = '/photo/:/transcode?height='.$width.'&width='.$width.'&url=';
+	$fullpath = $server.$transcode.urlencode($server.$rel_path);
+	
+	return $fullpath;
 }

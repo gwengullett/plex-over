@@ -15,12 +15,12 @@ function iphoto_default($image = 'event', $title = 'gallery', $size = 64)
 
 
 // iphoto gallery
-function iphoto_gallery($base_url, $item, $width = 64)
+function transcode_img($base_url, $item, $width = 64)
 {
+	$transcode = '/photo/:/transcode?height='.$width.'&width='.$width.'&url=';
 	$image = array(
-		'original'=> $base_url.$item->attributes()->thumb,
+		'original'=> $base_url.$transcode.urlencode($base_url.$item->attributes()->thumb),
 		'alt'			=> $item->attributes()->title,
-		'height'	=> $width,
 		'class'		=> 'rounded'
 	);
 	return img($image);

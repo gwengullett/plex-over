@@ -14,7 +14,7 @@
 						
 						<div class="img" >
 							<div class="rounded">
-								<img class="rounded" original="<?=$this->thumb->get($this->plex_url.$item->thumb)?>" width="200" />
+								<?= $this->transcode->img($item, array('width' => 110, 'height' => 150)) ?>
 							</div>
 						</div>
 						<div class="h3">

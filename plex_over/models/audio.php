@@ -33,8 +33,7 @@ class Audio extends Plex {
 		}
 		return false;
 	}
-
-	
+		
 	/**
 	 * content function.
 	 * Get the content of an Artist, playlist etc...

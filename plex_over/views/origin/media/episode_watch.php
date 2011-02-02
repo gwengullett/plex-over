@@ -1,6 +1,7 @@
 <script type"text/jqvqscript">
- VideoJS.DOMReady(function(){
- 	   var myPlayer = VideoJS.setup("show-player");
+ $(function(){
+		$('.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
+		var myPlayer = VideoJS.setup("show-player");
  });
 </script>
 
@@ -23,7 +24,7 @@
 	<div id="show-main">
 		<div class="video-js-box">
 			<video id="show-player" class="video-js" controls="controls" poster="<?= $this->plex_url.thumb($episode) ?>" >
-				<source src="<?=$this->plex_url.$episode->media->part[0]->key?>"  type="video/mp4" />
+				<source src="<?= $this->transcode->video($episode->media->part[0], array('ratingKey' => $item->key)) ?>"  type="video/mp4" />
 				<track kind="subtitles" src="<?= $episode->media->part[0]->subtitles ?>" srclang="en-US" label="English"></track>
 			</video>
 		</div>

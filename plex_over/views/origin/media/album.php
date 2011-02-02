@@ -22,11 +22,7 @@
 	<?php foreach ($item->content as $album): if (@$album->ratingKey): ?>
 			<div class="left jacket">
 				<a href="<?=site_url($links->item.'/'.$album->ratingKey.$artist_link)?>" />
-			  	<?= cover(array(
-			  		'src'				=> $this->thumb->get($this->plex_url.$album->thumb),
-			  		'size'			=> 130,
-			  		'fallback'	=> $this->plex_url.$item->art
-			  	)) ?>
+			  	<?= $this->transcode->img($album, array('width' => 130, 'class' => 'rounded shadow')) ?>
 			  	<h4 class="h4">
 			  		<?= character_limiter($album->title, 15)?>
 			  	</h4>

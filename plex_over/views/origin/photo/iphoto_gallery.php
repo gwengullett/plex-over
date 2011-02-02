@@ -46,7 +46,10 @@ $(function(){
 							href="<?= iphoto_imglink($link, $content->attributes()->key) ?>"
 						>
 						<div class="item <?= css_alt($key) ?>">
-							<?= iphoto_gallery($this->plex_url, $content, 100) ?>
+							<?= $this->transcode->img(
+								$content->attributes(), 
+								array('width' => 120, 'height' => 100, 'scale' => 'height')
+							);?>
 							<h3><?= $content->attributes()->title ?></h3>
 						</div>
 						</a>

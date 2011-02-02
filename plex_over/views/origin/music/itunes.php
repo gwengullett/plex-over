@@ -1,7 +1,7 @@
 <div id="content" class="fit">
 <div id="<?= (! isset($id)) ? 'section' : $id ?>">
 	
-	<?= $views->top_nav ?>
+	<?php $this->load->view($this->template.'/layouts/top_nav');?>
 	
 	<div id="browser" class="grid">
 		
@@ -12,7 +12,7 @@
 				<a href="<?=link_item($link, $item)?>">
 					<div class="img" >
 						<div class="rounded">
-							<img class="rounded" original="<?=$this->thumb->get($this->plex_url.$item->thumb)?>" width="200" />
+								<?= $this->transcode->img($item, array('width' => 120, 'height' => 120)) ?>
 						</div>
 					</div>
 					<div class="h3">

@@ -32,21 +32,22 @@ class Music extends PE_Controller {
 		{	
 			$data['link']	= $this->plex_url.itunes_url($this->uri->uri_string());
 			$data['item'] = $this->_load_content('/iTunes/'.$this->uri->segment(3).'/'.rawurlencode($key));
+			
 			$this->breadcrumb[$this->controller.__FUNCTION__] = 'iTunes';
+			$this->breadcrumb[$this->controller.__FUNCTION__.'/'.$this->segments[3]] = $this->segments[3];
 			$this->breadcrumb[] = $data['item']->title2;
-			$data['views']->top_nav	= $this->topnav_view();
 
+			$data['views']->top_nav	= $this->topnav_view();
 			$data['content_type'] = $this->content_type;
 			$this->render('media/artist', $data);
 		}
 		else
 		{
 			$this->breadcrumb[] = 'iTunes';
-			$data['views']->top_nav	= $this->topnav_view();
 			$data['link']			= implode('/', $this->segments);
 			$data['items']		= $this->audio->find_by($this->segments);
 			$data['filters']	= $this->_top_nav($this->directory, 'artist');
-			$data['id'] = 'music';
+			$data['id']				= 'music';
 			$this->render('music/itunes', $data);
 		}
 	}
@@ -61,11 +62,24 @@ class Music extends PE_Controller {
 	 */
 	private function _load_content($content)
 	{
-		$multi = array('artists', 'genre');
+		$multi = array('artists', 'genre', 'playlists');
 		
 		if (in_array(strtolower($this->segments[3]), $multi))
 		{
-			$data = $this->audio->content($content);
+			if ($this->segments[3] == 'playlists')
+			{
+				// upcase playlist string.
+				$segments 		= explode('/', $content);
+				$playlist			= explode('.', end($segments));
+				$playlist[0]	= strtoupper($playlist[0]);
+				$segments[3]	= implode('.', $playlist);
+				$data = $this->audio->album(implode('/', $segments));
+				$data->albums[0]->thumb = $data->art;
+			}
+			else
+			{
+				$data = $this->audio->content($content);
+			}
 			$this->content_type = lang('album');
 		}
 		else
@@ -93,7 +107,6 @@ class Music extends PE_Controller {
 		$url = ($arg == 'index') ? '' : '/'.$arg;
 		$this->directory = $this->audio->find($url);
 		$this->breadcrumb[$this->controller] = lang('music');
-
 		//print_r($this->directory);
 		//return;
 		
@@ -102,7 +115,6 @@ class Music extends PE_Controller {
 			$data	= $this->_prepare_links();
 	  	$data['title'] = __CLASS__;
 			$data['active_sb'] = 'music';
-			$data['views']->top_nav	= $this->topnav_view();
 			$this->load->vars($data);
 			$this->$arg();
 		}
