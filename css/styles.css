@@ -445,10 +445,16 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 	padding: 5px;
 }
 
-.album-container {
+table {
+	color: inherit;
+	font: inherit;
+	border-spacing: 0;
+}
+
+#albums {
 	width: 100%;
-	float: left;
 	padding: 5px 0;
+	border-bottom: 1px solid #444;
 }
 
 .track span, .track a {
@@ -486,34 +492,70 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 	float: left;
 }
 
-.album_content {
-	margin-bottom: 5px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #444;
+.album-content {
+	float: right;
+	width: 80%;
 }
 
-.album_content li  {
-	line-height: 1.8em;
+.album-content tr {
+	position: relative;
+	width: 100%;
+}
+
+.album-content td {
+	border: none;
+	padding: 4px;
+}
+
+.album-content a {
+	position: absolute;
+	display: block;
+	text-indent: -9999px;
+	right: 0;
+	width:80%;
+}
+
+.album-content .play {
+	color: #9CF;
+}
+.album-content .play a {
+	background: url(icons/sound-on.png) 1% center no-repeat;
+}
+.album-content .pause {
+	color: #6283A3;	
+}
+.album-content .pause a {
+	background: url(icons/sound-off.png) 1% center no-repeat;
+}
+
+.album-content td:nth-child(1) {
+  width: 15px;
+  font-size: 0.8em;
+}
+.album-content td:nth-child(2) {
+  width: 39%;
+}
+.album-content td:nth-child(3) {
+  width: 39%;
+}
+.album-content td:nth-child(4) {
+  width: 70px;
+  font-size: 0.8em;
+}
+.album-content td:nth-child(5) {
+  width: 50px;
+	font-size: 0.8em;
+}
+
+.album-cover {
+	float: left;
+	width: 18%;
+	margin-right: 1em;
+	text-align: center;
 }
 
 .alt {
 	background-color: #333;
-}
-
-.album {
-	width: 25%;
-}
-
-.album_content .album {
-	text-align: center;
-}
-
-.track {
-	width: 55%;
-}
-
-.duration, .size {
-	width: 10%;
 }
 
 audio {
