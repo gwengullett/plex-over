@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://eglou-team.dyndns.org/plex_over";
+$config['base_url']	= "http://localhost/plex_over";
 
 /*
 |--------------------------------------------------------------------------
