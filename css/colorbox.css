@@ -70,12 +70,15 @@
 }
 
 #cboxLoadedContent {
-	background:#000;
-	border:2px solid #e1e1e1;
-		border-radius: 10px;
-	-moz-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	background: #e1e1e1;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0.16, rgb(200,200,200)),color-stop(1, rgb(245,245,245)));
+	background: -moz-linear-gradient(center bottom,rgb(200,200,200) 16%,rgb(245,245,245) 100%);
+	color: #333;
+	border:1px solid #f5f5f5;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	overflow-y: auto;
 }
 
