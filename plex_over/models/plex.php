@@ -174,7 +174,52 @@ class Plex extends CI_Model {
 		return $normalized;
 	}
 	
+	/**
+	 * set_authentication_header function.
+	 * Send headers to plex server
+	 * 
+	 * @access private
+	 * @return void
+	 */
+	public function authentication_headers()
+	{
+		if (!isset($this->user) OR ! isset($this->pass))
+		{
+			$this->user	= $this->config->item('username');
+			$this->pass	= $this->config->item('password');
+			$this->pass = sha1(strtolower($this->user).sha1($this->pass));
+		}
+		
+		return array('X-Plex-User: '.$this->user, 'X-Plex-Pass: '.$this->pass);
+	}
 	
+	/**
+	 * curl_load function.
+	 * 
+	 * @access private
+	 * @return void
+	 */
+	private function load_xml($url)
+	{		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		//curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->authentication_headers());
+		$xml		= curl_exec($ch);
+		$infos	= curl_getinfo($ch);
+		//print_r($infos);
+		if ($infos['http_code'] != 200)
+		{
+			exit(show_error(
+				'Plex Media Server said: '.str_replace('h1', 'strong',$xml),
+				$infos['http_code']
+			));
+		}
+		
+		return $xml;
+	}
+
 	/**
 	 * load function.
 	 * load the requested url in simplexml object
@@ -185,8 +230,12 @@ class Plex extends CI_Model {
 	 */
 	public function load($url = '')
 	{
-		$request	= $this->plex_local.str_ireplace('//', '/', '/'.$url);
-		$object		= @simplexml_load_file($request);
+		// build uri request
+		$request = $this->plex_local.str_ireplace('//', '/', '/'.$url);
+		
+		$xml = $this->load_xml($request);
+				
+		$object = @simplexml_load_string($xml);
 		// enble uri debugging
 		if ($this->debug === true) 
 		{

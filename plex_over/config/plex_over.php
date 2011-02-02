@@ -2,6 +2,20 @@
 
 /*
 | -------------------------------------------------------------------
+|  AUTHENTIFICATION
+| -------------------------------------------------------------------
+| If you run your server over the web, you'll need to be authenticate
+| before accessing files served. 
+| See here about how the password is accepted by Plex Server:
+| http://getsatisfaction.com/plex/topics/api_documentation-1bo5rc#reply_3813016
+|
+*/
+
+$config['username'] = 'sonotone';
+$config['password']	= 'coincoin';
+
+/*
+| -------------------------------------------------------------------
 |  APPLICATION CONFIGURATION
 | -------------------------------------------------------------------
 */
@@ -28,31 +42,29 @@ $config['video_conv']		= false;
 
 /*
 | -------------------------------------------------------------------
-|  PLEX SERVER CONFIGURATION
+|  PLEX SERVER URLS
 | -------------------------------------------------------------------
 */
-
 // the PRIVATE url of the Plex Server (no trailing slash !!!!)
 // Used to retrive xml files. If your running plex server on same
 // host, prefer localhost (no name/dns resolution required = faster)
 $config['plex_local']		= 'http://localhost:32400';
 // the PUBLIC url of the Plex Server (no trailing slash !!!!)
 // used in frontend for downloads and images
-//$config['plex_url']			= 'http://eglou-team.dyndns.org:32400';
 $config['plex_url']			= 'http://localhost:32400';
-// path to sections
+//$config['plex_url']			= 'http://localhost:32400';
+
+// -------------------------------------------------------------------
+// Serveur sections path (if it change some time)
 $config['section_url']	= 'library/sections/';
-// path to metadata
 $config['meta_url']			= 'library/metadata/';
-// itunes
-$config['itunes_url']		= 'music/iTunes/';
 
 /*
 | -------------------------------------------------------------------
 |  UTILITARIES
 | -------------------------------------------------------------------
+| Keep some specific filters for types.
 */
-// Only keep some specific filters for types.
 
 // Music
 $config['artist_filters']	= array('albums', 'genre', 'all', 'recentlyAdded');

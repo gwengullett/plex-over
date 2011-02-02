@@ -29,9 +29,9 @@ class Music extends PE_Controller {
 		if (count($this->segments) < 3) array_push($this->segments, $type);
 				
 		if ($key = $this->uri->segment(4))
-		{			
+		{	
 			$data['link']	= $this->plex_url.itunes_url($this->uri->uri_string());
-			$data['item'] = $this->_load_content('/iTunes/'.$this->uri->segment(3).'/'.$key);
+			$data['item'] = $this->_load_content('/iTunes/'.$this->uri->segment(3).'/'.rawurlencode($key));
 			$this->breadcrumb[$this->controller.__FUNCTION__] = 'iTunes';
 			$this->breadcrumb[] = $data['item']->title2;
 			$data['views']->top_nav	= $this->topnav_view();

@@ -40,9 +40,10 @@ class PE_Controller extends CI_Controller {
 			$this->output->enable_profiler($this->config->item('debug_ci'));
 		}
 		
+		// load base xml
 		$this->load_base();
 	}
-	
+		
 	/**
 	 * load_base function.
 	 * Load xml for sidebar. 
