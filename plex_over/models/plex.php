@@ -3,7 +3,7 @@
 class Plex extends CI_Model {
 	
 	// third party plex keys
-	public $third_party = array('photos', 'music', 'videos');
+	public $third_party = array('photos', 'music', 'video');
 	/**
 	 * __construct function.
 	 * Constructor...
@@ -27,9 +27,9 @@ class Plex extends CI_Model {
 	 * @param mixed $id. (default: null)
 	 * @return void
 	 */
-	function find($id = '')
+	function find($url = '')
 	{
-		$sections = $this->load($this->root.$id);
+		$sections = $this->load($this->root.$url);
 		$return						= $this->get_attributes($sections);
 		$return->content	= $this->get_childrens($sections);
 
@@ -212,7 +212,7 @@ class Plex extends CI_Model {
 		if ($infos['http_code'] != 200)
 		{
 			exit(show_error(
-				'Plex Media Server said: '.str_replace('h1', 'strong',$xml),
+				'Plex Media Server said: '.str_replace('h1', 'strong',$xml).'<p><em>'.$url.'</em></p>',
 				$infos['http_code']
 			));
 		}

@@ -56,20 +56,21 @@ class Transcode {
 	 * @param string $class. (default: 'rounded'): image class
 	 * @return html image tag
 	 */
-	public function img($item, $opts = array())
+	public function img($item, $opts = array(), $as_url = false)
 	{
 		$opts = $this->extend($opts, $this->img_opts);
 	  
 	  $params->width	= $opts->width;
 	  $params->height	= $opts->height;
 	  $params->url		= $this->ci->plex_url.thumb($item, $opts->force);
+	  $url = $this->ci->plex_url.$this->img_transpath.http_build_query($params);
 	  
 	  // define the source attribute
 	  $source = ($opts->type == 'lazy') ? 'original' : 'src';
 	  
 	  // create image
 	  $image = array(
-	  	$source				=> $this->ci->plex_url.$this->img_transpath.http_build_query($params),
+	  	$source				=> $url,
 	  	'alt'					=> (isset($item->title)) ? $item->title : 'image',
 	  	'class'				=> $opts->class,
 	  	'align'				=> $opts->align
@@ -85,7 +86,7 @@ class Transcode {
 			$image[$opts->scale] = $opts->{$opts->scale};
 		}  			
 
-	  return img($image);
+	  return ($as_url === true) ? $url : img($image);
 	}
 	
 	/**

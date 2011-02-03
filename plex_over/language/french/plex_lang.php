@@ -15,6 +15,7 @@ $lang['lib_section']	= "Librarie";
 $lang['lib_third']		= "Tierce partie";
 $lang['music']				= "musique";
 $lang['photos']				= "photos";
+$lang['video']				= "video";
 
 //movies
 $lang['director'] = "Realisateur";

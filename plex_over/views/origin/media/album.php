@@ -1,6 +1,6 @@
 <div id="content" class="fit">
 	
-	<?= $views->top_nav ?>
+	<?php $this->load->view($this->template.'/layouts/top_nav');?>
 	
 	<div class="details">
 		<div id="details-main">

@@ -107,13 +107,14 @@ function thumb($item, $force = null)
 	{
 		return $item->art;
 	}
-	else if (isset($item->key))
+	else if (isset($item->key) AND @getimagesize($item->key))
 	{
+		print_r(@getimagesize($item->key));
 		return $item->key;
 	}
 	else
 	{
-		return 'no-image.jpg';
+		return '/:/resources/DefaultAlbumCover.png';
 	}
 }
 

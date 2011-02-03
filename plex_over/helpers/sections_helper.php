@@ -17,11 +17,11 @@ function link_item($base, $item)
 {
 	if (isset($item->type))
 	{
-		$link = strtolower($base).'/'.strtolower($item->type).'/'.$item->ratingKey;
+		$link = $base.'/'.$item->type.'/'.$item->ratingKey;
 	}
 	else
 	{
-		$link = strtolower($base).'/'.strtolower($item->key);
+		$link = $base.'/'.$item->key;
 	}
 	
 	return site_url($link);

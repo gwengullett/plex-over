@@ -11,7 +11,7 @@
 	<?php endforeach ?>
 	</ul>
 	
-	<h4><?= pluralize(count($third_party), lang('lib_third')) ?></h4>
+	<h4><?= pluralize(count($third_party), lang('lib_third'), false) ?></h4>
 	<ul>
 	<?php foreach ($third_party as $key => $item): ?>
 		<a href="<?= site_url($item->key) ?>" >

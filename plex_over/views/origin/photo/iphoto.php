@@ -8,7 +8,7 @@
 					<h2><?= lang((string)strtolower($item->directory->title)) ?></h2>
 					<?php foreach ($item->content as $key => $content): ?>
 						<a href="<?= site_url($link.'/'.$item->directory->key.'/'.$content->key) ?>" >
-						<div class="item <?= css_alt($key) ?>">
+						<div class="item <?= css_alt($key) ?> clear">
 							<?= iphoto_default($item->directory->key, $content->title, 32) ?>
 							<span><?= $content->title ?></span>
 						</div>
