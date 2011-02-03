@@ -1,7 +1,6 @@
-<video class="media" controls="controls"></video>
+<video class="media shadow" controls="controls"></video>
 
 <script type="text/javascript">
-
 $(function(){
 	$('.tip').click(function(){
 		var video = $('video');

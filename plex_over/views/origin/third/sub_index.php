@@ -1,3 +1,9 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('img.header').fullBg({container: '#content'});
+});
+</script>
+
 <?php $this->load->view($this->template.'/layouts/top_nav'); ?>
 
 <div id="content" class="fit" >
@@ -17,7 +23,7 @@
 	</div>
 		
 	<div class="dir">
-		<?php $this->load->view($this->template.'/third/'.strtolower($items->view)) ?>
+		<?php $this->load->view($this->template.'/third/'.dispatch_views($items->view, $this->views)) ?>
 	</div>	
 	
 	</div>

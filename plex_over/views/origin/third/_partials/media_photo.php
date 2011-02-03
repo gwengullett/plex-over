@@ -1,1 +1,1 @@
-<img class="media" />
+<img class="media shadow" />

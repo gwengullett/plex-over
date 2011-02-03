@@ -1,8 +1,9 @@
 <div id="listinfo-media">
-	<?php $this->load->view($this->template.'/third/_partials/media_'.strtolower($items->type)) ?>
+	<?php $this->load->view($this->template.'/third/_partials/media_'.strtolower($items->keyname)) ?>
 </div>
 
-<div id="listinfo-summary" class="">
+<span class="close-button" style="position:absolute; bottom: 100px; display: block; z-index:50"> &lt;story&gt;</span>
+<div id="listinfo-summary">
 
 </div>
 
@@ -12,13 +13,14 @@
 			<?php foreach ($items->content as $item): if (isset($item->key)): ?>
     	<div class="content">
         	<div>
-        		<a class="tip" href="<?= $item->key ?>" title="<?= $item->title ?>">
-        			<?= $this->transcode->img($item, array('width' => 100, 'height' => 70, 'scale' => 'height', 'type' => 'normal')) ?>
+        		<a class="tip" href="<?= link_server($item->key, $this->plex_url) ?>" title="<?= $item->title ?>">
+        			<?= img(array('src' => link_server($item->thumb, $this->plex_url), 'height' => 70, 'class' => 'rounded')) ?>
         		</a>
         		<div style="display:none">
+
         			<div>
         				<h3><?= $item->title ?></h3>
-        				<p><?= $item->summary ?></p>
+        				<p><?= nl2br($item->summary) ?></p>
         			</div>
         		</div>
         	</div>
@@ -28,11 +30,9 @@
 	</div>
 </div>
 <script>
-var summ = 0;
 function resize_media() {
 		var totH = $('#plugin-directory').height();
-		if ($('video').length > 0) summ = summaryCont.height();
-		$('#listinfo-media').css('height', (totH - 240 - summ)+'px');
+		$('#listinfo-media').css('height', (totH - 210)+'px');
 }
 
 $(window).load(function() {
@@ -43,7 +43,7 @@ $(window).load(function() {
 	
 	resize_media();
 	ThumbnailScroller("tshf_container","horizontal",40,800,"easeOutCirc",0.5,300);
-	$('.tip').tipTip({delay:0});
+	$('.tip').tipTip({delay:200});
 
 	$('.tip').click(function(){
 		$('#listinfo-media .media').attr('src', $(this).attr('href'));
@@ -51,6 +51,12 @@ $(window).load(function() {
 		summaryCont.html(orig);
 		resize_media();
 		return false;
+	});
+	
+	$('.close-button').toggle(function(){
+		$(this).next('div').slideUp();
+	}, function(){
+		$(this).next('div').slideDown();
 	});
 	
 	$(window).resize(function(){

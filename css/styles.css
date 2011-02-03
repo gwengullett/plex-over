@@ -642,21 +642,20 @@ audio {
 
 /* plugins */
 .bg-header {
-	height: 100px;
+	height: 60px;
 }
 
 img.header {
 	position: absolute;
 	left:0;
 	top:0;
-	width: 100%;
 	z-index: 0;
 }
 
 #plugin-directory {
 	position: relative;
 	z-index: 2;
-	background: url(images/content-opacity.png) left 140px repeat-x;
+	background: url(images/content-opacity.png) left 100px repeat-x;
 	background-size:  auto 100%;
 	height: 100%;
 }
@@ -694,15 +693,16 @@ img.header {
 }
 #listinfo-summary div {
 	width: 70%;
+	padding-bottom: 10px;
 	margin: auto;
 }
 
 
 #tshf_container{position:absolute; bottom:0; width:100%; border-top:1px solid #666; border-bottom:1px solid #fff; -moz-box-shadow:inset 1px 1px 20px #666; -webkit-box-shadow:inset 1px 1px 20px #666; box-shadow:inset 1px 1px 20px #666; background:#ccc; margin: 0 -40px}
 #tshf_container .thumbScroller{position:relative; width:100%; overflow:hidden; left}
-#tshf_container .thumbScroller, #tshf_container .thumbScroller .container, #tshf_container .thumbScroller .content{height:80px;}
+#tshf_container .thumbScroller, #tshf_container .thumbScroller .container, #tshf_container .thumbScroller .content{height:90px;}
 #tshf_container .thumbScroller .container{position:relative;}
-#tshf_container .thumbScroller .content{float:left; padding: 5px}
+#tshf_container .thumbScroller .content{float:left; padding: 10px 5px}
 #tshf_container .thumbScroller .content div{height:100%;}
 #tshf_container .thumbScroller .content div a{display:block;}
 #tshf_container .thumbScroller .content div a:hover{border-color:#fff;}

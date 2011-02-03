@@ -5,7 +5,7 @@
 			<?= $this->transcode->img($item, array('height' => 50, 'scale' => 'height', 'align' => 'right'))?>
   		<div class="show-list-txt">
   			<h3><?=anchor(
-  				urlencode($item->key),
+  				$item->key,
   				$item->title)?>
   			</h3>
   			<span><?=$item->summary?></span>

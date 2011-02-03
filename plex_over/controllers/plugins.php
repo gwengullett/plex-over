@@ -7,10 +7,16 @@ class Plugins extends PE_Controller {
 		parent::__construct(__CLASS__);
 		
 		$this->load->model('plugin');
+		$this->load->helper(array('plugins'));
 
 		// viewGroup to CI views
-		$this->views->directory   = array('Menu', 'List');
-		$this->views->details	= array('Details');
+		//$this->views->directory	= array('pictures', 'List');
+		$this->views->infolist = array('Pictures', 'Details');
+		$this->views->list = array('Coverflow');
+		$this->view->track	= array('Album');
+		
+		// check for infolist and directory together
+		$this->views->cat_lists	= array('List, Menu, InfoList');
 	}
 	
 	/**
@@ -44,6 +50,11 @@ class Plugins extends PE_Controller {
 			$data['active_sb'] = $this->uri->segment(1);
 			$this->load->vars($data);
 			
+			if ($this->uri->segment(3) == 'function')
+			{
+				$this->plugin_function($arg);
+				return;
+			}
 			if ($this->uri->segment(2))
 			{
 				$this->plugin_directory($arg);
@@ -56,6 +67,27 @@ class Plugins extends PE_Controller {
 	}
 	
 	/**
+	 * plugin_function function.
+	 * We've passed the first level of the plugin... now
+	 * let's see whats we get
+	 * 
+	 * @access public
+	 * @param mixed $arg
+	 * @return void
+	 */
+	public function plugin_function($arg)
+	{
+		$data['items'] = $this->plugin->scan_function($this->uri->uri_string());
+		$this->breadcrumb[] = $data['items']->title1;
+		//print_r($data['items']);
+		if (! in_array($data['items']->view, $this->views->cat_lists) AND $data['items']->keyname == 'Directory')
+		{
+			$data['items']->view = 'List';
+		}
+		$this->render('third/sub_index', $data);
+	}
+	
+	/**
 	 * plugin_directory function.
 	 * 
 	 * @access public
@@ -65,6 +97,8 @@ class Plugins extends PE_Controller {
 	public function plugin_directory($arg)
 	{
 		$data['items'] = $this->plugin->scan($this->uri->uri_string());
+				//print_r($data['items']);
+
 		$this->breadcrumb[] = $data['items']->title1;
 
 		// the model should return us the view group...

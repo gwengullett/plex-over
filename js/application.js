@@ -22,7 +22,6 @@ jQuery.expr[':'].contains = function(a, i, m) {
       return false;
     }
   }
-
   $.fn.search = function search(selector, block) {
     var search = new Search(block);
     var callbacks = search.callbacks;
@@ -42,52 +41,100 @@ jQuery.expr[':'].contains = function(a, i, m) {
     $(this).live('keydown', perform);
     $(this).live('keyup', perform);
     $(this).bind('blur', perform);
-    // html 5 type="seach" support
-    $(this).bind('click', perform);
+    $(this).bind('click', perform); // html 5 type="seach" support
   }
-})(jQuery);
 
-$.fn.serializeObject = function()
-{
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name]) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
+	// --------------------------------------------------------------------
+	// Redimentionnement
+	// --------------------------------------------------------------------
+	$.fn.fullBg = function resizeVid(options)
+	{
+		var vidRatio, opts, container = $(this).eq(0);
+		
+		if (!options) options = {};
+		
+		if (vidW = container.attr('width')) options.width = vidW;
+		if (vidH = container.attr('height')) options.height = vidH;
+				
+		opts = $.extend({}, $.fn.fullBg.defaults, options);
+	    
+	    if (! vidRatio) vidRatio = (opts.width / opts.height).toFixed(2);
 
-
-$.fn.audioPlaylist = function(options)
-{
-	var defOpts = {
-		key		: 'audioPlaylist'
+		var dims = resize();
+		
+		$(window).resize(function(){resize()});
+		
+		// calcule les dimensions de la vidéo
+		// --------------------------------------------------------------------
+		function resize()
+		{
+			var wHeight = $(opts.container).height();
+			var wWidth 	= $(opts.container).width();
+			var wRatio	= wWidth / wHeight;
+			
+			if (wRatio >= vidRatio) ratio = wWidth / opts.width;
+			else  ratio = wHeight / opts.height;
+			
+			var output = {};
+			output.width   = Math.round(ratio * opts.width, 2); 
+			output.height  = Math.round(ratio * opts.height, 2);
+			
+			container.attr('width', output.width).attr('height', output.height);
+			
+			return output;
+		}
 	}
-	opts = $.extend({}, defOpts, options);
 	
-	$(this).click(function(){
+	// Parametres par defaut
+	// --------------------------------------------------------------------
+	$.fn.fullBg.defaults = {
+		width  : 480,
+		height : 270,
+		container: 'document'
+	};
+
+
+	$.fn.serializeObject = function()
+	{
+	    var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name]) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            o[this.name].push(this.value || '');
+	        } else {
+	            o[this.name] = this.value || '';
+	        }
+	    });
+	    return o;
+	};
+	
+	
+	$.fn.audioPlaylist = function(options)
+	{
+		var defOpts = {
+			key		: 'audioPlaylist'
+		}
+		opts = $.extend({}, defOpts, options);
 		
-		var keyt = $.trim($(this).text());
-		
-		var attrs = { 
-			title : keyt,
-			album	: $(this).attr('rel'),
-			url		: $(this).attr('href'),
-			artist: $(this).attr('art')
-		};
-			//var currentStorage = $.parseJSON(sessionStorage.getItem(opts.key));
-			//currentStorage[keyt] = 'test';
-			//var toStore = JSON.stringify(attrs);
-			sessionStorage.setItem(opts.key, $(attrs).serializeArray());
-			//console.log(JSON.parse(sessionStorage.getItem(opts.key)));
-	});
-	
-	
-}
+		$(this).click(function(){
+			
+			var keyt = $.trim($(this).text());
+			
+			var attrs = { 
+				title : keyt,
+				album	: $(this).attr('rel'),
+				url		: $(this).attr('href'),
+				artist: $(this).attr('art')
+			};
+				//var currentStorage = $.parseJSON(sessionStorage.getItem(opts.key));
+				//currentStorage[keyt] = 'test';
+				//var toStore = JSON.stringify(attrs);
+				sessionStorage.setItem(opts.key, $(attrs).serializeArray());
+				//console.log(JSON.parse(sessionStorage.getItem(opts.key)));
+		});
+	}
+
+})(jQuery);

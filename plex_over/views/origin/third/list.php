@@ -1,15 +1,15 @@
-		<?php foreach ($items->content as $item):?>
-			
-			<?php if (isset($item->key)): ?>
-				<div class="show-list">
-					<?= $this->transcode->img($item, array('height' => 50, 'scale' => 'height', 'align' => 'right'))?>
-					<div class="show-list-txt">
-						<h3><?=anchor(
-							$item->key,
-							$item->name)?>
-						</h3>
-					</div>
-				</div>
-			<?php endif ?>
-		
-		<?php endforeach ?>
+<?php foreach ($items->content as $key => $item):?>
+  
+  <?php if (isset($item->key)): ?>
+  	<div class="show-list">
+  		<?= img(array('src' => link_server($item->thumb, $this->plex_url),'height' => 50, 'scale' => 'height', 'align' => 'right'))?>
+  		<div class="show-list-txt">
+  			<h3><?=anchor(
+  				link_plugin($item),
+  				$item->name)?>
+  			</h3>
+  		</div>
+  	</div>
+  <?php endif ?>
+
+<?php endforeach ?>

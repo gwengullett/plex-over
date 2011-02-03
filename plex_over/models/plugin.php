@@ -21,15 +21,40 @@ class Plugin extends Plex {
 		$return						= $this->get_attributes($items);
 		$return->content	= $this->get_childrens($items);
 		$return->view			= $this->get_view($items);
-		$return->type			= $items->children()->getName();
+		$return->keyname	= $items->children()->getName($items);
 		
-		foreach ($return->content as $content)
+		// get url in something understandable for our app
+		foreach ($return->content as $key => $content)
 		{
-			//$key = explode('/', $content->key);
-			//print_r(parse_url(end($key)));
+			$params = explode('/:/', (string)$content->key);
+			
+			if (isset($params[1]))
+			{
+				// convert as segments
+				$params[1] = implode('/', parse_url($params[1]));
+				$content->addAttribute('pe_key', implode('/', $params));
+			}
 		}
 		
 		return $return;
+	}
+	
+	/**
+	 * scan_function function.
+	 * Well now, we have to rebuild the uri for plex...
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function scan_function()
+	{
+		$segments = $this->segments;
+		$base		= array_slice($segments, 0, 2);
+		$base[] = ':/function';
+		$end		= array(implode('?',  array_slice($segments, 3)));
+		$final	= implode('/', array_merge($base, $end));
+		
+		return $this->scan($final);
 	}
 	
 	/**
@@ -51,5 +76,5 @@ class Plugin extends Plex {
 			return $item->children()->getName();
 		}
 	}
-		
+
 }
