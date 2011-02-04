@@ -2,11 +2,9 @@
 <script type="text/javascript">
 $(function(){
 	$('.tip').click(function(){
-		var v = document.createElement("video");
 		var anchorMedia	= $(this);
 		var linkMedia = anchorMedia.attr('href');
-		if (linkMedia.substring(0, 7) == "rtmp://")
-		{
+		if (linkMedia.substring(0, 7) == "rtmp://") {
 			// call our parser
 			$.ajax({
 				type: 'POST',
@@ -31,8 +29,7 @@ $(function(){
 				}
 			});
 		}
-		else
-		{
+		else {
 			var video = $('video');
 			if (video.length < 1)
 			{

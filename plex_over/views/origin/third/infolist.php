@@ -51,10 +51,13 @@ $(window).load(function() {
 			var ref = $(this);
 			thumb.removeClass('selected');
 			theMedia.attr('src', $(this).attr('href'));
+			summaryCont.html(ref.next('div').html());
 			resize_media();
-			theMedia.load(function(){
-				summaryCont.html(ref.next('div').html());
+			/*
+theMedia.load(function(){
+				
 			});
+*/
 			$(this).addClass('selected');
 		}
 		return false;
