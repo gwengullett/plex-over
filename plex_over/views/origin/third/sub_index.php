@@ -1,20 +1,20 @@
 <script type="text/javascript">
-$(document).ready(function(){
+$(window).load(function(){
 	$('img.header').fullBg({container: '#content'});
 });
-</script>
 
+</script>
 <?php $this->load->view($this->template.'/layouts/top_nav'); ?>
 
 <div id="content" class="fit" >
-		<?= img(array('src' => $this->plex_url.$items->art, 'class' => 'header')) ?>
+		<?= img(array('src' => $this->plex_url.@$items->art, 'class' => 'header')) ?>
 
  <div id="plugin-directory">
-	<div class="details bb bg-header">
+	<div class="details bg-header">
 
 		<div id="details-text" class="left">
 		    <h1 class="txt-shadow ">
-		    	<?=$items->title1?>
+		    	<?= @$items->title1 ?> <?= @$items->title2 ?>
 		    </h1>
 		</div>
 		
@@ -22,8 +22,8 @@ $(document).ready(function(){
 	
 	</div>
 		
-	<div class="dir">
-		<?php $this->load->view($this->template.'/third/'.dispatch_views($items->view, $this->views)) ?>
+	<div class="dir <?= $items->view ?>">
+		<?php $this->load->view($this->template.'/third/'.dispatch_views($items, $this->views)) ?>
 	</div>	
 	
 	</div>

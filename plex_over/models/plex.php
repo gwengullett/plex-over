@@ -4,6 +4,10 @@ class Plex extends CI_Model {
 	
 	// third party plex keys
 	public $third_party = array('photos', 'music', 'video');
+	
+	// curl ressources
+	public $ch;
+	
 	/**
 	 * __construct function.
 	 * Constructor...
@@ -200,19 +204,20 @@ class Plex extends CI_Model {
 	 * @return void
 	 */
 	private function load_xml($url)
-	{		
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $url);
+	{
+		if (! $this->ch) $this->ch = curl_init();
+
+		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($this->ch, CURLOPT_URL, $url);
+		curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->authentication_headers());
 		//curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->authentication_headers());
-		$xml		= curl_exec($ch);
-		$infos	= curl_getinfo($ch);
+		$xml		= curl_exec($this->ch);
+		$infos	= curl_getinfo($this->ch);
 		//print_r($infos);
 		if ($infos['http_code'] != 200)
 		{
 			exit(show_error(
-				'Plex Media Server said: '.str_replace('h1', 'strong',$xml).'<p><em>'.$url.'</em></p>',
+				'Plex Media Server said: '.str_replace('h1', 'strong',($xml) ? $xml : $infos['http_code']).'<p><em>'.$url.'</em></p>',
 				$infos['http_code']
 			));
 		}

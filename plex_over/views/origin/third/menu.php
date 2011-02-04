@@ -2,10 +2,10 @@
   
   <?php if (isset($item->key)): ?>
   	<div class="show-list">
-			<?= $this->transcode->img($item, array('height' => 50, 'scale' => 'height', 'align' => 'right'))?>
+			<?= $this->transcode->img($item, array('height' => 50, 'scale' => 'height', 'align' => 'left'))?>
   		<div class="show-list-txt">
   			<h3><?=anchor(
-  				$item->key,
+  				link_plugin($item->key),
   				$item->title)?>
   			</h3>
   			<span><?=$item->summary?></span>

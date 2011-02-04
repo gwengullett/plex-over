@@ -58,19 +58,24 @@ class Transcode {
 	 */
 	public function img($item, $opts = array(), $as_url = false)
 	{
-		$opts = $this->extend($opts, $this->img_opts);
-	  
+		$opts		= $this->extend($opts, $this->img_opts);
+		$thumb	= thumb($item, $opts->force);
+
 	  $params->width	= $opts->width;
 	  $params->height	= $opts->height;
-	  $params->url		= $this->ci->plex_url.thumb($item, $opts->force);
-	  $url = $this->ci->plex_url.$this->img_transpath.http_build_query($params);
+	  $params->url		= $this->ci->plex_url.$thumb;
+		
+		if (is_relative_link($thumb))
+		{
+			$thumb = $this->ci->plex_url.$this->img_transpath.http_build_query($params);
+		}
 	  
 	  // define the source attribute
 	  $source = ($opts->type == 'lazy') ? 'original' : 'src';
 	  
 	  // create image
 	  $image = array(
-	  	$source				=> $url,
+	  	$source				=> $thumb,
 	  	'alt'					=> (isset($item->title)) ? $item->title : 'image',
 	  	'class'				=> $opts->class,
 	  	'align'				=> $opts->align

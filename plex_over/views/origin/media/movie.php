@@ -65,7 +65,6 @@ $('.playlist-section a').click(function(){
 		
 		var myPlayer = VideoJS.setup("show-player");
 		myPlayer.subtitlesSource = $(this).attr('data-sub');
-		console.log(myPlayer);
 		myPlayer.video.load();
 		
 		$('#player').animate({'height': video.height()+'px'}, 'slow');

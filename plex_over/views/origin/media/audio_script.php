@@ -51,7 +51,6 @@ $(function(){
 	
 	function nextSong(event) {
 		var nextS = current.split('_');
-		console.log(nextS);
 		// convert to int and increment
 		nextS[1] = parseInt(nextS[1]) + 1;
 		// assign next song, or first if we are at the end

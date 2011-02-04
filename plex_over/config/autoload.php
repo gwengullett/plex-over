@@ -50,7 +50,7 @@ $autoload['libraries'] = array('thumb', 'transcode');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('text', 'inflector', 'html', 'form', 'url', 'plex', 'sections', 'language');
+$autoload['helper'] = array('plugins', 'text', 'inflector', 'html', 'form', 'url', 'plex', 'sections', 'language');
 
 
 /*

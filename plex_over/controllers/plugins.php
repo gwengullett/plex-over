@@ -11,9 +11,9 @@ class Plugins extends PE_Controller {
 
 		// viewGroup to CI views
 		//$this->views->directory	= array('pictures', 'List');
-		$this->views->infolist = array('Pictures', 'Details');
-		$this->views->list = array('Coverflow');
-		$this->view->track	= array('Album');
+		$this->views->infolist	= array('Pictures', 'Details', 'Video');
+		$this->views->list			= array('Coverflow');
+		$this->view->track			= array('Album');
 		
 		// check for infolist and directory together
 		$this->views->cat_lists	= array('List, Menu, InfoList');
@@ -78,7 +78,9 @@ class Plugins extends PE_Controller {
 	public function plugin_function($arg)
 	{
 		$data['items'] = $this->plugin->scan_function($this->uri->uri_string());
-		$this->breadcrumb[] = $data['items']->title1;
+		//print_r($data['items']); return;
+		
+		$this->breadcrumb[] = @$data['items']->title1;
 		//print_r($data['items']);
 		if (! in_array($data['items']->view, $this->views->cat_lists) AND $data['items']->keyname == 'Directory')
 		{

@@ -27,15 +27,20 @@ class Plugin extends Plex {
 		foreach ($return->content as $key => $content)
 		{
 			$params = explode('/:/', (string)$content->key);
-			
+
 			if (isset($params[1]))
 			{
 				// convert as segments
 				$params[1] = implode('/', parse_url($params[1]));
 				$content->addAttribute('pe_key', implode('/', $params));
 			}
+			// directory whitout base path
+			else if (substr($content->key, 0, strlen($this->uri->segment(1))) != $this->uri->segment(1))
+			{
+				$params = $this->uri->uri_string().'/'.urlencode($content->key);
+				$content->addAttribute('pe_key', $params);
+			}
 		}
-		
 		return $return;
 	}
 	
