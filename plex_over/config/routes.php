@@ -39,8 +39,8 @@ $route['default_controller'] = "Library";
 
 $route['music/iTunes']					= "iTunes";
 $route['music/iTunes/(:any)']		= "iTunes/$1";
-$route['photos/iphoto']					= "photos/iphoto";
-$route['photos/iphoto/(:any)']	= "photos/iphoto/$1";
+$route['photos/iPhoto']					= "photos/iPhoto";
+$route['photos/iPhoto/(:any)']	= "photos/iPhoto/$1";
 
 $route['music/(:any)']	= "plugins/music/$1";
 $route['music']					= "plugins/music";

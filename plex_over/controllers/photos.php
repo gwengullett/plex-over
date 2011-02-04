@@ -27,7 +27,7 @@ class Photos extends PE_Controller {
 	 * @access public
 	 * @return void
 	 */
-	public function iphoto()
+	public function iPhoto()
 	{
 		$this->load->helper('iphoto');
 
