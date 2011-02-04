@@ -12,7 +12,7 @@
 					
 					<div class="img" >
 						<div class="rounded">
-							<?= $this->transcode->img($item, array('width' => 150, 'height' => 150))?>
+							<?= $this->transcode->img($item, array('width' => 120, 'height' => 120))?>
 						</div>
 					</div>
 					<div class="h3">
