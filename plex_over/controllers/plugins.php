@@ -11,10 +11,9 @@ class Plugins extends PE_Controller {
 
 		// viewGroup to CI views
 		//$this->views->directory	= array('pictures', 'List');
-		$this->views->infolist	= array('Pictures', 'Details', 'Video');
-		$this->views->list			= array('Coverflow');
-		$this->view->track			= array('Album');
-		
+		$this->views->infolist	= array('Pictures', 'Details', 'Video', 'PhotoList');
+		$this->views->list			= array('Coverflow', 'Photolist');
+		$this->view->track			= array('Album', 'Track');
 		// check for infolist and directory together
 		$this->views->cat_lists	= array('List, Menu, InfoList');
 	}

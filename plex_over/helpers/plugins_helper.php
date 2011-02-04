@@ -34,7 +34,7 @@ function dispatch_views($item, $view_groups)
 	}
 	foreach ($view_groups as $key => $group)
 	{
-		if (in_array($item->view, $group) OR in_array($item->keyname, $group))
+		if (in_array((string)$item->view, $group) OR in_array((string)$item->keyname, $group))
 		{
 			$item->view = $key;
 		}
