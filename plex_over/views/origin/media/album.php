@@ -22,7 +22,7 @@
 	<?php foreach ($item->content as $album): if (@$album->ratingKey): ?>
 			<div class="left jacket">
 				<a href="<?=site_url($links->item.'/'.$album->ratingKey.$artist_link)?>" />
-			  	<?= $this->transcode->img($album, array('width' => 130, 'class' => 'rounded shadow')) ?>
+			  	<?= $this->transcode->img($album, array('width' => 130, 'type' => 'src')) ?>
 			  	<h4 class="h4">
 			  		<?= character_limiter($album->title, 15)?>
 			  	</h4>
