@@ -32,12 +32,14 @@ $(function(){
 		}
 		else
 		{
-			flowplayer("flash-media", '<?= site_url('js/flowplayer/flowplayer-3.2.5.swf') ?>', {
-					clip: {
-							url:linkMedia,
-							scaling: 'fit'
-					}
-				});
+			var video = $('video');
+			if (video.length < 1)
+			{
+				$('#listinfo-media').append('<video class="media shadow" controls="controls" ></video>');
+				var video = $('video');
+			}
+			video[0].load();
+			video[0].play();
 		}
 	});
 });
