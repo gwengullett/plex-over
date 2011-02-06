@@ -5,7 +5,8 @@ $lang['minutes']				= "minutes";
 $lang['minutes.short']	= "min";
 
 $lang['show.childs']		= "Episodes";
-$lang['artist.childs']	= "Tracks";
+$lang['artist.childs']	= "Pistes";
+$lang['album.childs']		= "Pistes";
 
 $lang['track']					= "piste";
 $lang['album']					= "album";

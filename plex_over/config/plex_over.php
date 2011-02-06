@@ -71,6 +71,6 @@ $config['artist_filters']	= array('albums', 'genre', 'all', 'recentlyAdded');
 // Itunes
 $config['itunes_filters']	= array_push($config['artist_filters'], 'artists','podcasts', 'ratings', 'playlists');
 // Movies
-$config['movie_filters']	= array('all', 'genre', 'recentlyadded', 'recentlyviewed', 'actor', 'director');
+$config['movie_filters']	= array('all', 'genre', 'recentlyAdded', 'recentlyViewed', 'actor', 'director');
 // TV Shows
 $config['show_filters']		= $config['movie_filters'];

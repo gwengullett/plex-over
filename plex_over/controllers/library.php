@@ -39,7 +39,7 @@ class Library extends PE_Controller {
 		// Get section's content
 		if (count($this->segments == 5))
 		{
-			$segments					= array_slice($this->uri->segment_array(), 3);
+			$segments					= array_slice($this->uri->segment_array(), 3, 3);
 			$filters					= $this->section->find(reset($segments));
 			$data['items']		= $this->section->find_by($segments);
 			$data['filters']	= $this->_top_nav($filters, $section_type);
