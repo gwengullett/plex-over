@@ -39,7 +39,6 @@ class PE_Controller extends CI_Controller {
 		{
 			$this->output->enable_profiler($this->config->item('debug_ci'));
 		}
-		
 		// load base xml
 		$this->load_base();
 	}
@@ -87,9 +86,9 @@ class PE_Controller extends CI_Controller {
 	 * @param mixed $to_parse
 	 * @return void
 	 */
-	public function render_ajax($to_parse)
+	public function render_ajax($to_render)
 	{
-		$this->output->set_output(json_encode($to_parse));
+		$this->output->set_output(json_encode($to_render));
 	}
 	
 	/**
@@ -131,7 +130,7 @@ class PE_Controller extends CI_Controller {
 		{
 			$subtitle = subtitle($part->file); 
 			
-			if (file_exists($subtitle))
+			if (file_exists($subtitle) AND is_file($subtitle))
 			{
 				$subtitle_path = $this->config->item('subtitles_folder').basename($subtitle);
 				@copy($subtitle, FCPATH.$subtitle_path);

@@ -22,9 +22,10 @@ $config['password']	= '';
 
 // Specify the template folder
 $config['template'] = "origin";
+// enable transcoding
+$config['video_transcode'] = false;
 // subtitles folder
 $config['subtitles_folder'] = "cache/subtitles/";
-
 // Cache folder for thumbs
 $config['cache_folder']	= 'cache/thumbs/';
 // set the cache expiration (empty for no cache)

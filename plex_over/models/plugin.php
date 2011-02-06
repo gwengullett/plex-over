@@ -1,10 +1,19 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Plugin extends Plex {
-
+		
 	public function __construct()
 	{
 		parent::__construct('plugins');
+		$this->curl_options = array(
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_NOBODY					=> true,
+			 	CURLOPT_URL						 => '',
+        CURLOPT_HEADER         => true,    // don't return headers 
+        CURLOPT_AUTOREFERER => true,     // follow redirects 
+        CURLINFO_HEADER_OUT	=> true,       // handle all encodings 
+        CURLOPT_MAXREDIRS      => 1       // stop after 10 redirects 
+    );
 	}
 	
 	/**
@@ -56,10 +65,32 @@ class Plugin extends Plex {
 		$segments = $this->segments;
 		$base		= array_slice($segments, 0, 2);
 		$base[] = ':/function';
+		$function = array_slice($segments, 3);
 		$end		= array(implode('?',  array_slice($segments, 3)));
 		$final	= implode('/', array_merge($base, $end));
 		
 		return $this->scan($final);
+	}
+	
+	/**
+	 * test_url function.
+	 * 
+	 * @access public
+	 * @param mixed $url
+	 * @return void
+	 */
+	public function test_redirection($url)
+	{
+		$this->chi = curl_init();
+		$this->curl_options[CURLOPT_URL] = $url;
+    curl_setopt_array( $this->chi, $this->curl_options );
+    $return = curl_exec($this->chi);
+		preg_match("/Location:(.*?)\r/", $return, $match);
+		
+		$out->url 		= (isset($match[1]) AND is_plex_link($match[1])) ? $match[1] : $url;
+		$out->status	= (isset($match[1])) ? true : false;
+		
+		return $out;
 	}
 	
 	/**

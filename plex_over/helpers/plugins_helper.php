@@ -76,12 +76,7 @@ function link_server($url, $plex_url)
 	
 	if (! $url) return 'images/blank.png';
 	
-	if ($link = is_plex_player($url))
-	{
-		return $link;
-	}
-
-	else if ($link = is_internal_link($url))
+	if ($link = is_plex_link($url))
 	{
 		$url = str_replace($link, $plex_url, $url);
 	}
@@ -115,15 +110,55 @@ function is_relative_link($url)
  * @param mixed $url
  * @return void
  */
-function is_internal_link($url)
+function is_plex_link($url)
 {
-	if (substr($url, 0, 16) == 'plex://127.0.0.1')
+	if (substr(trim($url), 0, 16) == 'plex://127.0.0.1')
 	{
 		return 'plex://127.0.0.1';
 	}
 	return false;
 }
 
+/**
+ * is_internal_link function.
+ * 
+ * @access public
+ * @param mixed $url
+ * @param mixed $plex_url
+ * @return void
+ */
+function is_internal_link($url, $plex_url)
+{
+	if (substr(trim($url), 0, strlen($plex_url)) == $plex_url)
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * is_online_request function.
+ * 
+ * @access public
+ * @param mixed $url
+ * @return void
+ */
+function is_online_request($url)
+{
+	if (strpos(urldecode($url), 'plexapp.com/player'))
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * is_plex_player function.
+ * 
+ * @access public
+ * @param mixed $url
+ * @return void
+ */
 function is_plex_player($url)
 {
 	if (strpos(urldecode($url), 'www.plexapp.com/player/player.php'))
@@ -132,6 +167,29 @@ function is_plex_player($url)
 		return urldecode(end($temp_url));
 	}
 	return false;
+}
+
+/**
+ * parse_online_request function.
+ * 
+ * @access public
+ * @param mixed $url
+ * @return void
+ */
+function parse_online_request($url)
+{
+	$params				= @preg_split('/[&|?]/', $url);
+	$output->url	= array_shift($params);
+	
+	if (count($params > 0))
+	{
+	  foreach ($params as $param)
+	  {
+	  	$array = explode('=', $param);
+	  	$output->{$array[0]} = (isset($array[1])) ? $array[1] : '';
+	  }
+	}
+	return $output;
 }
 
 /**
@@ -144,20 +202,35 @@ function is_plex_player($url)
  */
 function parse_stream($url)
 {
-	list($base, $query) = explode('clip=', $url);
-	$params = explode('&', $query);
-
-	// netConnectionUrl
-	$out['connexion_url'] = str_replace('&', '', $base);
-	$out['url']	= array_shift($params);
-
-	// url to pass
-	foreach ($params as $param)
+	if (is_internal_link(trim($url)))
 	{
-		list($key, $value) = explode('=', $param);
-		$out[$key] = $value;
+		$url = is_plex_player($url);
+	}
+	$exploded = explode('clip=', $url);
+	
+	if (isset($exploded[1]))
+	{
+		$params = explode('&', $exploded[1]);
+		$base = preg_split('/[&|?]/', $exploded[0], null);
+		
+		$out['connexion_url'] = $base[0];
+		$out['url']	= array_shift($params);
+		
+		// url to pass
+		if (count($params > 0))
+		{
+			foreach ($params as $param)
+			{
+				$array = explode('=', $param);
+				$out[$array[0]] = (isset($array[1])) ? $array[1] : '';
+			}
+		}
+		return $out;
 	}
 	
-	return $out;
+	else
+	{
+		return $url;
+	}
 }
 

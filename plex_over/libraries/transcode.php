@@ -41,20 +41,19 @@ class Transcode {
 	  	}
 	  }
 	  $this->ci =& get_instance();
+	  $this->video_transcode = $this->ci->config->item('video_transcode');
 	}
 	
 	/**
 	 * img function.
 	 * Url for transcoded images. index of width height is important, 
 	 * cause we wants to just fit one of them. the First is considered.
-	 * 
+	 *
 	 * @access public
-	 * @param mixed $item : Images atributes (check art or thumb)
-	 * @param int $width. (default: 200): width parameter
-	 * @param int $height. (default: 200): height parameter
-	 * @param string $type. (default: 'lazy'): form the image tags for lazy load
-	 * @param string $class. (default: 'rounded'): image class
-	 * @return html image tag
+	 * @param mixed $item
+	 * @param array $opts. (default: array())
+	 * @param bool $as_url. (default: false)
+	 * @return void
 	 */
 	public function img($item, $opts = array(), $as_url = false)
 	{
@@ -69,10 +68,8 @@ class Transcode {
 		{
 			$thumb = $this->ci->plex_url.$this->img_transpath.http_build_query($params);
 		}
-	  
 	  // define the source attribute
 	  $source = ($opts->type == 'lazy') ? 'original' : 'src';
-	  
 	  // create image
 	  $image = array(
 	  	$source				=> $thumb,
@@ -104,6 +101,10 @@ class Transcode {
 	 */
 	public function video($part, $opts = array())
 	{
+		if ( $this->video_transcode == false)
+		{
+			return $this->ci->plex_url.$part->key;
+		}
 		$opts = $this->extend($opts, $this->video_opts);
 		
 		$params->quality		= $opts->quality;

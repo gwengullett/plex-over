@@ -193,7 +193,6 @@ class Plex extends CI_Model {
 			$this->pass	= $this->config->item('password');
 			$this->pass = sha1(strtolower($this->user).sha1($this->pass));
 		}
-		
 		return array('X-Plex-User: '.$this->user, 'X-Plex-Pass: '.$this->pass);
 	}
 	
