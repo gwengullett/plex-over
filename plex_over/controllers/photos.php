@@ -5,8 +5,6 @@ class Photos extends PE_Controller {
 	public function __construct()
 	{
 		parent::__construct(__CLASS__);
-		
-		$this->load->model('photo');
 	}
 	
 	/**
@@ -34,7 +32,7 @@ class Photos extends PE_Controller {
 		if ($key = $this->uri->segment(4))
 		{
 			$data['link']	= $this->plex_url.$this->uri->uri_string();
-			$data['item'] = $this->photo->load(implode('/', $this->segments));
+			$data['item'] = $this->plex->load(implode('/', $this->segments));
 			$this->breadcrumb[$this->controller.__FUNCTION__] = 'iPhoto';
 			$this->breadcrumb[] = lang(strtolower($data['item']->attributes()->title1));
 			$render = 'photo/iphoto_gallery';
@@ -43,7 +41,7 @@ class Photos extends PE_Controller {
 		{
 			$this->breadcrumb[] = 'iPhoto';
 			$data['link']		= implode('/', $this->segments);
-			$data['items']	= $this->photo->directory_scan($data['link'].'/');
+			$data['items']	= $this->plex->directory_scan($data['link'].'/');
 			$data['filters']= $this->_top_nav($this->directory, 'events');
 			$render = 'photo/iphoto';
 		}
@@ -62,7 +60,7 @@ class Photos extends PE_Controller {
 	{
 		$url = ($arg == 'index') ? '' : '/'.$arg;
 		
-		$this->directory = $this->photo->find($url);
+		$this->directory = $this->plex->find($url);
 		
 		if (method_exists($this, $arg))
 		{

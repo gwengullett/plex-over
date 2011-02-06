@@ -5,12 +5,11 @@
 		<?php $this->load->view($this->template.'/layouts/top_nav');?>
 		
 		<div id="browser" class="grid">
-			
 			<?php foreach ($items->content as $key => $item): ?>
 				
 				<div class="item rounded-st <?php echo $item->type.'_'.$item->ratingKey?>">
 					
-					<a href="<?=link_item($links->item, $item)?>">
+					<a href="<?=link_item($links->item, $item, $this->uri->segment(4))?>">
 						
 						<div class="img" >
 							<div class="rounded">

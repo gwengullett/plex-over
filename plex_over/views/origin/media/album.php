@@ -21,7 +21,7 @@
 	<div id="details-sub" class="left">
 	<?php foreach ($item->content as $album): if (@$album->ratingKey): ?>
 			<div class="left jacket">
-				<a href="<?=site_url($links->item.'/'.$album->ratingKey.$artist_link)?>" />
+				<a href="<?=link_media($links->item, $album->ratingKey.$artist_link, $this->uri->segment(5))?>" />
 			  	<?= $this->transcode->img($album, array('width' => 130, 'type' => 'src')) ?>
 			  	<h4 class="h4">
 			  		<?= character_limiter($album->title, 15)?>

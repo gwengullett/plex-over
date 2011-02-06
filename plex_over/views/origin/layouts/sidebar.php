@@ -2,9 +2,9 @@
 	
 	<h4><?= pluralize($sections->size, lang('lib_section')) ?></h4>
 	<ul>
-	<?php foreach ($sections->content as $key => $item):?>
+	<?php foreach ($sections->content as $key => $item): ?>
 		<a href="<?= link_section($links->section, $item) ?>" >
-			<li class="sb-<?=$item->type.' '.active_item($active_sb, $item->type) ?>">
+			<li class="sb-<?=$item->type.' '.active_item($active_sb, $item->type.'_'.$item->key) ?>">
 				<?= $item->title ?>
 			</li>
 		</a>

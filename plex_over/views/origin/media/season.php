@@ -24,7 +24,7 @@
 	<div id="details-sub" class="left">
 	<?php foreach ($item->content as $season): if (@$season->ratingKey): ?>
 			<div class="left jacket">
-				<a href="<?=site_url($links->item.'/'.$season->ratingKey.$show_link)?>" />
+				<a href="<?= link_media($links->item, $season->ratingKey.$show_link, $this->uri->segment(5)) ?>" />
 					<?= $this->transcode->img($item, array('height' => 170, 'width' => 130, 'type' => 'src')) ?>
 			 		<strong><?= character_limiter($season->title, 15) ?></strong><br />
 			 		<span><?= pluralize($season->leafCount, lang('episode')) ?></span>

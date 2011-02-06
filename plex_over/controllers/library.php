@@ -34,7 +34,8 @@ class Library extends PE_Controller {
 		$this->load->helper('sections');
 		
 		$data = $this->_prepare_links();
-		
+		$data['active_sb']	= $this->uri->segment(3);
+
 		// Get section's content
 		if (count($this->segments == 5))
 		{
@@ -42,6 +43,7 @@ class Library extends PE_Controller {
 			$filters					= $this->section->find(reset($segments));
 			$data['items']		= $this->section->find_by($segments);
 			$data['filters']	= $this->_top_nav($filters, $section_type);
+			$data['active_sb'] .= '_'.$this->uri->segment(4);
 		}
 		// try to get correct back links for medias if secondary viewGroup is found
 		// (actors don't even have a viewGroup property)
@@ -49,8 +51,8 @@ class Library extends PE_Controller {
 		{
 			$data['links']->item = $this->uri->uri_string();
 		}
-		$data['active_sb']	= $this->uri->segment(3);
 		$data['title']			= $data['items']->title1;
+		$this->breadcrumb[]	= $data['title'];
 		// here we come...
 		$this->render('section/index', $data);
 	}

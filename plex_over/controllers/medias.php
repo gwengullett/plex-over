@@ -7,6 +7,7 @@
  */
 class Medias extends PE_Controller {
 	
+	private $section_key = null;
 	/**
 	 * __construct function.
 	 * 
@@ -39,7 +40,7 @@ class Medias extends PE_Controller {
 		$data['show_link']			= '/show/'.(string)$item->key;
 		$data['item']						= $item;
 	  $data['views']->top_nav	= $this->topnav_view();
-	  $data['active_sb']			= 'show';
+	  $data['active_sb']			= 'show_'.$this->section_key;
 	  $this->render('media/'.__FUNCTION__, $data);
 	}
 	
@@ -54,18 +55,16 @@ class Medias extends PE_Controller {
 	 */
 	public function episode($item)
 	{
-		//print_r($item);
-		// get the serie key
-		if (in_array('show', $this->segments))
+		if (in_array('show', $this->segments)) // get the serie key
 		{
 			$temp_segs = $this->segments[array_search('show', $this->segments)+1];
 			$data['show_link'] = '/show/'.$temp_segs;
-			$this->breadcrumb['medias/show/'. $temp_segs] = $item->grandparentTitle;
+			$this->breadcrumb['medias/show/'. $temp_segs.'/section/'.$this->section_key] = $item->grandparentTitle;
 		}
 	  
 	  $data['item']		= $item;
 		$data['link']	= link_episode($this->segments, $item->viewGroup);
-		$data['active_sb']	= 'show';
+		$data['active_sb']	= 'show_'.$this->section_key;
 		
 		// Get episode
 	  if (in_array($item->viewGroup, $this->segments))
@@ -73,18 +72,14 @@ class Medias extends PE_Controller {
 	  	$key		 = array_search($item->viewGroup, $this->segments)+1;
 	  	$segment = $this->segments[$key];
 	  	
-	  	if (is_numeric($segment))
-	  	{
-				$data['episode'] = $this->add_subtitles($this->media->find_details($segment));
+			$data['episode'] = $this->add_subtitles($this->media->find_details($segment));
+	  	unset($this->segments[$key], $this->segments[$key-1]);
+	  	$this->breadcrumb[implode('/', $this->segments)] = $item->title2;				
+			$this->breadcrumb[''] = $data['episode']->title;
 
-	  		unset($this->segments[$key], $this->segments[$key-1]);
-	  		$this->breadcrumb[implode('/', $this->segments)] = $item->title2;				
-				$this->breadcrumb[''] = $data['episode']->title;
-
-				$data['views']->top_nav	= $this->topnav_view();
-	  		$this->render('media/episode_watch', $data);
-	  		return;
-	  	}
+			$data['views']->top_nav	= $this->topnav_view();
+	  	$this->render('media/episode_watch', $data);
+	  	return;
 	  }
 	  else if ($item->viewGroup == 'unknown')
 	  {
@@ -112,10 +107,11 @@ class Medias extends PE_Controller {
 	 */
 	public function album($item)
 	{
-	  $data['item']					= $item;
-	  $data['artist_link']	= '/artist/'.$item->key;
+	  $data['item']						= $item;
+	  $data['artist_link']		= '/artist/'.$item->key;
+	  $this->breadcrumb[] = @$item->title2;
 	  $data['views']->top_nav	= $this->topnav_view();
-	  $data['active_sb']		= 'artist';
+	  $data['active_sb']			= 'artist_'.$this->section_key;
 	  $this->render('media/'.__FUNCTION__, $data);
 	}
 	
@@ -130,19 +126,19 @@ class Medias extends PE_Controller {
 	{
 		if (in_array('artist', $this->segments))
 		{
-			$artist = $this->media->find_children(end($this->segments));
+			$artist = $this->media->find_children($this->uri->segment(5));
 			$link		= $this->controller.'/artist/'.(string)$artist->key;
-			$this->breadcrumb[$link] = $artist->title2;
+			$this->breadcrumb[$link.'/section/'.$this->section_key] = $artist->title2;
 			$this->breadcrumb[''] = $item->title2;
 		}
-		if (! in_array('artist', $this->segments)) {
+		else
+		{
 			$this->segments[] = 'artist';
-			$this->_section_breadcrumb();
 			$this->breadcrumb[] = $item->grandparentTitle.' - '.$item->parentTitle;
 		}
 	  $data['item'] = $item;
 	  $data['views']->top_nav	= $this->topnav_view();
-	  $data['active_sb']	= 'artist';
+	  $data['active_sb']	= 'artist_'.$this->section_key;
 	  $this->render('media/'.__FUNCTION__, $data);
 	}
 	
@@ -159,7 +155,7 @@ class Medias extends PE_Controller {
 		$data['convert']			= $this->config->item('video_conv');
 	  $data['item']					= $this->media->find_details($item->key);
 		$data['views']->top_nav	= $this->topnav_view();
-		$data['active_sb']	= 'movie';
+		$data['active_sb']	= 'movie_'.$this->section_key;
 		
 		// check subtitles and copy them under apache access
 		$data['item'] = $this->add_subtitles($data['item']);
@@ -224,18 +220,23 @@ class Medias extends PE_Controller {
 	 */
 	private function _section_breadcrumb()
 	{
-		//print_r($item);
-		// spécifique pour les séries
 		$segs = $this->segments;
+		$section_id = end($segs);
+
 		if (in_array('season', $this->segments))
 		{
 			$segs[] = 'show';
 		}
+		else if (in_array('album', $this->segments))
+		{
+			$segs[] = 'artist';
+		}
 		foreach ($this->sidebar_library->content as $section)
 		{
-			if (in_array($section->type, $segs))
+			if (in_array($section->type, $segs) AND $section->key == $section_id)
 			{
-				$link = $this->section_url.(string)$section->type.'/'.(string)$section->key.'/all';
+				$this->section_key = (string)$section->key;
+				$link = $this->section_url.(string)$section->type.'/'.$this->section_key.'/all';
 				$this->breadcrumb[$link] = $section->title;
 			}
 		}

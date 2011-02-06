@@ -32,5 +32,10 @@ function childs_count($count = 0)
 // order to get other episodes for our playlist
 function link_episode($base, $segment)
 {
-	return implode('/', array_splice($base, 0, 3)).'/'.$segment.'/';
+	return implode('/', array_splice($base, 0, 3)).'/'.$segment;
+}
+
+function link_media($base, $item, $section_id)
+{
+	return site_url($base.'/'.$item.'/section/'.$section_id);
 }

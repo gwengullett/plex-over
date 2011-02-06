@@ -51,7 +51,7 @@
 	<div id="episodes">
 		<?php foreach ($item->content as $friend): ?>
 			<div class="jacket left">
-				<a href="<?= site_url($link.$friend->ratingKey.$show_link) ?>"
+				<a href="<?= link_media($link, $friend->ratingKey.$show_link, $this->uri->segment(9)) ?>"
 					title="<h3><?= $friend->title ?></h3> <?= $friend->summary ?>" 
 					class="tip" >
 					<div class="img <?= active_item((string)$episode->index, (string)$friend->index, 'current') ?>">

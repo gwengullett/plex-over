@@ -28,9 +28,10 @@
 				<div class="show-list bb">
 						<?= $this->transcode->img($episode, array('width' => 130, 'height' => 72, 'align' => 'left', 'type' => 'src'))?>
 					<div class="show-list-txt">
-						<h3><?=anchor(
-							$link.$episode->ratingKey.$show_link,
-							$episode->type." ".$episode->index.": ".$episode->title)?>
+						<h3>
+							<a href="<?= link_media($link, $episode->ratingKey.$show_link, $this->uri->segment(7)) ?>">
+								<?= $episode->type." ".$episode->index.": ".$episode->title ?>
+							</a>
 						</h3>
 						<span><?=$episode->summary?></span>
 					</div>

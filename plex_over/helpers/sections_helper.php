@@ -13,7 +13,7 @@ function link_section($base, $item)
  * link_item function.
  * Link for section content items
  */
-function link_item($base, $item)
+function link_item($base, $item, $section_id = '')
 {
 	if (isset($item->type))
 	{
@@ -23,10 +23,10 @@ function link_item($base, $item)
 	{
 		$link = $base.'/'.$item->key;
 	}
+	$tail = ($section_id) ? '/section/'.$section_id : '';
 	
-	return site_url($link);
+	return site_url($link.$tail);
 }
-
 
 /**
  * base_topnav function.
