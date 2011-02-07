@@ -212,11 +212,17 @@ class Plex extends CI_Model {
 		//curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 		$xml		= curl_exec($this->ch);
 		$infos	= curl_getinfo($this->ch);
+		$code = '';
 		//print_r($infos);
 		if ($infos['http_code'] != 200)
 		{
+			if ($infos['http_code'] === 0)
+			{
+				$code = "Nothing... PMS seem's to be offline!";
+				$infos['http_code'] = 404;
+			}
 			exit(show_error(
-				'Plex Media Server said: '.str_replace('h1', 'strong',($xml) ? $xml : $infos['http_code']).'<p><em>'.$url.'</em></p>',
+				'Plex Media Server said: '.str_replace('h1', 'strong', ($xml) ? $xml : $code).'<p><em>'.$url.'</em></p>',
 				$infos['http_code']
 			));
 		}

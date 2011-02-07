@@ -6,7 +6,13 @@ class Thumb {
 	{
 		$this->ci =& get_instance();
 		
-		$this->cache_folder = FCPATH.$this->ci->config->item('cache_folder');
+		$this->cache_folder = FCPATH.$this->ci->config->item('thumbs_folder');
+		$main_cache =  dirname($this->cache_folder);
+		
+		if (! file_exists($main_cache) OR ! is_dir($main_cache))
+		{
+			mkdir($main_cache, DIR_WRITE_MODE);
+		}
 		
 		if (! file_exists($this->cache_folder) OR ! is_dir($this->cache_folder))
 		{

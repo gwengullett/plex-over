@@ -72,8 +72,10 @@ class Medias extends PE_Controller {
 	  	$key		 = array_search($item->viewGroup, $this->segments)+1;
 	  	$segment = $this->segments[$key];
 	  	
-			$data['episode'] = $this->add_subtitles($this->media->find_details($segment));
+	  	$this->load->library('subtitles');
+			$data['episode'] = $this->subtitles->get($this->media->find_details($segment));
 	  	unset($this->segments[$key], $this->segments[$key-1]);
+	  	
 	  	$this->breadcrumb[implode('/', $this->segments)] = $item->title2;				
 			$this->breadcrumb[''] = $data['episode']->title;
 
@@ -86,8 +88,11 @@ class Medias extends PE_Controller {
 	  	$this->segments[] = 'season';
 			$this->_section_breadcrumb();
 	  	$this->breadcrumb[''] = $item->grandparentTitle.' '.$item->title2;
-	  	$data['episode'] = $this->add_subtitles($this->media->find_details($this->uri->segment(3)));
+	  	$this->load->library('subtitles');
+	  	
+	  	$data['episode'] = $this->subtitles->get($this->media->find_details($this->uri->segment(3)));
 			$data['views']->top_nav	= $this->topnav_view();
+	  	
 	  	$this->render('media/episode_watch', $data);
 			return;
 	  }
@@ -151,14 +156,15 @@ class Medias extends PE_Controller {
 	 */
 	public function movie($item)
 	{
+		$this->load->library('subtitles');
+		
 		$this->breadcrumb[''] = $item->title2;
+		
 		$data['convert']			= $this->config->item('video_conv');
 	  $data['item']					= $this->media->find_details($item->key);
 		$data['views']->top_nav	= $this->topnav_view();
-		$data['active_sb']	= 'movie_'.$this->section_key;
-		
-		// check subtitles and copy them under apache access
-		$data['item'] = $this->add_subtitles($data['item']);
+		$data['active_sb']		= 'movie_'.$this->section_key;
+		$data['item']					= $this->subtitles->get($data['item']);
 		
 		$this->render('media/'.__FUNCTION__, $data);
 	}

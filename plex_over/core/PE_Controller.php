@@ -129,12 +129,16 @@ class PE_Controller extends CI_Controller {
 	{
 		foreach ($items->media->part as $part)
 		{
-			$subtitle = subtitle($part->file); 
+			$subtitle = subtitle($part->file);
 			
 			if (file_exists($subtitle) AND is_file($subtitle))
 			{
 				$subtitle_path = $this->config->item('subtitles_folder').basename($subtitle);
-				@copy($subtitle, FCPATH.$subtitle_path);
+				
+				if (! file_exists(FCPATH.$subtitle_path))
+				{
+					$this->encode_subtitles($subtitle, FCPATH.$subtitle_path);
+				}
 				$part->subtitles = site_url($subtitle_path);
 			}
 			else
@@ -144,6 +148,24 @@ class PE_Controller extends CI_Controller {
 		}
 		
 		return $items;
+	}
+	
+	/**
+	 * encode_subtitles function.
+	 * properly convert to UT8 for videojs
+	 * 
+	 * @access protected
+	 * @param mixed $orig_path
+	 * @param mixed $path
+	 * @return void
+	 */
+	protected function encode_subtitles($orig_path, $path)
+	{
+		//$handler = fopen($path, 'r+');
+		$file = @file_get_contents($orig_path);
+		if ($file) $file = file_put_contents($path, utf8_encode($file));
+		
+		return $file;
 	}
 
 	

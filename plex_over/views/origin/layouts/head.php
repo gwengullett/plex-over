@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="<?=site_url('js/application.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/tiptip.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/colorbox.js')?>"></script>
-		<script type="text/javascript" src="<?=site_url('js/video.js')?>"></script>
+		<script type="text/javascript" src="<?=site_url('js/video.js')?>" charset="utf-8"></script>
 		<script type="text/javascript" src="<?=site_url('js/thumbs.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/flowplayer/flowplayer-3.2.4.min.js')?>"></script>
 		<script type="text/javascript" charset="utf-8">

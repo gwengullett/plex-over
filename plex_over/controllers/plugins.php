@@ -65,11 +65,18 @@ class Plugins extends PE_Controller {
 		}
 	}
 	
+	/**
+	 * plugin_hook function.
+	 * 
+	 * @access private
+	 * @param mixed $directory
+	 * @return void
+	 */
 	private function plugin_hook($directory)
 	{
 		$plugin_name = $this->uri->segment(2);
 		$path = '/third/'.strtolower($plugin_name);
-		if (file_exists(__DIR__.$path.EXT))
+		if (file_exists(dirname(__FILE__).$path.EXT))
 		{
 			redirect($path);
 		}
