@@ -110,7 +110,7 @@ class PE_Controller extends CI_Controller {
 		{
 			foreach ($items->content as $key => $attr)
 			{
-				if (! in_array($attr->key, $filters)) unset($items->content[$key]);
+				if (! in_array(strtolower($attr->key), $filters)) unset($items->content[$key]);
 			}
 		}
 		return $items;

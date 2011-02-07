@@ -67,10 +67,8 @@ $config['meta_url']			= 'library/metadata/';
 */
 
 // Music
-$config['artist_filters']	= array('Albums', 'Genre', 'All', 'recentlyAdded');
-// Itunes
-$config['itunes_filters']	= array_push($config['artist_filters'], 'Artists','Podcasts', 'Ratings', 'Playlists');
+$config['artist_filters']	= array('albums', 'genre', 'all', 'recentlyadded', 'artists','podcasts', 'ratings', 'playlists');
 // Movies
-$config['movie_filters']	= array('all', 'genre', 'recentlyAdded', 'recentlyViewed', 'actor', 'director');
+$config['movie_filters']	= array('all', 'genre', 'recentlyadded', 'recentlyviewed', 'actor', 'director');
 // TV Shows
 $config['show_filters']		= $config['movie_filters'];
