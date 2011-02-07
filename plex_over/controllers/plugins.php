@@ -37,11 +37,11 @@ class Plugins extends PE_Controller {
 	 * @param mixed $arg
 	 * @return void
 	 */
-	public function _remap($arg)
+	public function _remap($directory)
 	{
-		$this->directory = $this->plugin->directory('/'.$arg);
+		$this->directory = $this->plugin->directory('/'.$directory);
 		
-		if ($arg)
+		if ($directory AND ! $this->plugin_hook($directory))
 		{
 			$this->breadcrumb[$this->controller] = lang($this->uri->segment(1));
 			$data	= $this->_prepare_links();
@@ -51,17 +51,31 @@ class Plugins extends PE_Controller {
 			
 			if ($this->uri->segment(3) == 'function')
 			{
-				$this->plugin_function($arg);
+				$this->plugin_function($directory);
 				return;
 			}
 			if ($this->uri->segment(2))
 			{
-				$this->plugin_directory($arg);
+				$this->plugin_directory($directory);
 			}
 			else
 			{
 				$this->index();
 			}
+		}
+	}
+	
+	private function plugin_hook($directory)
+	{
+		$plugin_name = $this->uri->segment(2);
+		$path = '/third/'.strtolower($plugin_name);
+		if (file_exists(__DIR__.$path.EXT))
+		{
+			redirect($path);
+		}
+		else
+		{
+			return false;
 		}
 	}
 	

@@ -18,18 +18,6 @@ function title($item)
 }
 
 /**
- * itunes_url function.
- * 
- * @access public
- * @param mixed $url
- * @return void
- */
-function itunes_url($url)
-{
-	return '/'.str_replace('itunes', 'iTunes', $url);	
-}
-
-/**
  * link_itunes function.
  * 
  * @access public

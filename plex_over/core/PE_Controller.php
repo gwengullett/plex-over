@@ -69,8 +69,10 @@ class PE_Controller extends CI_Controller {
 	 */
 	protected function render($view, $data = array())
 	{
-		$data['sections'] = $this->sidebar_library;
-		$data['third_party'] = $this->sidebar_third;
+		$data['sections']			= $this->sidebar_library;
+		$data['third_party'] 	= $this->sidebar_third;
+		$data['title']			 	= implode(' - ', $this->breadcrumb);
+
 		$this->load->vars($data);
 		$this->load->view($this->template.'/layouts/head');
 		$this->load->view($this->template.'/layouts/sidebar');

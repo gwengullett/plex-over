@@ -199,7 +199,6 @@ class Medias extends PE_Controller {
 	  if ($item = $this->media->find_children($this->media_id))
 	  {
 	  	$data	= $this->_prepare_links($item);
-	  	$data['title'] = @$item->title1.' - '.@$item->title2;
 			$this->load->vars($data);
 			$this->_section_breadcrumb();
 	  	// run the apppropriate function

@@ -19,12 +19,14 @@ $lang['photos']				= "photos";
 $lang['video']				= "video";
 
 //movies
-$lang['director'] = "Realisateur";
+$lang['director'] = "Réalisateur";
 $lang['duration'] = "Durée";
 $lang['rating'] 	= "Rating";
 $lang['genre']		= "Genre";
 $lang['writer']		= "Scenariste";
 $lang['role']			= "Distribution";
+$lang['actor']		= "Acteur";
+$lang['movie']		= "Film";
 
 // search input
 $lang['search']		= 'rechercher';
@@ -39,6 +41,7 @@ $lang['all shows']								= 'Toutes les séries';
 $lang['recently added']						= 'Ajoutés récement';
 $lang['recently viewed']					= 'Vus récement';
 $lang['recently viewed episodes']	= 'Episodes vus récement';
+$lang['recently viewed movies']		= 'Films vus récement';
 $lang['by genre']									= 'Par genres';
 $lang['by director']							= 'Par réalisateurs';
 $lang['by starring actor']				= 'Par acteurs';

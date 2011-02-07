@@ -28,7 +28,7 @@ $(function(){
 
 			// add clas 'play' then play the song
 			parentTr.addClass('play').removeClass('pause');
-			player[0].play();			
+			player[0].play();
 		}
 		// song is paused, we play it again
 		else {

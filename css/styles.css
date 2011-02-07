@@ -294,6 +294,10 @@ strong {
 	border: none;
 }
 
+.item .img, .h3 span {
+	color: silver;
+}
+
 .item:hover img {
 	/* not functional with webkit
 background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(124,72,32)),color-stop(0.6, rgb(226,169,84)));
