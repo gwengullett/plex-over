@@ -1,4 +1,4 @@
-<script charset="utf-8" >
+<script>
  $(function(){
 		$('.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
 		var myPlayer = VideoJS.setup("show-player");

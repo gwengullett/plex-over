@@ -35,7 +35,7 @@ class Itunes extends PE_Controller {
 		}
 		else
 		{
-			$this->breadcrumb[] = 'iTunes';
+			$this->breadcrumb[] = __FUNCTION__;
 			$data['link']			= implode('/', $this->segments);
 			$data['items']		= $this->audio->find_by($this->segments);
 			$data['filters']	= $this->_top_nav($this->directory, 'artist');
