@@ -15,7 +15,6 @@ function movie_details($details = array())
 	return false;
 }
 
-//
 function anchor_download($url, $size)
 {
 	$download_link = anchor('download'.$url, ' &#11015; '.byte_format($size), 'class="dl button dark-gradient rounded-st"');

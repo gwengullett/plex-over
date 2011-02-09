@@ -6,14 +6,14 @@ class Plugin extends Plex {
 	{
 		parent::__construct('plugins');
 		$this->curl_options = array(
-				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_RETURNTRANSFER 	=> true,
 				CURLOPT_NOBODY					=> true,
-			 	CURLOPT_URL						 => '',
-        CURLOPT_HEADER         => true,    // don't return headers 
-        CURLOPT_AUTOREFERER => true,     // follow redirects 
-        CURLINFO_HEADER_OUT	=> true,       // handle all encodings 
-        CURLOPT_MAXREDIRS      => 1       // stop after 10 redirects 
+        CURLOPT_HEADER         	=> true,
+        CURLOPT_AUTOREFERER 		=> true,
+        CURLINFO_HEADER_OUT			=> true,
+        CURLOPT_MAXREDIRS				=> 2
     );
+		$this->chi = curl_init();
 	}
 	
 	/**
@@ -63,11 +63,11 @@ class Plugin extends Plex {
 	public function scan_function()
 	{
 		$segments = $this->segments;
-		$base		= array_slice($segments, 0, 2);
-		$base[] = ':/function';
+		$base			= array_slice($segments, 0, 2);
+		$base[] 	= ':/function';
 		$function = array_slice($segments, 3);
-		$end		= array(implode('?',  array_slice($segments, 3)));
-		$final	= implode('/', array_merge($base, $end));
+		$end			= array(implode('?',  array_slice($segments, 3)));
+		$final		= implode('/', array_merge($base, $end));
 		
 		return $this->scan($final);
 	}
@@ -81,7 +81,6 @@ class Plugin extends Plex {
 	 */
 	public function test_redirection($url)
 	{
-		$this->chi = curl_init();
 		$this->curl_options[CURLOPT_URL] = $url;
     curl_setopt_array( $this->chi, $this->curl_options );
     $return = curl_exec($this->chi);
@@ -94,23 +93,23 @@ class Plugin extends Plex {
 	}
 	
 	/**
-	 * get_view function.
-	 * Try to find the veiwGroup or Name of view
-	 * 
-	 * @access public
-	 * @param mixed $item
-	 * @return void
-	 */
+     * get_view function.
+     * Try to find the veiwGroup or Name of view
+     * 
+     * @access public
+     * @param mixed $item
+     * @return void
+     */
 	public function get_view($item)
 	{
 		if (isset($item->attributes()->viewGroup))
 		{
-			return $item->attributes()->viewGroup;
+		    return $item->attributes()->viewGroup;
 		}
 		else // get the Name of childs
 		{
-			return $item->children()->getName();
+		    return $item->children()->getName();
 		}
 	}
-
+	
 }

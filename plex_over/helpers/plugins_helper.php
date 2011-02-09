@@ -41,24 +41,10 @@ function dispatch_views($item, $view_groups)
 	}
 	if (! $item->view AND ! $item->keyname )
 	{
-		$item->view = plugin_error($item);
+		$item->view = 'error';
 	}
 	
 	return strtolower($item->view);
-}
-
-/**
- * plugin_error function.
- * We can't serve the current page
- * TODO: send a modal view here
- * 
- * @access public
- * @param mixed $item
- * @return void
- */
-function plugin_error($item)
-{
-	return 'error';
 }
 
 /**
@@ -161,9 +147,10 @@ function is_online_request($url)
  */
 function is_plex_player($url)
 {
-	if (strpos(urldecode($url), 'www.plexapp.com/player/player.php'))
+	if (strpos(urldecode($url), 'www.plexapp.com/player/'))
 	{
 		$temp_url = explode('url=', urldecode($url));
+		
 		return urldecode(end($temp_url));
 	}
 	return false;
@@ -191,46 +178,3 @@ function parse_online_request($url)
 	}
 	return $output;
 }
-
-/**
- * parse_rtmp function.
- * parse rtmp for flowplayer
- *
- * @access public
- * @param mixed $url
- * @return void
- */
-function parse_stream($url)
-{
-	if (is_internal_link(trim($url)))
-	{
-		$url = is_plex_player($url);
-	}
-	$exploded = explode('clip=', $url);
-	
-	if (isset($exploded[1]))
-	{
-		$params = explode('&', $exploded[1]);
-		$base = preg_split('/[&|?]/', $exploded[0], null);
-		
-		$out['connexion_url'] = $base[0];
-		$out['url']	= array_shift($params);
-		
-		// url to pass
-		if (count($params > 0))
-		{
-			foreach ($params as $param)
-			{
-				$array = explode('=', $param);
-				$out[$array[0]] = (isset($array[1])) ? $array[1] : '';
-			}
-		}
-		return $out;
-	}
-	
-	else
-	{
-		return $url;
-	}
-}
-

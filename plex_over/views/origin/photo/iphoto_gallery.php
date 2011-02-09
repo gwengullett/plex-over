@@ -43,7 +43,7 @@ $(function(){
 							rel="<?= $item->key.$key ?>" 
 							type="<?= $content->attributes()->mediaType ?>" 
 							class="img" 
-							href="<?= iphoto_imglink($link, $content->attributes()->key) ?>"
+							href="<?= $link.'/'.$content->attributes()->key ?>"
 						>
 						<div class="item <?= css_alt($key) ?>">
 							<?= $this->transcode->img(

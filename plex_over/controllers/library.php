@@ -11,10 +11,14 @@ class Library extends PE_Controller {
 	public function __construct()
 	{
 		parent::__construct(__CLASS__);
-		
-		//$this->output->enable_profiler(true);
 	}
 	
+	/**
+	 * index function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function index()
 	{
 		redirect($this->controller.'sections');

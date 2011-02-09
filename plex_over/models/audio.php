@@ -62,24 +62,4 @@ class Audio extends Plex {
 		return $music;
 	}
 	
-	/**
-	 * load function.
-	 * Cause url are case sensitive...
-	 * 
-	 * @access public
-	 * @param mixed $args
-	 * @return void
-	 */
-	public function load($args)
-	{
-		if (strpos($args, 'itunes'))
-		{
-			$args = str_replace('itunes', 'iTunes', $args);
-		}
-		
-		return parent::load($args);
-	}
-
-
-	
 }

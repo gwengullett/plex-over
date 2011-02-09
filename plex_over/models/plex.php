@@ -71,8 +71,8 @@ class Plex extends CI_Model {
 		// first, get root server, then loop throught
 		// directory to find and get enabled sharing
 		$folder = array();
+		$root		= $this->get_childrens($this->load());
 		
-		$root = $this->get_childrens($this->load());
 		foreach ($root as $key => $directory)
 		{
 			if (in_array($directory->key, $this->third_party))
@@ -126,7 +126,7 @@ class Plex extends CI_Model {
 	{
 		$return = array(); $i = 0;
 		
-		foreach ($element->children() as $key => $child)
+		foreach ($element->children() as $child)
 		{
 			if (isset($child->Media))
 			{
@@ -209,11 +209,9 @@ class Plex extends CI_Model {
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->ch, CURLOPT_URL, $url);
 		curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->authentication_headers());
-		//curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 		$xml		= curl_exec($this->ch);
 		$infos	= curl_getinfo($this->ch);
-		$code = '';
-		//print_r($infos);
+		$code		= '';
 		if ($infos['http_code'] != 200)
 		{
 			if ($infos['http_code'] === 0)
@@ -243,23 +241,14 @@ class Plex extends CI_Model {
 		// build uri request
 		$request = $this->plex_local.str_ireplace('//', '/', '/'.$url);
 		
-		$xml = $this->load_xml($request);
-				
+		$xml		= $this->load_xml($request);
 		$object = @simplexml_load_string($xml);
 		// enble uri debugging
 		if ($this->debug === true) 
 		{
 			echo '<pre>'.$request.'</pre>';
 		}
-		// stop the application if file is missing
-		if (! $object)
-		{
-			$trace		= __CLASS__."::".__FUNCTION__."<br />".__FILE__;
-			$suggest	= "The Plex server may be unavailable <br />";
-			$suggest	.= "Check it's address in ".APPPATH."config/plex_explorer.php";
-			
-			exit(show_error("Could not find <strong>".$request."</strong><hr />".$trace."<hr />".$suggest));
-		}
+		
 		return $object;
 	}
 	

@@ -78,7 +78,7 @@ class Convert extends PE_Controller {
 	 */
 	public function build_stream_object($url)
 	{
-		list($base, $query) = explode('www.plexapp.com/player', urldecode($url));
+		list($base, $query) = explode('www.plexapp.com/player/', urldecode($url));
 		// request is the full path, player is player.php or silvernight...
 		$request = preg_split('/([\?|\&]stream=|[\?|\&]clip=)/', urldecode($query), null);
 		

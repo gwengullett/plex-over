@@ -28,30 +28,12 @@ function duration($seconds, $type = 'music')
  * @param mixed $key
  * @return String
  */
-function css_alt($key, $class = ' alt ', $echo = true)
+function css_alt($key, $class = ' alt ')
 {
-	// production
-	if ($key % 2) {
-		$alt = $class; 
-	}
-	else {
-		$alt = '';
-	}
-	if (! $echo) return trim($alt);
+	$alt = ($key % 2) ? $class : '';
 	
-	echo trim($alt); 
+	return trim($alt); 
 }
-
-/**
- * anchor_topnav function.
- * Top nav libks : we just remove the last portion of our url
- * and replcae it with the desired view
- */
-function anchor_topnav($base, $item)
-{
-	return anchor($base.'/'.$item->key, $item->title);
-}
-
 
 // generate a dropdown menu for navigation
 function topnav_select($link, $filters, $segments)
@@ -62,27 +44,13 @@ function topnav_select($link, $filters, $segments)
 	{
 	  $value = $link.'/'.$item->key;
 	  $menu[$value] = lang(strtolower(strval($item->title)));
+	  
 	  if (in_array($item->key, $segments)) $active = $value;
 	}
+	
 	return form_dropdown('top_nav', $menu, $active, 'id="top_nav"');
 }
 
-
-// <img> configuration for the media main cover
-function cover($image, $size = 150, $class = 'rounded shadow')
-{
-	if (is_array($image))
-	{
-		$size		= $image['size'];
-		$image	=	(! $image['src']) ? $image['fallback'] : $image['src'];
-	}
-	return img(array(
-		'src'		=> $image, 
-		'width'	=> $size, 
-		'class'	=> 'rounded shadow',
-		'alt'		=> 'cover'
-	));
-}
 
 // lookink for thumb or alternalivelly for art
 // $force = skip testing and go on
@@ -100,28 +68,10 @@ function thumb($item, $force = null)
 	}
 	else if (isset($item->key) AND @getimagesize($item->key))
 	{
-		print_r(@getimagesize($item->key));
 		return $item->key;
 	}
 	else
 	{
 		return '/:/resources/DefaultAlbumCover.png';
 	}
-}
-
-/**
- * img_resize function.
- * 
- * @access public
- * @param mixed $server
- * @param mixed $rel_path
- * @param int $width. (default: 200)
- * @return void
- */
-function img_resize($server, $rel_path, $width = 200)
-{
-	$transcode = '/photo/:/transcode?height='.$width.'&width='.$width.'&url=';
-	$fullpath = $server.$transcode.urlencode($server.$rel_path);
-	
-	return $fullpath;
 }
