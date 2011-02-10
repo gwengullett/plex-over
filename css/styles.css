@@ -362,7 +362,7 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 #details-text {
 	width: 70%;
 }
-#details-text small {
+h1 small {
 	font-weight: normal;
 }
 
@@ -704,6 +704,43 @@ img.header {
 	width: 70%;
 	padding-bottom: 10px;
 	margin: auto;
+}
+
+/* view LIST */
+#plugin-directory > .details {
+	height: 55px;
+}
+.dir .list, .dir .list h4 {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-transition: all 0.2s ease-in-out;
+}
+.dir .list {
+	width: 140px;
+	height: 160px;
+	float: left;
+	text-align: center;
+	margin: 7px;
+	padding: 5px;
+	background-color: #333;
+}
+
+.dir .list:hover {
+	background-color: #334563;
+}
+
+.dir .list:hover h4 {
+	color: #f9e8d9;
+}
+
+.dir .list img {
+	border: 1px solid #444;
+}
+.dir .list h4 {
+	font-weight: 100;
+	margin: 0.5em 0;
+	font-size: 0.9em;
 }
 
 

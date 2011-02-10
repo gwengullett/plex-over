@@ -12,7 +12,7 @@
 		<div class="container">
 			<?php foreach ($items->content as $item): if (isset($item->key)): ?>
     	<div class="content">
-        	<div>
+        	<div class="item">
         		<a class="tip" rel="<?= $item->key ?>" href="<?= link_server($item->key, $this->plex_url) ?>" title="<?= $item->title ?>">
         			<?= img(array('src' => link_server($item->thumb, $this->plex_url), 'height' => 70, 'class' => 'rounded')) ?>
         		</a>

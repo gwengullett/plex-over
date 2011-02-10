@@ -6,7 +6,9 @@ class Thumb {
 	{
 		$this->ci =& get_instance();
 		
-		$this->cache_folder = FCPATH.$this->ci->config->item('thumbs_folder');
+		$this->cache_path		= $this->ci->config->item('thumbs_folder');
+		$this->cache_folder = FCPATH.$this->cache_path;
+		
 		$main_cache =  dirname($this->cache_folder);
 		
 		if (! file_exists($main_cache) OR ! is_dir($main_cache))
@@ -43,7 +45,7 @@ class Thumb {
 		}
 		else
 		{
-			$thumb = $this->ci->config->item('cache_folder').$cached_filename;
+			$thumb = $this->cache_path.$cached_filename;
 		}
 		
 		return ($thumb) ? site_url($thumb) : $thumb;
@@ -91,10 +93,10 @@ class Thumb {
 			if (isset($image) AND $image)
 			{
 				imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-				imagejpeg($image_p, $this->cache_folder.'/'.$cached_url, 70);
+				imagejpeg($image_p, $this->cache_path.'/'.$cached_url, 70);
 			}
 			
-			return $this->ci->config->item('cache_folder').$cached_url;
+			return $this->cache_path.$cached_url;
 		}
 		return false;
 	}
