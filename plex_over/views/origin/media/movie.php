@@ -7,8 +7,6 @@ var convertVideo = '<?= $convert ?>';
 var player = null;
 
 $(function(){
-	
-
 	$('#watch-btn').toggle(function(){
 		$(toMove).hide(uiEffect, { direction: dirMove }, uiSpeed, function(){
 			$('#player').fadeTo(200, 1);
@@ -93,7 +91,7 @@ $('.playlist-section a').click(function(){
 		<div id="details-main">
 			
 			<div id="details-cover" class="left">
-				<?= $this->transcode->img($item, array('height' => 220, 'width' => 150, 'class' => 'rounded shadow'))?>
+				<?= transcode_img($item, array('height' => 220, 'width' => 150, 'scale' => 'both', 'class' => 'rounded shadow'))?>
 			</div>
 			
 			<div id="details-text" class="left">

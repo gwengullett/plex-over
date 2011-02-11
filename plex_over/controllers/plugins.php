@@ -43,10 +43,10 @@ class Plugins extends PE_Controller {
 		
 		if ($directory AND ! $this->plugin_hook($directory))
 		{
-			$this->breadcrumb[$this->controller] = lang($this->uri->segment(1));
+			$this->breadcrumb[$directory] = lang($this->uri->segment(1));
 			$data	= $this->_prepare_links();
 			$data['title'] = __CLASS__.' | '.implode(' - ', $this->segments);
-			$data['active_sb'] = $this->uri->segment(1);
+			$data['active_sb'] = $directory;
 			$this->load->vars($data);
 			
 			if ($this->uri->segment(3) == 'function')
@@ -98,9 +98,9 @@ class Plugins extends PE_Controller {
 	public function plugin_function($arg)
 	{
 		$data['items'] = $this->plugin->scan_function($this->uri->uri_string());
-		//print_r($data['items']); return;
-		
-		$this->breadcrumb[] = @$data['items']->title1;
+		$bcbase = $arg.'/'.$this->uri->segment(2);
+		$this->breadcrumb[$bcbase] = @$data['items']->title1;
+		$this->breadcrumb[] = @$data['items']->title2;
 		//print_r($data['items']);
 		if (! in_array($data['items']->view, $this->views->cat_lists) AND $data['items']->keyname == 'Directory')
 		{
@@ -119,7 +119,6 @@ class Plugins extends PE_Controller {
 	public function plugin_directory($arg)
 	{
 		$data['items'] = $this->plugin->scan($this->uri->uri_string());
-				//print_r($data['items']);
 
 		$this->breadcrumb[] = $data['items']->title1;
 

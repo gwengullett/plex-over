@@ -11,7 +11,7 @@
 	
 	<div id="details-main" class="details dark-gradient show-list">
 		<div id="details-cover" class="left">
-			<?= $this->transcode->img($episode, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
+			<?= transcode_img($episode, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
 		</div>
 		
 		<div id="details-text" class="left">

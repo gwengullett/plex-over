@@ -1,60 +1,39 @@
-<script type="text/javascript">
-
-$(function(){
-	var movie;
-	var cbpadding = parseInt($('#cboxLoadedContent').css('padding-left'));
-	
-	// hook color to check if the link correspond to a video
-	$(document).bind('cbox_open', function(){
-		var element = $.colorbox.element();
-		if (element.attr('type') == 'Movie') {
-			var video = $('#video_player');
-			movie = '<video controls  id="video_player" src="'+element.attr('href')+'"></video>';
-			//video.attr('src', element.attr('href')),
-			$(movie)[0].addEventListener('canplaythrough', getdim, true);
-		}
-	});
-	// retrieve video dimention and scale our colorbox
-	function getdim(e)
-	{
-		$.colorbox({
-			height: (e.srcElement.videoHeight + 30) + 'px',
-			width: (e.srcElement.videoWidth + 10) + 'px',
-			html: movie
-		});
-	}
-	
-	// standard behavior
-	$('a.img').colorbox({
-		maxHeight: $(window).height()+'px',
-		maxWidth: $(window).width()+'px'
-	});
-	
-});
-</script>
+<?php $this->load->view($this->template.'/layouts/top_nav'); ?>
 
 <div id="content" class="fit">
-	<div id="<?= 'iphoto-gallery' ?>">
-		<?= $views->top_nav ?>
-		<div id="browser" class="grid">
-					<h2><?= $item->attributes()->title1 ?> ( <?= pluralize(count($item->Photo), lang('element')) ?> )</h2>
+	<div id="plugin-directory">
+		<div class="dir">
+			<div id="listinfo-media">
+			<?= img(array('src' => $link.'/'.$item->Photo[0]->attributes()->key, 'class' => 'media shadow'));?>
+			</div>
+			<div id="tshf_container">
+				<div class="prev">Prev</div>
+				<div class="thumbScroller">
+					<div class="container">
 					<?php foreach ($item->Photo as $key => $content): ?>
-						<a title="<?= $content->attributes()->title ?>"
-							rel="<?= $item->key.$key ?>" 
-							type="<?= $content->attributes()->mediaType ?>" 
-							class="img" 
-							href="<?= $link.'/'.$content->attributes()->key ?>"
-						>
-						<div class="item <?= css_alt($key) ?>">
-							<?= $this->transcode->img(
-								$content->attributes(), 
-								array('width' => 150, 'height' => 100, 'scale' => 'height')
-							);?>
-							<h3><?= $content->attributes()->title ?></h3>
+						<div class="content item">
+							<a class="tip" href="<?= $link.'/'.$content->attributes()->key ?>" title="<?= $content->attributes()-> title ?>">
+								<?= transcode_img(
+									$content->attributes(), 
+									array('width' => 80, 'height' => 50,'scale' => 'height', 'class' => '')
+									);?>
+							</a>
 						</div>
-						</a>
 					<?php endforeach ?>
-				<div class="clear"></div>
+					</div>
+				</div>
+				<div class="next">Next</div>
+			</div>
 		</div>
+		<div class="clear"></div>
 	</div>
 </div>
+<script type="text/javascript">
+$(function(){
+	$('.media').gallery();
+});
+
+$(window).load(function(){
+	$('#tshf_container').thumbViewer({margin:0});
+});
+</script>

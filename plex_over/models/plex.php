@@ -185,7 +185,7 @@ class Plex extends CI_Model {
 	 * @access private
 	 * @return void
 	 */
-	public function authentication_headers()
+	public function authentication_headers($as_query = false)
 	{
 		if (!isset($this->user) OR ! isset($this->pass))
 		{
@@ -193,7 +193,15 @@ class Plex extends CI_Model {
 			$this->pass	= $this->config->item('password');
 			$this->pass = sha1(strtolower($this->user).sha1($this->pass));
 		}
-		return array('X-Plex-User: '.$this->user, 'X-Plex-Pass: '.$this->pass);
+		if ($as_query == false)
+		{
+			$return = array('X-Plex-User: '.$this->user, 'X-Plex-Pass: '.$this->pass);
+		}
+		else
+		{
+			$return = (object)array('X-Plex-User' => $this->user, 'X-Plex-Pass' => $this->pass);
+		}
+		return $return;
 	}
 	
 	/**
@@ -205,7 +213,6 @@ class Plex extends CI_Model {
 	private function load_xml($url)
 	{
 		if (! $this->ch) $this->ch = curl_init();
-
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->ch, CURLOPT_URL, $url);
 		curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->authentication_headers());

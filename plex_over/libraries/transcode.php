@@ -42,6 +42,7 @@ class Transcode {
 	  }
 	  $this->ci =& get_instance();
 	  $this->video_transcode = $this->ci->config->item('video_transcode');
+	  $this->video_opts['quality'] = $this->ci->config->item('video_quality');
 	}
 	
 	/**
@@ -69,7 +70,7 @@ class Transcode {
 			$thumb = $this->ci->plex_url.$this->img_transpath.http_build_query($params);
 		}
 	  // define the source attribute
-	  $source = ($opts->type == 'lazy') ? 'original' : 'src';
+	  $source = ($opts->type == 'lazy') ? 'data-src' : 'src';
 	  // create image
 	  $image = array(
 	  	$source				=> $thumb,
@@ -88,7 +89,7 @@ class Transcode {
 			$image[$opts->scale] = $opts->{$opts->scale};
 		}  			
 
-	  return ($as_url === true) ? $url : img($image);
+	  return ($as_url === true) ? $thumb : img($image);
 	}
 	
 	/**

@@ -26,6 +26,7 @@ class PE_Controller extends CI_Controller {
 		$this->meta_url			= $this->config->item('meta_url');
 		$this->home_url			= $this->config->item('home_section');
 		$this->template			= $this->config->item('template');
+		//$this->authentication	= $this->plex->authentication_headers();
 				
 		// create a segment object
 		$this->segments = $this->uri->segment_array();
@@ -114,58 +115,6 @@ class PE_Controller extends CI_Controller {
 			}
 		}
 		return $items;
-	}
-	
-	/**
-	 * add_subtitles function.
-	 * Check if the media have subtitles, then copy it 
-	 * to have an access under apache, and add the ref to items
-	 * 
-	 * @access protected
-	 * @param mixed $items
-	 * @return void
-	 */
-	protected function add_subtitles($items)
-	{
-		foreach ($items->media->part as $part)
-		{
-			$subtitle = subtitle($part->file);
-			
-			if (file_exists($subtitle) AND is_file($subtitle))
-			{
-				$subtitle_path = $this->config->item('subtitles_folder').basename($subtitle);
-				
-				if (! file_exists(FCPATH.$subtitle_path))
-				{
-					$this->encode_subtitles($subtitle, FCPATH.$subtitle_path);
-				}
-				$part->subtitles = site_url($subtitle_path);
-			}
-			else
-			{
-				$part->subtitles = '';
-			}
-		}
-		
-		return $items;
-	}
-	
-	/**
-	 * encode_subtitles function.
-	 * properly convert to UT8 for videojs
-	 * 
-	 * @access protected
-	 * @param mixed $orig_path
-	 * @param mixed $path
-	 * @return void
-	 */
-	protected function encode_subtitles($orig_path, $path)
-	{
-		//$handler = fopen($path, 'r+');
-		$file = @file_get_contents($orig_path);
-		if ($file) $file = file_put_contents($path, utf8_encode($file));
-		
-		return $file;
 	}
 
 	

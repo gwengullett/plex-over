@@ -2,7 +2,7 @@
 
 // some helper functions
 
-function active_item($send, $match, $class= 'selected')
+function active_item($send, $match, $class= 'active')
 {
 	if ($send == $match) return $class;
 }
@@ -74,4 +74,23 @@ function thumb($item, $force = null)
 	{
 		return '/:/resources/DefaultAlbumCover.png';
 	}
+}
+
+function transcode_img($item, $opts = array(), $as_url = false)
+{
+	$ci = get_ci();
+	
+	return $ci->transcode->img($item, $opts, $as_url);
+}
+
+
+
+function get_ci()
+{
+	static $ci = false;
+	
+	if (! $ci) $ci =& get_instance();
+	
+	return $ci;
+	
 }

@@ -19,7 +19,6 @@
 						<td><?= character_limiter($track->track, 70) ?></td>
 						<td><?= character_limiter($track->album, 70) ?></td>
 						<td><?= duration($track->totalTime)." ".lang('minutes.short' ) ?></td>
-						<td><?= $this->transcode->img($track, array('width' => 40)) ?></td>
 					</tr>
 				<?php $i++; endforeach ?>
 				</tbody>

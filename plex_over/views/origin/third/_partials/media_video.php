@@ -1,4 +1,4 @@
-<a id="flash-media" class="media"></a>
+<div id="flash-media" class="media"></div>
 <script type="text/javascript">
 $(function(){
 	$('.tip').click(function(){

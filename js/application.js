@@ -5,6 +5,7 @@ jQuery.expr[':'].contains = function(a, i, m) {
 
 // search plugin
 (function($) {
+
   var Search = function(block) {
     this.callbacks = {};
     block(this);
@@ -22,6 +23,7 @@ jQuery.expr[':'].contains = function(a, i, m) {
       return false;
     }
   }
+  
   $.fn.search = function search(selector, block) {
     var search = new Search(block);
     var callbacks = search.callbacks;
@@ -42,14 +44,17 @@ jQuery.expr[':'].contains = function(a, i, m) {
     $(this).live('keyup', perform);
     $(this).bind('blur', perform);
     $(this).bind('click', perform); // html 5 type="seach" support
-  }
+  }	
+	
+})(jQuery);
 
-	// --------------------------------------------------------------------
-	// Redimentionnement
-	// --------------------------------------------------------------------
-	$.fn.fullBg = function resizeVid(options)
+// --------------------------------------------------------------------
+// Redimentionnement
+// --------------------------------------------------------------------
+(function($) {
+	$.fn.fullBg = function(options)
 	{
-		var vidRatio, opts, container = $(this).eq(0);
+		var vidRatio, opts, container = $(this);
 		
 		if (!options) options = {};
 		
@@ -58,15 +63,14 @@ jQuery.expr[':'].contains = function(a, i, m) {
 				
 		opts = $.extend({}, $.fn.fullBg.defaults, options);
 	    
-	    if (! vidRatio) vidRatio = (opts.width / opts.height).toFixed(2);
+		if (! vidRatio) vidRatio = (opts.width / opts.height).toFixed(2);
 
-		var dims = resize();
+		var dims = resizeBg();
 		
-		$(window).resize(function(){resize()});
+		$(window).resize(function(){resizeBg()});
 		
 		// calcule les dimensions de la vidéo
-		// --------------------------------------------------------------------
-		function resize()
+		function resizeBg()
 		{
 			var wHeight = $(opts.container).height();
 			var wWidth 	= $(opts.container).width();
@@ -78,63 +82,160 @@ jQuery.expr[':'].contains = function(a, i, m) {
 			var output = {};
 			output.width   = Math.round(ratio * opts.width, 2); 
 			output.height  = Math.round(ratio * opts.height, 2);
-			
 			container.attr('width', output.width).attr('height', output.height);
 			
 			return output;
 		}
 	}
-	
 	// Parametres par defaut
-	// --------------------------------------------------------------------
 	$.fn.fullBg.defaults = {
 		width  : 480,
 		height : 270,
 		container: 'document'
 	};
-
-
-	$.fn.serializeObject = function()
-	{
-	    var o = {};
-	    var a = this.serializeArray();
-	    $.each(a, function() {
-	        if (o[this.name]) {
-	            if (!o[this.name].push) {
-	                o[this.name] = [o[this.name]];
-	            }
-	            o[this.name].push(this.value || '');
-	        } else {
-	            o[this.name] = this.value || '';
-	        }
-	    });
-	    return o;
-	};
-	
-	
-	$.fn.audioPlaylist = function(options)
-	{
-		var defOpts = {
-			key		: 'audioPlaylist'
-		}
-		opts = $.extend({}, defOpts, options);
-		
-		$(this).click(function(){
-			
-			var keyt = $.trim($(this).text());
-			
-			var attrs = { 
-				title : keyt,
-				album	: $(this).attr('rel'),
-				url		: $(this).attr('href'),
-				artist: $(this).attr('art')
-			};
-				//var currentStorage = $.parseJSON(sessionStorage.getItem(opts.key));
-				//currentStorage[keyt] = 'test';
-				//var toStore = JSON.stringify(attrs);
-				sessionStorage.setItem(opts.key, $(attrs).serializeArray());
-				//console.log(JSON.parse(sessionStorage.getItem(opts.key)));
-		});
-	}
-
 })(jQuery);
+
+
+// --------------------------------------------------------------------
+// Gallery
+// --------------------------------------------------------------------
+(function($) {
+$.fn.gallery = function (options) {
+	var defaults = {
+			origin			: '.item a',
+			transition	: 'fade',
+			resizeFrom	: '#plugin-directory',
+			storyDiv		: '#listinfo-summary',
+			storyButton	: '.story-button',
+			resizeBottom: 110,
+			fadeSpeed		: 200,
+			activeClass	: 'selected',
+			easingSpeed	: 800
+		};
+	var opts 			= $.extend({}, defaults, options);
+	var container	= $(this);
+	
+	// resize at launch
+	resize_media(opts.resizeFrom, opts.resizeBottom);
+	
+	$(opts.origin).live('click', function(){
+		if (! $(this).hasClass(opts.activeClass))
+		{
+			var story = $(this).next('div').html();
+			$('.'+opts.activeClass).removeClass(opts.activeClass);
+			if (container.attr('id') != 'flash-media')
+			{
+				container.stop().fadeTo(0, 0.5);
+			}
+			container.attr('src', $(this).attr('href'));
+			container.load(function(){
+				$(this).stop().fadeTo(150, 1);
+			});
+			$(this).addClass(opts.activeClass);
+			$(opts.storyDiv).find('div').html(story);
+		}
+		return false;
+	});
+	// resize on window
+	$(window).resize(function(){
+		resize_media(opts.resizeFrom, opts.resizeBottom);
+	});
+	
+	$(opts.storyButton).toggle(function(){
+		$(this).next('div').slideDown();
+	}, function(){
+		$(this).next('div').slideUp();
+	});
+
+}
+})(jQuery);
+
+// --------------------------------------------------------------------
+// Thumbnail viewer
+// --------------------------------------------------------------------
+(function($) {
+	$.fn.thumbViewer = function (options) {
+		var incr = 0, totalWidth = 0;
+		var defaults = {
+			scroller					: '.thumbScroller',
+			scrollerContainer	: '.thumbScroller .container',
+			scrollerContent		: '.thumbScroller .content',
+			prev							: '.prev',
+			next							: '.next',
+			margin						: 5,
+			opacity						: 0.7,
+			fadeSpeed					: 200,
+			easingSpeed				: 800,
+			easing						: 'linear'
+		};
+		var container	= $(this);
+		var opts 			= $.extend({}, defaults, options);
+		// assign margin-left
+		$(opts.scrollerContainer).css("marginLeft", opts.margin+"px");
+		$(opts.scrollerContent).fadeTo(opts.fadeSpeed, opts.opacity);
+		
+		// hide next / prev links
+		$(opts.prev+','+opts.next).fadeTo(opts.fadeSpeed, 0);
+
+		// assign width
+		$(opts.scrollerContent).each(function(i){totalWidth += $(this).outerWidth(true)});
+		$(opts.scrollerContainer).css("width", totalWidth);
+
+		// calculate distance to scroll
+		function scroll_to() {
+			nbToScroll = Math.floor($(container).outerWidth() / $(opts.scrollerContent).outerWidth());
+			toScroll = ($(opts.scrollerContent).outerWidth() * nbToScroll);
+			return toScroll;
+		}
+		
+		// navigation next
+		function nextN(e) {
+			if ((incr + e) <= $(opts.scrollerContainer).outerWidth()) {
+				incr += scroll_to();
+				$(opts.scrollerContainer).stop().animate({left: -incr}, opts.easingSpeed);
+			}
+		}
+		// navigation prev
+		function prevN(e) {
+			if ((incr - e) >= 0) incr -= scroll_to();
+			else incr = 0;
+			$(opts.scrollerContainer).stop().animate({left: -incr}, opts.easingSpeed);
+		}
+		
+		// binding functions
+		$(container).hover(
+			function(){
+				$(opts.prev+','+opts.next).stop().fadeTo(opts.fadeSpeed, 0.7);
+			},
+			function(){
+				$(opts.prev+','+opts.next).stop().fadeTo(opts.fadeSpeed, 0);
+			}
+		);
+		$(opts.scrollerContent).hover(
+			function(){
+				$(this).stop().fadeTo(opts.fadeSpeed, 1);
+			},
+			function(){
+				$(this).stop().fadeTo(opts.fadeSpeed, opts.opacity);
+			}
+		);
+		// click prev
+		$(opts.prev).bind("click", function(event){
+			prevN($(opts.scroller).width());
+		});
+		
+		// click next
+		$(opts.next).bind("click", function(event){
+			nextN($(opts.scroller).width());									  
+		});		
+	}
+})(jQuery);
+
+function resize_media(container, distance) {
+		var totH = $(container).height();
+		$('#listinfo-media').css('height', (totH - distance)+'px');
+}
+
+$(function(){
+	$('.tip').tipTip({delay:0});
+});

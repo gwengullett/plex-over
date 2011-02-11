@@ -46,9 +46,9 @@ function ThumbnailScroller(id,tsType,tsMargin,scrollEasing,scrollEasingType,thum
 	  			var thePosA=mouseCoords-destX;
 	  			var thePosB=destX-mouseCoords;
 	  			if(mouseCoords>destX){
-					$thumbScroller_container.stop().animate({left: -thePosA}, scrollEasing,scrollEasingType); 
+					$thumbScroller_container.stop().animate({left: -thePosA}, scrollEasing); 
 	  			} else if(mouseCoords<destX){
-					$thumbScroller_container.stop().animate({left: thePosB}, scrollEasing,scrollEasingType); 
+					$thumbScroller_container.stop().animate({left: thePosB}, scrollEasing); 
 	  			}
 			} else {
 				$thumbScroller_container.css("left",0);

@@ -6,34 +6,29 @@
 		<link rel="stylesheet" href="<?=site_url('css/styles.css')?>" type="text/css">
 		<link rel="stylesheet" href="<?=site_url('css/tiptip.css')?>" type="text/css">
 		<link rel="stylesheet" href="<?=site_url('css/video.css')?>" type="text/css">
-		<link rel="stylesheet" href="<?=site_url('css/colorbox.css')?>" type="text/css">
-		<script type="text/javascript" src="<?=site_url('js/jquery.js')?>"></script>
-		<script type="text/javascript" src="<?=site_url('js/jquery-ui.js')?>"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="<?=site_url('js/lazyload.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/application.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/tiptip.js')?>"></script>
-		<script type="text/javascript" src="<?=site_url('js/colorbox.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/video.js')?>" charset="utf-8"></script>
 		<script type="text/javascript" src="<?=site_url('js/thumbs.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/flowplayer/flowplayer-3.2.4.min.js')?>"></script>
 		<script type="text/javascript" charset="utf-8">
   		$(function() {
-  			var sum_length = 400;
-  		  var grid = null,hsort_flg = false;         
-  		  	$("img[original]").lazyload({
-  		  		placeholder : '<?=site_url('css/images/grey.gif')?>',
-  		  		effect: 'fadeIn',
-  		  		effectspeed: 200
-  		  	});
-  		 /*
-			  if ($(".grid").length > 0) {
-			  	var grid = $(".grid").vgrid({
-			  		easeing: "easeOutExpo",
-			  		time: 500,
-			  		delay: 0
-			  	});
-			  }
-				*/		
+   			var sum_length	= 400;
+  		  
+  		  $('img[data-src]').attr('src', '<?=site_url('/images/blank.png')?>');
+				$('img[data-src]').live('inview', function(event, isVisible) {
+      		if (!isVisible) { return; }
+      		var img = $(this);
+      		// Show a smooth animation
+      		img.fadeTo(0, 0);
+      		img.load(function() { img.fadeTo(300, 1); });
+      		// Change src
+      		img.attr('src', img.attr('data-src'));
+      		// Remove it from live event selector
+      		img.removeAttr('data-src');
+    		});
 			  
 			  if ($('.summary').text().length > sum_length)
 			  {
@@ -42,12 +37,6 @@
 			  	$('#details-text .summary').html(function(i, t) { return t.substr(0, sum_length); }).append(to_append);
 			  	//alert($('.summary').text().length);
 			  }
-			  $('.cb').colorbox({
-			  	inline: true,
-			  	href: '#sum-hide',
-			  	width: '500px',
-			  	opacity: 0.5
-			  });
 			  
 			  $('input[name="search"]').search('div.item', function(on) {
   		  on.all(function(results) {
@@ -73,18 +62,6 @@
   		    results.show();
   		  });
   		});
-  		
-  		function sort()
-  		{
-  			hsort_flg = !hsort_flg;
-			  $("#browser").vgsort(function(a, b){
-			  	var _a = $(b).css('display');
-			  	var _b = $(a).css('display');
-			  	var _c = hsort_flg ? 1 : -1 ;
-			  	return (_a > _b) ? _c * -1 : _c ;
-			  }, "easeInOutExpo", 300, 0);
-			  return false;
-  		}
   	});
 	</script>
 	</head>
