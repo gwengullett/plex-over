@@ -16,21 +16,7 @@ $(function(){
 			$(toMove).show(uiEffect, { direction: dirMove }, uiSpeed);
 		});
 	});
-	
-	// update the player with parts
-	/*
-$('.playlist-section a').click(function(){
-		$('#video-player').append('<h2 class="txt-shadow-d"></h2>');
-		if (convertVideo)
-		{
-			convert_vid($(this).attr('data-file'), $(this).attr('data-ratio'));
-			return false;
-		}
-		load_video($(this).attr('href'));
-		return false;
-	});
-*/
-	
+
 	function convert_vid(file, aRatio)
 	{
 		$('#video-player h2').text('Conversion au format h264...');
@@ -69,7 +55,6 @@ $('.playlist-section a').click(function(){
 		myPlayer.video.play();
 		
 		return false;
-
 		//video[0].addEventListener("canplay", resize_player, false);
 	});
 	
@@ -82,71 +67,121 @@ $('.playlist-section a').click(function(){
 	}	
 });
 </script>
+<style type="text/css">
+.top {
+	margin-top: 40px;
+}
+#movie-details {
+	min-height: 100%;
+	width: 200px;
+	float: left;
+	border-right: 1px solid #444;
+	margin-right: 20px;
+	position: relative;
+}
 
+#movie-cover {
+	width: 100%;
+	text-align: center;
+}
+
+#movie-content {
+	margin-left: 200px;
+	min-height: 100%;
+}
+#movie-content h1 {
+	margin-top: 0;
+}
+
+#movie-content #details-text {
+	background: left top no-repeat;
+	background-size: 100% auto;
+	padding-bottom: 0;
+}
+.opacity {
+	background: url(../../../../css/images/content-opacity.png);
+	padding-bottom: 20px;
+}
+#movie-tech ul {
+	list-style: none;
+	padding-top: 20px;
+	margin-left: 0;
+	padding-left: 20px;
+}
+#movie-prod, #details-text p {
+	overflow: hidden;
+	color: silver;
+	padding-right: 20px;
+}
+#movie-prod div {
+	float: left;
+}
+
+.movie_3 {
+	width: 33%;
+}
+.movie_4 {
+	width: 25%;
+}
+
+#movie-title {
+	padding-top: 50px;
+}
+
+#movie-content h4 {
+	color: #ff5e27;
+}
+
+#movie-actions {
+	margin-left: 20px;
+}
+
+#movie-actions span {
+	border: 1px solid #83afdb;
+	padding: 5px 10px;
+}
+
+</style>
 <div id="content" class="fit">
-	
 	<?= $views->top_nav ?>
-	
-	<div class="details">
-		<div id="details-main">
-			
-			<div id="details-cover" class="left">
+
+		<div id="movie-details" class="gradient">
+			<div id="movie-cover" class="top left">
 				<?= transcode_img($item, array('height' => 220, 'width' => 150, 'scale' => 'both', 'class' => 'rounded shadow'))?>
 			</div>
-			
-			<div id="details-text" class="left">
-				<h1 class="txt-shadow "><?= $item->title ?> <small>(<?= @$item->year ?>)</small></h1>
-				<h2><?= @$item->tagline ?></h2>
-				<p><?= @$item->summary ?></p>
+			<div id="movie-tech" class="clear">
+				<ul>
+				<?php foreach ($item->attributes as $name => $value): ?>
+					<li>
+						<span><?= $name ?></span>:
+						<span><?= ($name == 'duration') ? duration($value, 'movie') : $value ?></span>
+					</li>
+				<?php endforeach ?>
+				</ul>
+				<div id="movie-actions">
+					<span class="button gradient rounded">Watch</span>
+					<span class="button gradient rounded">download</span>
+				</div>
 			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-	
-	<div id="player" class="shadow gradient">
-		<div class="video-js-box">
-			<video id="show-player" controls="controls" class="video-js vim-css">
-				<source type="video/mp4" />
-				<track kind="subtitles" src="" srclang="en-US" label="English"></track>
-			</video>
 		</div>
 		
-		<div id="playlist" class="dark-gradient">
-			<?php $i = 1; foreach ($item->media->part as $part): ?>
-				<div class="playlist-section">
-					<?=anchor(
-						$this->transcode->video($part, array('ratingKey' => $item->ratingKey)), 
-						lang('playlist.part').' '.$i, 
-						'class="block" data-file="'.$part->file.'"
-						data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitles.'"'
-					)?>
+		<div id="movie-content" class="dark-gradient">
+			<div id="details-text" style="background-image: url(<?= transcode_img($item, array('height' => 1000, 'width' => 1000, 'force' => 'art'), true)?>)">
+			<div class="opacity">
+				<h1 id="movie-title" class="txt-shadow"><?= $item->title ?> <small>(<?= @$item->year ?>)</small></h1>
+				<h2><?= @$item->tagline ?></h2>
+				<p><?= @$item->summary ?></p>
 				</div>
-			<?php $i++; endforeach ?>
-		</div>
-	</div>
-	
-			<div id="details-sub">
-			<ul>
-			<li>
-				<strong><?= lang('duration')?>: </strong>
-				<?= duration($item->duration, 'movie')?>
-			</li>
-			<?php foreach ($item->details as $key => $details): ?>
-				<li>
-					<strong><?= pluralize(count($details), lang($key), false) ?>: </strong>
+			</div>
+			
+			<div id="movie-prod">
+			<?php krsort($item->details); foreach ($item->details as $key => $details): ?>
+				<div class="movie_<?= count($item->details) ?>">
+					<h4><?= pluralize(count($details), lang($key), false) ?></h4>
 					<?= movie_details($details) ?>
-				</li>
+				</div>
 			<?php endforeach ?>
-			</ul>
+			</div>
 		</div>
-
-
-	<div id="content-bottom" class="dark-gradient">
-		<?php $i = 1; foreach ($item->media->part as $part): ?>
-			<?=anchor('download'.$part->file, lang('playlist.part').' '.$i, 'class="dl button dark-gradient rounded-st"')?>
-		<?php $i++; endforeach ?>
-		<div class="right">
-			<a id="watch-btn" class="button dark-gradient rounded-st">Watch</a>
-		</div>
-	</div>
+	
 </div>

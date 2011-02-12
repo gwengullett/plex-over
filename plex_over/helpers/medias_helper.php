@@ -6,11 +6,14 @@ function movie_details($details = array())
 {
 	if (is_array($details) AND count($details) > 0)
 	{
-		foreach ($details as $detail)
+		// we limit nb of entries to 9
+		
+		foreach ($details as $key => $detail)
 		{
 				$string[] = $detail->tag;
+				if($key == 9) break;
 		}
-		return implode(', ', $string);
+		return implode('<br />', $string);
 	}
 	return false;
 }
