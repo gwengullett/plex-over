@@ -27,7 +27,7 @@
 				</table>
 				<table class="album-content">
 				<?php $i = 0; foreach ($item->content as $track): ?>
-					<tr id="index_<?= $i ?>" class=" <?= css_alt($i) ?>">
+					<tr id="index_<?= $i ?>" class="item <?= css_alt($i) ?>">
 						<td><?= $i+1 ?></td>
 						<td><?= character_limiter($track->title, 70) ?></td>
 						<td>
@@ -50,7 +50,6 @@
 	</table>
 	</div>
 
-	
 	<div id="content-bottom" class="dark-gradient">
 		<div class="left">
 		    <audio controls></audio>

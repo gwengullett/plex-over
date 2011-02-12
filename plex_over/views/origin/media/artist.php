@@ -30,7 +30,7 @@
 				</table>
 				<table class="album-content">
 				<?php $ii = 0; foreach ($album->tracks as $track): ?>
-					<tr id="index_<?= $i ?>" class=" <?= css_alt($ii) ?>">
+					<tr id="index_<?= $i ?>" class="item <?= css_alt($ii) ?>">
 						<td><?= $i+1 ?></td>
 						<td><?= character_limiter($track->track, 70) ?></td>
 						<td>

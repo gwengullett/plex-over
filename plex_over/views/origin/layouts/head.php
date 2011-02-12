@@ -38,7 +38,7 @@
 			  	//alert($('.summary').text().length);
 			  }
 			  
-			  $('input[name="search"]').search('div.item', function(on) {
+			  $('input[name="search"]').search('.item', function(on) {
   		  on.all(function(results) {
   		    var size = results ? results.size() : 0
   		    $(this).next('span').find('a').text(size);
@@ -46,19 +46,19 @@
 			
   		  on.reset(function() {
   		    $('#none').hide();
-  		    $('div.item').show();
+  		    $('.item').show();
   		  });
 			
   		  on.empty(function() {
   		    $('#none').show();
-			  	$('div.item').hide();
+			  	$('.item').hide();
 			  	//grid.vgrefresh();
   		  });
 			
   		  on.results(function(results) {
   		    $('#none').hide();
 			  	//grid.vgrefresh();
-			  	$('div.item').hide();
+			  	$('.item').hide();
   		    results.show();
   		  });
   		});

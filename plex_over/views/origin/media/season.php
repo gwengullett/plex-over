@@ -5,7 +5,7 @@
 	<div class="details">
 		<div id="details-main">
 			<div id="details-cover" class="left">
-			 <?= $this->transcode->img($item, array('height' => 150)) ?>
+			 <?= $this->transcode->img($item, array('height' => 150, 'scale' => 'height')) ?>
 			 </div>
 			<div id="details-text" class="left">
 				<h1 class="txt-shadow ">

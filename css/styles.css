@@ -466,11 +466,7 @@ table {
 	display: block;
 }
 
-.track span {
-	float: left;
-	padding-left: 7px;
-	width: 2em;
-}
+
 
 .track a {
 	margin-left: 25px;
@@ -534,23 +530,26 @@ table {
 }
 
 .album-content td:nth-child(1) {
-  width: 15px;
+  max-width: 15px;
   font-size: 0.8em;
 }
 .album-content td:nth-child(2) {
-  width: 39%;
+  max-width: 39%;
 }
 .album-content td:nth-child(3) {
-  width: 39%;
+  max-width: 39%;
 }
 .album-content td:nth-child(4) {
-  width: 70px;
+  max-width: 70px;
   font-size: 0.8em;
 }
 .album-content td:nth-child(5) {
-  width: 50px;
+  max-width: 50px;
 	font-size: 0.8em;
 }
+
+/* specific to plugins */
+
 
 .album-cover {
 	float: left;
@@ -718,6 +717,7 @@ audio {
 .dir .list {
 	width: 140px;
 	height: 160px;
+	position: relative;
 	float: left;
 	text-align: center;
 	margin: 7px;
@@ -733,12 +733,17 @@ audio {
 	color: #f9e8d9;
 }
 
-.dir .list img {
-	border: 1px solid #444;
-}
 .dir .list h4 {
-	font-weight: 100;
-	margin: 0.5em 0;
+	position: absolute;
+	bottom:0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	padding: 5px 0;
+	text-align: center;
+	background: #222;
+	opacity: 0.8;
+	font-weight: 400;
 	font-size: 0.9em;
 }
 

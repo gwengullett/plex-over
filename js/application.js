@@ -160,8 +160,8 @@ $.fn.gallery = function (options) {
 			scroller					: '.thumbScroller',
 			scrollerContainer	: '.thumbScroller .container',
 			scrollerContent		: '.thumbScroller .content',
-			prev							: '.prev',
-			next							: '.next',
+			prev							: '#tshf_container .prev',
+			next							: '#tshf_container .next',
 			margin						: 5,
 			opacity						: 0.7,
 			fadeSpeed					: 200,
@@ -173,7 +173,6 @@ $.fn.gallery = function (options) {
 		// assign margin-left
 		$(opts.scrollerContainer).css("marginLeft", opts.margin+"px");
 		$(opts.scrollerContent).fadeTo(opts.fadeSpeed, opts.opacity);
-		
 		// hide next / prev links
 		$(opts.prev+','+opts.next).fadeTo(opts.fadeSpeed, 0);
 
@@ -220,12 +219,12 @@ $.fn.gallery = function (options) {
 			}
 		);
 		// click prev
-		$(opts.prev).bind("click", function(event){
+		$(opts.prev).click(function(event){
 			prevN($(opts.scroller).width());
 		});
 		
 		// click next
-		$(opts.next).bind("click", function(event){
+		$(opts.next).click(function(event){
 			nextN($(opts.scroller).width());									  
 		});		
 	}
@@ -236,6 +235,15 @@ function resize_media(container, distance) {
 		$('#listinfo-media').css('height', (totH - distance)+'px');
 }
 
+
+// --------------------------------------------------------------------
+// DOM ready plugins and stuff configurations
+// --------------------------------------------------------------------
 $(function(){
-	$('.tip').tipTip({delay:0});
+	var defTipPos = ($('.tip').eq(0).parent('td').length > 0) ? 'left' : 'top';
+	$('.tip').tipTip({
+		delay:0,
+		defaultPosition: defTipPos,
+		maxWidth:400
+	});
 });
