@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="<?=site_url('css/tiptip.css')?>" type="text/css">
 		<link rel="stylesheet" href="<?=site_url('css/video.css')?>" type="text/css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="<?=site_url('js/lazyload.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/application.js')?>"></script>
 		<script type="text/javascript" src="<?=site_url('js/tiptip.js')?>"></script>

@@ -1,22 +1,45 @@
 <script type="text/javascript">
-var uiEffect = 'slide';
-var uiSpeed = 400;
-var toMove = '#details-sub';
-var dirMove = 'up';
+var uiEffect	= 'slide';
+var uiSpeed		= 200;
 var convertVideo = '<?= $convert ?>';
 var player = null;
 
 $(function(){
-	$('#watch-btn').toggle(function(){
-		$(toMove).hide(uiEffect, { direction: dirMove }, uiSpeed, function(){
-			$('#player').fadeTo(200, 1);
+	
+	var playlist	= $('#playlist');
+	var downloads	= $('#download');
+	var toMove		= $('#movie-prod');
+	player = $('#player')
+	
+	$('.button').eq(0).stop().toggle(
+	function(){
+		toMove.hide(uiEffect, { direction: 'up' }, uiSpeed,function(){
+			player.show(uiEffect, { direction: 'down' }, uiSpeed);
 		});
-	}, function(){
-		$('#player').fadeOut(uiSpeed, 0).fadeTo(0, 0, function(){
-			$(toMove).show(uiEffect, { direction: dirMove }, uiSpeed);
+		playlist.show(uiEffect, { direction: 'up' }, uiSpeed);
+	},function(){
+		player.hide(uiEffect, { direction: 'down' }, uiSpeed, function(){
+			toMove.show(uiEffect, { direction: 'up' }, uiSpeed);
 		});
+		playlist.hide(uiEffect, { direction: 'up' }, uiSpeed);
 	});
-
+	
+	$('.button').eq(1).stop().toggle(
+	function(){
+		downloads.show(uiEffect, { direction: 'up' }, uiSpeed);
+	},function(){
+		downloads.hide(uiEffect, { direction: 'up' }, uiSpeed);
+	});
+	
+	
+	$('.button').toggle(
+		function(){
+			$('.current').click();
+			$(this).addClass('current');
+		},function() {
+			$(this).removeClass('current');
+	});
+	
 	function convert_vid(file, aRatio)
 	{
 		$('#video-player h2').text('Conversion au format h264...');
@@ -43,6 +66,8 @@ $(function(){
 	
 	$('.playlist-section a').click(function(){
 		var video = $('video');
+		var curWidth = $('#show-player').width();
+
 		//myPlayer.video.src = $(this).attr('href');
 		$('video').attr('src', $(this).attr('href'));
 		$('video').find('track').attr('src', $(this).attr('data-sub'));
@@ -50,9 +75,13 @@ $(function(){
 		var myPlayer = VideoJS.setup("show-player");
 		myPlayer.subtitlesSource = $(this).attr('data-sub');
 		myPlayer.video.load();
+		$('watching').removeClass('watching');
+		$(this).addClass('watching');
 		
-		$('#player').animate({'height': video.height()+'px'}, 'slow');
-		myPlayer.video.play();
+		var ratio = $(this).attr('data-ratio');
+		$('#show-player').animate({'height': Math.round(curWidth / ratio)+'px'}, 'slow', function(){
+				myPlayer.video.play();
+		});
 		
 		return false;
 		//video[0].addEventListener("canplay", resize_player, false);
@@ -61,87 +90,12 @@ $(function(){
 	function resize_player()
 	{
 		var video = $('video');
-		//$('#player').animate({'height': video.height()+'px'}, 'slow');
-		//$('#video-player h2').fadeTo(0, 200, function(){$(this).remove()});
+		$('#player').animate({'height': video.height()+'px'}, 'slow');
+		$('#video-player h2').fadeTo(0, 200, function(){$(this).remove()});
 		video[0].play();
 	}	
 });
 </script>
-<style type="text/css">
-.top {
-	margin-top: 40px;
-}
-#movie-details {
-	min-height: 100%;
-	width: 200px;
-	float: left;
-	border-right: 1px solid #444;
-	margin-right: 20px;
-	position: relative;
-}
-
-#movie-cover {
-	width: 100%;
-	text-align: center;
-}
-
-#movie-content {
-	margin-left: 200px;
-	min-height: 100%;
-}
-#movie-content h1 {
-	margin-top: 0;
-}
-
-#movie-content #details-text {
-	background: left top no-repeat;
-	background-size: 100% auto;
-	padding-bottom: 0;
-}
-.opacity {
-	background: url(../../../../css/images/content-opacity.png);
-	padding-bottom: 20px;
-}
-#movie-tech ul {
-	list-style: none;
-	padding-top: 20px;
-	margin-left: 0;
-	padding-left: 20px;
-}
-#movie-prod, #details-text p {
-	overflow: hidden;
-	color: silver;
-	padding-right: 20px;
-}
-#movie-prod div {
-	float: left;
-}
-
-.movie_3 {
-	width: 33%;
-}
-.movie_4 {
-	width: 25%;
-}
-
-#movie-title {
-	padding-top: 50px;
-}
-
-#movie-content h4 {
-	color: #ff5e27;
-}
-
-#movie-actions {
-	margin-left: 20px;
-}
-
-#movie-actions span {
-	border: 1px solid #83afdb;
-	padding: 5px 10px;
-}
-
-</style>
 <div id="content" class="fit">
 	<?= $views->top_nav ?>
 
@@ -162,6 +116,25 @@ $(function(){
 					<span class="button gradient rounded">Watch</span>
 					<span class="button gradient rounded">download</span>
 				</div>
+				
+				<div id="playlist" class="button-rel" style="display:none">
+				<?php $i = 1; foreach ($item->media->part as $part): ?>
+	  			<div class="playlist-section">
+	  				<?=anchor($this->transcode->video($part, array('ratingKey' => $item->ratingKey)), 
+	  					lang('playlist.part').' '.$i, 
+	  					'data-file="'.$part->file.'"
+	  					data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitles.'"'
+	  				)?>
+	  			</div>
+	  		<?php $i++; endforeach ?>
+	  		</div>
+	  		
+				<div id="download" class="button-rel" style="display:none">
+					<?php $i = 1; foreach ($item->media->part as $part): ?>
+						<div><?=anchor('download'.$part->file, lang('playlist.part').' '.$i, 'class="dl"')?></div>
+					<?php $i++; endforeach ?>
+				</div>
+
 			</div>
 		</div>
 		
@@ -175,13 +148,23 @@ $(function(){
 			</div>
 			
 			<div id="movie-prod">
-			<?php krsort($item->details); foreach ($item->details as $key => $details): ?>
-				<div class="movie_<?= count($item->details) ?>">
-					<h4><?= pluralize(count($details), lang($key), false) ?></h4>
-					<?= movie_details($details) ?>
-				</div>
-			<?php endforeach ?>
+				<?php krsort($item->details); foreach ($item->details as $key => $details): ?>
+					<div class="prod movie_<?= count($item->details) ?>">
+						<h4><?= pluralize(count($details), lang($key), false) ?></h4>
+						<?= movie_details($details, $links->section.'/'.$prod_links.'/'.link_prod($key)) ?>
+					</div>
+				<?php endforeach ?>
 			</div>
-		</div>
+			
+			<div id="player" class="shadow dark-gradient" style="display:none">
+				<div class="video-js-box">
+					<video id="show-player" class="video-js vim-css">
+						<source type="video/mp4" />
+						<track kind="subtitles" src="" srclang="en-US" label="English"></track>
+					</video>
+				</div>
+			</div>
+				
+		</div> <!-- movie-content -->
 	
 </div>

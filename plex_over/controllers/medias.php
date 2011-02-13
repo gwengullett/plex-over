@@ -165,6 +165,7 @@ class Medias extends PE_Controller {
 		$data['views']->top_nav	= $this->topnav_view();
 		$data['active_sb']		= 'movie_'.$this->section_key;
 		$data['item']					= $this->subtitles->get($data['item']);
+		$data['prod_links']		= $this->uri->segment(2).'/'.$this->section_key;
 		
 		$this->render('media/'.__FUNCTION__, $data);
 	}
