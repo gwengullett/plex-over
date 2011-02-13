@@ -3,38 +3,44 @@ var uiEffect	= 'slide';
 var uiSpeed		= 200;
 var convertVideo = '<?= $convert ?>';
 var player = null;
+var paused = 'paused';
+var playing = 'watching';
 
 $(function(){
 	
 	var playlist	= $('#playlist');
 	var downloads	= $('#download');
 	var toMove		= $('#movie-prod');
-	player = $('#player')
+	var playerDiv = $('#player');
 	
 	$('.button').eq(0).stop().toggle(
 	function(){
 		toMove.hide(uiEffect, { direction: 'up' }, uiSpeed,function(){
-			player.show(uiEffect, { direction: 'down' }, uiSpeed);
+			playerDiv.show(uiEffect, { direction: 'down' }, uiSpeed);
 		});
-		playlist.show(uiEffect, { direction: 'up' }, uiSpeed);
+		playlist.show();
 	},function(){
-		player.hide(uiEffect, { direction: 'down' }, uiSpeed, function(){
+		playerDiv.hide(uiEffect, { direction: 'down' }, uiSpeed, function(){
 			toMove.show(uiEffect, { direction: 'up' }, uiSpeed);
 		});
-		playlist.hide(uiEffect, { direction: 'up' }, uiSpeed);
+		playlist.hide();
 	});
 	
 	$('.button').eq(1).stop().toggle(
 	function(){
-		downloads.show(uiEffect, { direction: 'up' }, uiSpeed);
+		if (player) {
+			$('a.'+playing).switchClass(playing, paused);
+			player.video.pause();
+		}
+		downloads.show();
 	},function(){
-		downloads.hide(uiEffect, { direction: 'up' }, uiSpeed);
+		downloads.hide();
 	});
 	
 	
 	$('.button').toggle(
 		function(){
-			$('.current').click();
+		$('.current').click();
 			$(this).addClass('current');
 		},function() {
 			$(this).removeClass('current');
@@ -55,45 +61,49 @@ $(function(){
 		})
 	}
 	
-	function load_video(source)
-	{
-		$('#video-player h2').text('Chargement de la video...');
-		var video = $('video');
-		video[0].src = source;
-		video[0].load();
-		video[0].addEventListener("canplay", resize_player, false);
-	}
-	
+	// PLaylist video player controls
 	$('.playlist-section a').click(function(){
-		var video = $('video');
-		var curWidth = $('#show-player').width();
-
-		//myPlayer.video.src = $(this).attr('href');
-		$('video').attr('src', $(this).attr('href'));
-		$('video').find('track').attr('src', $(this).attr('data-sub'));
-		
-		var myPlayer = VideoJS.setup("show-player");
-		myPlayer.subtitlesSource = $(this).attr('data-sub');
-		myPlayer.video.load();
-		$('watching').removeClass('watching');
-		$(this).addClass('watching');
-		
-		var ratio = $(this).attr('data-ratio');
-		$('#show-player').animate({'height': Math.round(curWidth / ratio)+'px'}, 'slow', function(){
-				myPlayer.video.play();
-		});
-		
+	
+		if ($(this).is('.'+playing)) {
+			$(this).switchClass(playing, paused);
+			player.video.pause();
+		}
+		else if ($(this).is('.'+paused)) {
+			$(this).switchClass(paused, playing);
+			player.video.play();
+		}
+		else {
+			var video = $('video');
+			var curWidth = $('#show-player').width();
+			
+			//myPlayer.video.src = $(this).attr('href');
+			$('video').attr('src', $(this).attr('href'));
+			$('video').find('track').attr('src', $(this).attr('data-sub'));
+			
+			player = VideoJS.setup("show-player");
+			player.subtitlesSource = $(this).attr('data-sub');
+			player.video.load();
+			$('.playlist-section a').attr('class', '');
+			$(this).addClass(playing);
+			
+			var ratio = $(this).attr('data-ratio');
+			$('#show-player').animate({'height': Math.round(curWidth / ratio)+'px'}, 'slow', function(){
+					player.video.play();
+			});
+		}
 		return false;
-		//video[0].addEventListener("canplay", resize_player, false);
 	});
 	
-	function resize_player()
-	{
-		var video = $('video');
-		$('#player').animate({'height': video.height()+'px'}, 'slow');
-		$('#video-player h2').fadeTo(0, 200, function(){$(this).remove()});
-		video[0].play();
-	}	
+	// Player playlisy interactions
+	$('.vjs-play-control').live('click', function(){
+		if(player.video.paused) {
+			$('a.'+playing).switchClass(playing, paused);
+		}
+		else {
+			$('a.'+paused).switchClass(paused, playing);
+		}
+	});
+	
 });
 </script>
 <div id="content" class="fit">
@@ -113,15 +123,15 @@ $(function(){
 				<?php endforeach ?>
 				</ul>
 				<div id="movie-actions">
-					<span class="button gradient rounded">Watch</span>
-					<span class="button gradient rounded">download</span>
+					<span class="button gradient rounded"><?= lang('watch') ?></span>
+					<span class="button gradient rounded"><?= lang('download') ?></span>
 				</div>
 				
 				<div id="playlist" class="button-rel" style="display:none">
 				<?php $i = 1; foreach ($item->media->part as $part): ?>
 	  			<div class="playlist-section">
 	  				<?=anchor($this->transcode->video($part, array('ratingKey' => $item->ratingKey)), 
-	  					lang('playlist.part').' '.$i, 
+	  					lang('playlist.part_'.$i), 
 	  					'data-file="'.$part->file.'"
 	  					data-ratio="'.$item->attributes->aspectRatio.'" data-sub="'.$part->subtitles.'"'
 	  				)?>
@@ -131,7 +141,7 @@ $(function(){
 	  		
 				<div id="download" class="button-rel" style="display:none">
 					<?php $i = 1; foreach ($item->media->part as $part): ?>
-						<div><?=anchor('download'.$part->file, lang('playlist.part').' '.$i, 'class="dl"')?></div>
+						<div><?=anchor('download'.$part->file, lang('playlist.part_'.$i))?></div>
 					<?php $i++; endforeach ?>
 				</div>
 

@@ -63,7 +63,13 @@ $lang['music.track']		= "Morceau";
 $lang['music.duration'] = "Durée";
 
 // video playlist
-$lang['playlist.part']	= "Part";
+$lang['playlist.part_1']	= "Première partie";
+$lang['playlist.part_2']	= "Deuxième partie";
+$lang['playlist.part_3']	= "Troisième partie";
+
+// Watch / Downlooads buttons
+$lang['watch']		= "Regarder";
+$lang['download'] = "Télécharger";
 
 
 // iphoto

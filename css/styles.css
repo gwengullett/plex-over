@@ -7,7 +7,7 @@ body {
 	margin: 0;
 	height:100%;
 	line-height: 1.4em;
-	min-width: 980px;
+	min-width: 1000px;
 }
 
 a {
@@ -575,7 +575,7 @@ table {
 #player {
 	overflow: hidden;
 	position: relative;
-	width: 640px;
+	width: 620px;
 	margin: 40px auto 0;
 }
 
@@ -660,6 +660,38 @@ table {
 	float: left;
 }
 
+.button-rel {
+	margin: 0 2px 0 20px;
+	padding: 5px;
+	background: #e1e1e1;
+	border: 1px solid;
+}
+.button-rel a {
+	display: block;
+	padding: 2px 0 2px 16px;
+	background: url(icons/movie-icons.png) no-repeat;
+	color: gray;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.button-rel a:hover, .playlist-section a.paused, .playlist-section a.watching {
+	color: #ff5e27;
+}
+
+.playlist-section a {
+	background-position: 0 -21px;
+}
+
+.playlist-section a.paused {
+	background-position: 0 4px;
+}
+
+#download a {
+	background-position: 0 -45px;
+}
+
 .movie_3, .movie_2 {
 	width: 33%;
 }
@@ -684,12 +716,7 @@ table {
 	border: 1px solid #888;
 	padding: 5px 10px;
 }
-.button-rel {
-	margin: 0 20px;
-	padding: 5px;
-	background: #e1e1e1;
-	border: 1px solid;
-}
+
 #movie-actions span:hover, #movie-actions span.current, .button-rel {
 	border-color: #83afdb;
 }
