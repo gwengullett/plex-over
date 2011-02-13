@@ -2,16 +2,14 @@
 
 
 // process $movie->details for lists
-function movie_details($details = array())
+function movie_details($details = array(), $link ='')
 {
 	if (is_array($details) AND count($details) > 0)
 	{
-		// we limit nb of entries to 9
-		
 		foreach ($details as $key => $detail)
 		{
-				$string[] = $detail->tag;
-				if($key == 9) break;
+			$string[] = anchor($link.'/'.$detail->id, $detail->tag);
+			if($key == 9) break;
 		}
 		return implode('<br />', $string);
 	}
@@ -37,7 +35,17 @@ function link_episode($base, $segment)
 	return implode('/', array_splice($base, 0, 3)).'/'.$segment;
 }
 
+// to into section
 function link_media($base, $item, $section_id)
 {
 	return site_url($base.'/'.$item.'/section/'.$section_id);
+}
+
+// translate production elements to existing filters if exists
+function link_prod($el)
+{
+	static $translators = array();
+	if (! $translators) $translators = array('actor' => 'role');
+	if (in_array($el, $translators)) $el = array_search($el, $translators);
+	return $el;
 }

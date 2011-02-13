@@ -73,10 +73,10 @@ class Transcode {
 	  $source = ($opts->type == 'lazy') ? 'data-src' : 'src';
 	  // create image
 	  $image = array(
-	  	$source				=> $thumb,
-	  	'alt'					=> (isset($item->title)) ? $item->title : 'image',
-	  	'class'				=> $opts->class,
-	  	'align'				=> $opts->align
+	  	$source	=> $thumb,
+	  	'alt'		=> (isset($item->title)) ? $item->title : 'image',
+	  	'class'	=> $opts->class,
+	  	'align'	=> $opts->align
 	  );
 	  // alignement
 		if ($opts->scale == 'both')

@@ -14,8 +14,7 @@
   		<tr id="index_<?= $i ?>" class="item <?= css_alt($i) ?>">
   			<td><?= $i+1 ?></td>
   			<td>
-  				<a href="<?= link_server($track->key, $this->plex_url) ?>"
-    		    class="tip" 
+  				<a href="<?= link_server($track->key, $this->plex_url) ?>" 
     		    title="<?= $track->track ?>"
     		    data-cover="<?= $this->transcode->img($track, array('width' => 110, 'class' => 'rounded shadow'), true) ?>"
     		    rel="<?= $track->artist ?>">
@@ -45,7 +44,6 @@
 
 	<script type="text/javascript">
 	// flowplayer config
-	
 	// cover config
 	$(function(){
 		var cover, origCover;
