@@ -149,8 +149,8 @@ $(function(){
 		</div>
 		
 		<div id="movie-content" class="dark-gradient">
-			<div id="details-text" style="background-image: url(<?= transcode_img($item, array('height' => 1000, 'width' => 1000, 'force' => 'art'), true)?>)">
-			<div class="opacity">
+			<div id="details-text" style="background-image: url(<?= transcode_img($item, array('height' => 500, 'width' => 500, 'force' => 'art'), true)?>)">
+			<div class="opacity bb">
 				<h1 id="movie-title" class="txt-shadow"><?= $item->title ?> <small>(<?= @$item->year ?>)</small></h1>
 				<h2><?= @$item->tagline ?></h2>
 				<p><?= @$item->summary ?></p>
