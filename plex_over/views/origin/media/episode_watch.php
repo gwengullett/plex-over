@@ -1,21 +1,22 @@
 <script>
  $(function(){
-		$('.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
+		$('a.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
 		var myPlayer = VideoJS.setup("show-player");
  });
 </script>
-
 <div id="content" class="fit">
 
 	<?= $views->top_nav ?>
 	
-	<div id="details-main" class="details dark-gradient show-list">
+	<div id="details-main" class="details dark-gradient bb">
 		<div id="details-cover" class="left">
-			<?= transcode_img($episode, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
+			<?= transcode_img($episode, array('width' => 130, 'height' => 72, 'scale' => 'both', 'type' => 'src'))?>
 		</div>
 		
-		<div id="details-text" class="left">
-				<h1 class="txt-shadow"><?= $episode->title ?> <small>(<?= lang('episode')." ".$episode->index ?>)</small></h1>
+		<div class="left">
+				<h1 class="txt-shadow">
+					<?= $episode->title ?> 
+					<small>- <?= lang('episode')." ".$episode->index ?></small></h1>
 		    <h2><?= $item->title1." ".$item->title2 ?></h2>
 		</div>
 		<div class="clear"></div>
@@ -56,7 +57,7 @@
 						title="<h3><?= $friend->title ?></h3> <?= $friend->summary ?>" 
 						class="tip" >
 						<div class="img <?= active_item((string)$episode->index, (string)$friend->index, 'current') ?>">
-						<?= $this->transcode->img($friend, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
+						<?= transcode_img($friend, array('width' => 130, 'height' => 72, 'scale' => 'both'))?>
 						<strong><?= ucwords(lang('episode'))." ".$friend->index ?></strong><br />
 						<span><?= $friend->title ?></span>
 						</div>

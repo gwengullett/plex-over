@@ -155,7 +155,7 @@ strong {
 #breadcrumb, #content-bottom {
 	position: fixed;
 	overflow:hidden; /* safari fix moving elements video/audio */
-	z-index: 2;
+	z-index: 3;
 	left: 12em;
 	width: 100%;
 }
@@ -344,15 +344,14 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 
 /* Media or Directory details */
 .details {
-	padding: 40px 40px 0 40px;
+	padding: 40px 40px 0 30px;
 }
 
 #details-text {
 	padding-bottom: 20px;
-	border-bottom: 1px solid #444;
 }
 
-#details-text h2 {
+.details h2 {
 	font-weight: normal;
 	color: #f5f5f5;
 }
@@ -387,6 +386,10 @@ h1 small {
 }
 
 /* season / artists details */
+#season #details-main {
+	padding-bottom: 10px;
+}
+
 .show-list {
 	padding-bottom: 20px;
 	min-height: 65px;
@@ -402,7 +405,9 @@ h1 small {
 }
 
 .jacket {
+	float: left;
 	position: relative;
+	text-align: center;
 	width: 150px;
 	margin-bottom: 10px;
 }
@@ -483,7 +488,7 @@ table {
 	padding-left: 18px;
 }
 
-.album-container .play {
+.album-container .play, .show-list h3 {
 	color: #9cf;
 }
 
@@ -629,14 +634,14 @@ table {
 	margin-top: 0;
 }
 
-#movie-content #details-text {
+#movie-content #details-text, #season {
 	background: left top no-repeat;
 	background-size: 100% auto;
 	padding-bottom: 0;
 }
 .opacity {
 	background: url(images/content-opacity.png);
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 #movie-tech ul {
 	list-style: none;
@@ -656,7 +661,7 @@ table {
 	color: #fff;
 }
 
-.media-prod, #details-text p {
+.media-prod, #details-text p, #details-main p {
 	overflow: hidden;
 	color: silver;
 	padding-right: 20px;
