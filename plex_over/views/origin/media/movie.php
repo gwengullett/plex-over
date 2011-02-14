@@ -123,8 +123,8 @@ $(function(){
 				<?php endforeach ?>
 				</ul>
 				<div id="movie-actions">
-					<span class="button gradient rounded"><?= lang('watch') ?></span>
-					<span class="button gradient rounded"><?= lang('download') ?></span>
+					<span class="button gradient"><?= lang('watch') ?></span>
+					<span class="button gradient"><?= lang('download') ?></span>
 				</div>
 				
 				<div id="playlist" class="button-rel" style="display:none">
@@ -157,7 +157,7 @@ $(function(){
 				</div>
 			</div>
 			
-			<div id="movie-prod">
+			<div id="movie-prod" class="media-prod">
 				<?php krsort($item->details); foreach ($item->details as $key => $details): ?>
 					<div class="prod movie_<?= count($item->details) ?>">
 						<h4><?= pluralize(count($details), lang($key), false) ?></h4>

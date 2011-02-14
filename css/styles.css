@@ -411,9 +411,17 @@ h1 small {
 	padding-left: 4px;
 }
 
+#show-content {
+	width: 800px;
+}
+
 #show-main {
 	margin: 20px;
+	width: 100%;
 	overflow: hidden;
+}
+#show-details h4 {
+	margin: 0.5em 0;
 }
 
 #show-main ul {
@@ -433,13 +441,10 @@ h1 small {
 	border-bottom: none;
 }
 
-/*
-#show-player {
-	width: 580px;
-	min-height: 320px;
-}
-*/
 
+#show-main #show-player {
+	width: 580px;
+}
 #episodes {
 	margin-left: 15px;
 	clear: left;
@@ -640,18 +645,18 @@ table {
 	padding-left: 20px;
 }
 
-#movie-prod a {
+.media-prod a {
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
 }
 
-#movie-prod a:hover {
+.media-prod a:hover {
 	color: #fff;
 }
 
-#movie-prod, #details-text p {
+.media-prod, #details-text p {
 	overflow: hidden;
 	color: silver;
 	padding-right: 20px;
@@ -680,12 +685,12 @@ table {
 	color: #ff5e27;
 }
 
-.playlist-section a {
-	background-position: 0 -21px;
+.playlist-section a.watching {
+	background-position: 0 4px;
 }
 
-.playlist-section a.paused {
-	background-position: 0 4px;
+.playlist-section a {
+	background-position: 0 -21px;
 }
 
 #download a {
@@ -703,7 +708,7 @@ table {
 	padding-top: 50px;
 }
 
-#movie-content h4 {
+.media-prod h4 {
 	color: #ff5e27;
 }
 

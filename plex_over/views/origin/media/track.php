@@ -1,5 +1,3 @@
-<?php include_once('audio_script.php') ?>
-
 <div id="content" class="fit">
 	<?= $views->top_nav ?>
 		
@@ -52,9 +50,10 @@
 
 	<div id="content-bottom" class="dark-gradient">
 		<div class="left">
-		    <audio controls></audio>
+		    <div id="audio"></div>
 		</div>
 		<div class="left listenning"></div>
 	</div>
+	<?php $this->load->view($this->template.'/media/audio_script.php') ?>
 	
 </div>
