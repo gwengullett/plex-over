@@ -1,19 +1,18 @@
+
 <div id="content" class="fit">
 	
 	<?php $this->load->view($this->template.'/layouts/top_nav');?>
 	
-	<div class="details">
+	<div class="details dark-gradient bb">
 		<div id="details-main">
 			<div id="details-cover" class="left">
 				<?= $this->transcode->img($item, array('height' => 220, 'width' => 150, 'class' => 'rounded shadow'))?>
 			 </div>
-			<div id="details-text" class="left">
 				<h1 class="txt-shadow ">
 					<?=$item->title2?>
 					<small><?= pluralize(childs_count($item->size), lang('album')) ?></small>
 				</h1>
-				<div class="summary"><?= nl2br(@$item->summary) ?></div>
-			</div>
+				<p id="summary" class="summary"><?= split_summary(@$item->summary) ?></p>
 			<div class="clear"></div>
 		</div>
 	</div>
@@ -32,7 +31,10 @@
 	<?php endif; endforeach ?>
 	</div>
 	
-	<div id="content-bottom" class="dark-gradient"></div>
-<div style="display:none"><div id="sum-hide"></div></div>
+	<div id="content-bottom" class="dark-gradient">
+		<span><?= @$item->mediaTagVersion ?></span>
+	</div>
+	
+	<div style="display:none"><div id="sum-hide"></div></div>
 
 </div>

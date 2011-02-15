@@ -20,7 +20,6 @@ class Section extends Plex {
 		$items = $this->load($this->section_url.implode('/', $segments));
 		$return						= $this->get_attributes($items);
 		$return->content	= $this->get_childrens($items);
-
 		return $return;
 	}
 	
@@ -37,8 +36,21 @@ class Section extends Plex {
 		
 		$return						= $this->get_attributes($sections);
 		$return->content	= $this->get_childrens($sections);
+		usort($return->content, array($this, 'sort_sections'));
 
 		return $return;
+	}
+	
+	/**
+	 * sort_sections function.
+	 * Sort sections by type.
+	 * 
+	 * @access private
+	 * @return void
+	 */
+	private function sort_sections($k, $i)
+	{
+		return strcasecmp($k->type, $i->type);
 	}
 		
 }

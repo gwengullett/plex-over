@@ -1,6 +1,7 @@
 <div id="content" class="fit">
-	
+
 <?= $views->top_nav ?>
+
 <div class="dark-gradient" style="height:100%">
 
 	<div id="season" class=" bb" style="background-image: url(<?= transcode_img($item, array('height' => 500, 'width' => 500, 'force' => 'art'), true)?>)">
@@ -13,7 +14,7 @@
 						<small>(<?= @$item->parentYear ?>) </small>
 					</h1>
 					<h2><?= pluralize(childs_count($item->size), lang('season')) ?></h2>
-					<p><?= word_limiter(@$item->summary, 100) ?></p>
+					<p id="summary"><?= split_summary(@$item->summary) ?></p>
 				</div>
 			<div class="clear"></div>
 		</div>

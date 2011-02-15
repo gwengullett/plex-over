@@ -24,7 +24,7 @@ video.video-js { background-color: #000; position: relative; padding: 0; }
 /* Poster Overlay Style */
 .video-js-box img.vjs-poster { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; margin: 0; padding: 0; cursor: pointer; }
 /* Subtiles Style */
-.video-js-box .vjs-subtitles { color: #fff; font-size: 20px; text-align: center; position: absolute; bottom: 40px; left: 0; right: 0; }
+.video-js-box .vjs-subtitles { color: #fff; font-size: 16px; text-align: center; position: absolute; bottom: 1em; left: 0; right: 0; line-height: 1em;}
 
 /* Fullscreen styles for main elements */
 .video-js-box.vjs-fullscreen { position: fixed; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: 1000; }
@@ -59,6 +59,7 @@ so you can upgrade to newer versions easier. */
   bottom: 0px; /* Distance from the bottom of the box/video. Keep 0. Use height to add more bottom margin. */
   height: 25px; /* Including any margin you want above or below control items */
   padding: 0; /* Controls are absolutely position, so no padding necessary */
+  z-index: 1001;
 	background-color: #303030;
 	background-image: -webkit-gradient(
 	    linear,
