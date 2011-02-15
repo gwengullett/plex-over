@@ -11,7 +11,7 @@
 					
 					<a href="<?=link_item($links->item, $item, $this->uri->segment(4))?>">
 						
-						<div class="img" >
+						<div class="img">
 							<div class="rounded">
 								<?= $this->transcode->img($item, array('width' => 110, 'height' => 150)) ?>
 							</div>

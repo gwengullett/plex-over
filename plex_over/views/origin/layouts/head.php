@@ -31,14 +31,7 @@
       		img.removeAttr('data-src');
     		});
 			  
-			  if ($('.summary').text().length > sum_length)
-			  {
-			  	$('#sum-hide').html($('.summary').html());
-			  	to_append = '... <br /><br /><a class="cb button dark-gradient rounded-st"> &#10145; <?= lang('read_more') ?></a>';
-			  	$('#details-text .summary').html(function(i, t) { return t.substr(0, sum_length); }).append(to_append);
-			  	//alert($('.summary').text().length);
-			  }
-			  
+			 			  
 			  $('input[name="search"]').search('.item', function(on) {
   		  on.all(function(results) {
   		    var size = results ? results.size() : 0

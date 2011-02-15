@@ -240,10 +240,14 @@ function resize_media(container, distance) {
 // DOM ready plugins and stuff configurations
 // --------------------------------------------------------------------
 $(function(){
+	// tooltips
 	var defTipPos = ($('.tip').eq(0).parent('td').length > 0) ? 'left' : 'top';
 	$('.tip').tipTip({
 		delay:0,
 		defaultPosition: defTipPos,
 		maxWidth:400
 	});
+	
+	// summary read more
+	$('#summary .button').click(function(){$('#summary span').slideToggle()});
 });

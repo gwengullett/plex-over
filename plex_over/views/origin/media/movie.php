@@ -141,7 +141,7 @@ $(function(){
 	  		
 				<div id="download" class="button-rel" style="display:none">
 					<?php $i = 1; foreach ($item->media->part as $part): ?>
-						<div><?=anchor('download'.$part->file, lang('playlist.part_'.$i))?></div>
+						<div><?=anchor('download'.$part->file, lang('playlist.part_'.$i).' ('.byte_format($part->size).')')?></div>
 					<?php $i++; endforeach ?>
 				</div>
 
@@ -153,12 +153,12 @@ $(function(){
 			<div class="opacity bb">
 				<h1 id="movie-title" class="txt-shadow"><?= $item->title ?> <small>(<?= @$item->year ?>)</small></h1>
 				<h2><?= @$item->tagline ?></h2>
-				<p><?= @$item->summary ?></p>
+				<p id="summary"><?= split_summary(@$item->summary) ?></p>
 				</div>
 			</div>
 			
 			<div id="movie-prod" class="media-prod">
-				<?php krsort($item->details); foreach ($item->details as $key => $details): ?>
+				<?php foreach ($item->details as $key => $details): ?>
 					<div class="prod movie_<?= count($item->details) ?>">
 						<h4><?= pluralize(count($details), lang($key), false) ?></h4>
 						<?= movie_details($details, $links->section.'/'.$prod_links.'/'.link_prod($key)) ?>

@@ -1,14 +1,51 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// some helper functions
-
+/**
+ * active_item function.
+ * used to add active css class by comparaison
+ * 
+ * @access public
+ * @param mixed $send
+ * @param mixed $match
+ * @param string $class. (default: 'active')
+ * @return void
+ */
 function active_item($send, $match, $class= 'active')
 {
 	if ($send == $match) return $class;
 }
 
+/**
+ * split_summary function.
+ * Split summary by sentence whitout cutting words
+ * 
+ * @access public
+ * @param string $text. (default: '')
+ * @return void
+ */
+function split_summary($text = '')
+{
+	$length = 400;
+	
+	if (strlen($text) > $length)
+	{
+		$parts		= str_split($text,  strrpos(substr($text, 0, $length), '.')+1);
+		$summary	= array_shift($parts);
+		$text  = $summary.'<span style="display:none">'.implode('', $parts).'</span>';
+		$text .= '<strong><a class="button rounded gradient">'.lang('read_more').'</a></strong>';
+	}
+	return nl2br($text);
+}
 
-// return tracks or movie length in minutes
+/**
+ * duration function.
+ * return tracks or movie length in minutes
+ * 
+ * @access public
+ * @param mixed $seconds
+ * @param string $type. (default: 'music')
+ * @return void
+ */
 function duration($seconds, $type = 'music')
 {
 	$seconds = substr($seconds, 0, -3);
@@ -18,11 +55,8 @@ function duration($seconds, $type = 'music')
 	return ($type == 'movie') ? $h.'h '.$m : $m.' : '.$s;
 }
 
-// --------------------------------------------------------------------
 /**
  * alt_class function.
- * Sert à produire une class css de type 'alt' dans une boucle
- * Typiquement pour l'alternane des tableaux
  * 
  * @access public
  * @param mixed $key
@@ -35,7 +69,16 @@ function css_alt($key, $class = ' alt ')
 	return trim($alt); 
 }
 
-// generate a dropdown menu for navigation
+/**
+ * topnav_select function.
+ * generate a dropdown menu for navigation
+ * 
+ * @access public
+ * @param mixed $link
+ * @param mixed $filters
+ * @param mixed $segments
+ * @return void
+ */
 function topnav_select($link, $filters, $segments)
 {
 	$menu = array(); $active = '';
@@ -52,30 +95,44 @@ function topnav_select($link, $filters, $segments)
 }
 
 
-// lookink for thumb or alternalivelly for art
-// $force = skip testing and go on
+/**
+ * thumb function.
+ * lookink for thumb or alternalivelly for art
+ * $force = skip testing and go on
+ * 
+ * @access public
+ * @param mixed $item
+ * @param mixed $force. (default: null)
+ * @return void
+ */
 function thumb($item, $force = null)
 {
-	if ($force) return $item->$force;
+	if ($force)
+		return $item->$force;
 	
 	if (isset($item->thumb))
-	{
 		return $item->thumb;
-	}
+	
 	else if (isset($item->art))
-	{
 		return $item->art;
-	}
+
 	else if (isset($item->key) AND @getimagesize($item->key))
-	{
 		return $item->key;
-	}
+
 	else
-	{
 		return '/:/resources/DefaultAlbumCover.png';
-	}
 }
 
+/**
+ * transcode_img function.
+ * shortcut to transcode library
+ * 
+ * @access public
+ * @param mixed $item
+ * @param array $opts. (default: array())
+ * @param bool $as_url. (default: false)
+ * @return void
+ */
 function transcode_img($item, $opts = array(), $as_url = false)
 {
 	$ci = get_ci();
@@ -83,8 +140,13 @@ function transcode_img($item, $opts = array(), $as_url = false)
 	return $ci->transcode->img($item, $opts, $as_url);
 }
 
-
-
+/**
+ * get_ci function.
+ * Call Codeigniter instance
+ * 
+ * @access public
+ * @return void
+ */
 function get_ci()
 {
 	static $ci = false;

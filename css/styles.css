@@ -163,9 +163,9 @@ strong {
 #breadcrumb {
 	top:0;
 	border-bottom: 1px solid #585858;
-	-webkit-box-shadow: 0px 5px 20px #333;
-	-moz-box-shadow: 0px 5px 5px #333;
-	box-shadow: 0px 5px 5px #333;
+	-webkit-box-shadow: 0px 1px 7px black;
+	-moz-box-shadow: 0px 1px 7px black;
+	box-shadow: 0px 1px 7px black;
 	height:30px;
 	line-height:30px;
 	overflow: hidden;
@@ -204,9 +204,6 @@ strong {
 /* TOP FILTERS */
 
 #search {
-	position: absolute;
-	right: 15em;
-	top:3px;
 	width: 150px;
 }
 
@@ -355,13 +352,21 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 	font-weight: normal;
 	color: #f5f5f5;
 }
+#details-main {
+	padding-bottom: 10px;
+}
 #details-main p {
 	margin-top: 2em;
 }
 
 #details-cover {
 	width: 180px;
+	text-align: center;
 }
+#details-main h1 {
+	margin-top: 5px;
+}
+
 
 h1 small {
 	font-weight: normal;
@@ -416,48 +421,47 @@ h1 small {
 	padding-left: 4px;
 }
 
-#show-content {
-	width: 800px;
-}
-
-#show-main {
-	margin: 20px;
-	width: 100%;
-	overflow: hidden;
-}
 #show-details h4 {
 	margin: 0.5em 0;
 }
-
-#show-main ul {
-	list-style: none;
-	padding-left: 15px;
-	width: 170px;
+#episode-player {
+	overflow: hidden;
+	margin: 20px 0 20px 20px;
 }
-
-#show-main strong {
-	display: block;
-	margin-top: 10px;
+#episode-player #show-player {
+	width: 600px;
 }
 
 .video-js-box {
-	float: left;
 	border: 1px solid #444;
 	border-bottom: none;
 }
 
 
-#show-main #show-player {
-	width: 580px;
-}
 #episodes {
-	margin-left: 15px;
-	clear: left;
-	width: 600px;
+	margin-top: 15px;
+	margin-left: 20px;
 	font-size: 0.8em;
+	width: 650px;
+}
+
+#episode-details {
+	padding-top: 50px;
+	padding-left: 20px;
+	height: 40px;
 }
 
 /** ALBUMS **/
+
+.summary {
+	margin-left: 180px;
+}
+
+#summary strong {
+	display: block;
+	padding-top: 5px;
+	color: #fff;
+}
 
 #album-head {
 	margin-top: -20px;
@@ -480,8 +484,6 @@ table {
 .track span, .track a {
 	display: block;
 }
-
-
 
 .track a {
 	margin-left: 25px;
@@ -613,12 +615,12 @@ table {
 	margin-top: 40px;
 }
 #movie-details {
-	height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
 	width: 200px;
 	float: left;
 	border-right: 1px solid #444;
-	margin-right: 20px;
-	overflow-y: hidden;
 }
 
 #movie-cover {
@@ -643,6 +645,11 @@ table {
 	background: url(images/content-opacity.png);
 	padding-bottom: 10px;
 }
+#movie-content .opacity {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 #movie-tech ul {
 	list-style: none;
 	padding-top: 20px;
@@ -656,6 +663,9 @@ table {
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
 }
+.media-prod {
+	padding-left: 20px;
+}
 
 .media-prod a:hover {
 	color: #fff;
@@ -664,7 +674,6 @@ table {
 .media-prod, #details-text p, #details-main p {
 	overflow: hidden;
 	color: silver;
-	padding-right: 20px;
 }
 #movie-prod .prod {
 	float: left;
@@ -673,21 +682,29 @@ table {
 .button-rel {
 	margin: 0 2px 0 20px;
 	padding: 5px;
-	background: #e1e1e1;
+	background-color: #6a6868;
 	border: 1px solid;
+	border-top: none;
+	z-index: 2;
 }
 .button-rel a {
 	display: block;
 	padding: 2px 0 2px 16px;
 	background: url(icons/movie-icons.png) no-repeat;
-	color: gray;
+	color: #fff;
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
 }
 .button-rel a:hover, .playlist-section a.paused, .playlist-section a.watching {
-	color: #ff5e27;
+	color: #9cf;
+}
+
+#movie-actions span.current, .button-rel {
+	border-color: #555;
+	box-shadow: 0 2px 5px #333;
+	position: relative;
 }
 
 .playlist-section a.watching {
@@ -705,7 +722,7 @@ table {
 .movie_3, .movie_2 {
 	width: 33%;
 }
-.movie_4 {
+.movie_4, .movie_5 {
 	width: 25%;
 }
 
@@ -727,14 +744,16 @@ table {
 	padding: 5px 10px;
 }
 
-#movie-actions span:hover, #movie-actions span.current, .button-rel {
+#movie-actions span:hover {
 	border-color: #83afdb;
 }
 
-#movie-actions span.current {
+#movie-actions span.current, #movie-actions span.current:hover {
+	z-index: 1;
+	color: #fff;
 	border-bottom: none;
 	padding-bottom: 8px;
-	background: #e1e1e1;
+	background: #6a6868;
 	-webkit-border-bottom-left-radius: 0;
 	-webkit-border-bottom-right-radius: 0;
 	-moz-border-radius-bottomleft: 0;

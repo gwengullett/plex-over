@@ -19,7 +19,7 @@ $lang['photos']				= "photos";
 $lang['video']				= "video";
 
 //movies
-$lang['director'] = "Réalisateur";
+$lang['director'] = "R&eacute;alisateur";
 $lang['duration'] = "Durée";
 $lang['rating'] 	= "Rating";
 $lang['genre']		= "Genre";
@@ -52,10 +52,14 @@ $lang['podcasts']									= 'Podcasts';
 $lang['playlists']								= 'Playlists';
 $lang['artists']									= 'Artistes';
 $lang['ratings']									= 'Classement';
+$lang['recently aired']						= 'Nouveautés';
+$lang['unwatched']								= 'Non vu';
+$lang['by collection']						= 'Collections';
 
 // shows
 $lang['season']		= "saison";
 $lang['episode']	= "episode";
+$lang['studio']		= "Studio";
 
 // albums / tracks tables
 $lang['music.album']		= "Albums";
@@ -63,9 +67,9 @@ $lang['music.track']		= "Morceau";
 $lang['music.duration'] = "Durée";
 
 // video playlist
-$lang['playlist.part_1']	= "Première partie";
-$lang['playlist.part_2']	= "Deuxième partie";
-$lang['playlist.part_3']	= "Troisième partie";
+$lang['playlist.part_1']	= "Partie 1";
+$lang['playlist.part_2']	= "Partie 2";
+$lang['playlist.part_3']	= "Partie 3";
 
 // Watch / Downlooads buttons
 $lang['watch']		= "Regarder";

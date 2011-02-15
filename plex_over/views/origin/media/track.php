@@ -2,7 +2,7 @@
 	<?= $views->top_nav ?>
 		
 	<div class="details">
-		<div id="details-main">
+		<div id="details-main" class="bb">
 				<h1 class="txt-shadow "><?= $item->title2 ?></h1>
 				<h2 class="txt-shadow ">
 					<span id="artist"><?= $item->title1 ?></span>, 
