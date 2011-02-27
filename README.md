@@ -17,7 +17,9 @@ Copy plex_over folder content somewhere where Plex Over can be served.
 In root folder, you'll find a subfolder "config" with 2 aliases: codeigniter and user_pref.  
 Open codeigniter, then set:  
 `$config['base_url'] = "plex_over url";`  
-`$config['language'] = "english" or "french";`
+`$config['language'] = "english" or "french";`  
+
+localization files are available in plex_over/languages. Feel free to submit your own.
 
 Open user_pref, then set:  
 `$config['plex_local'] = "Plex media server access for plex_over";`  
