@@ -36,7 +36,7 @@
 
 	<div id="content-bottom" class="dark-gradient">
 		<div class="left">
-		    <div id="audio"></div>
+		    <audio id="audio" controls></audio>
 		</div>
 		<div class="left listenning"></div>
 	</div>

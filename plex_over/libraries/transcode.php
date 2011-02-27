@@ -114,14 +114,14 @@ class Transcode {
 		$params->url				= $this->ci->plex_url.$part->key;
 		//$params->httpCookies= '';
 		//$params->userAgent	= '';
-		$transcode_url = $this->video_transpath.http_build_query($params);
+		$transcode_url = $this->m3u8_transpath.http_build_query($params);
 		$codes 	= $this->generate_keys($transcode_url);
 		
 		foreach ($codes as $key => $value)
 		{
 			$params->$key = $value;
 		} 
-		$transcode_url =	$this->ci->plex_url.$this->video_transpath.http_build_query($params);
+		$transcode_url =	$this->ci->plex_url.$this->m3u8_transpath.http_build_query($params);
 	 	
 	 	return $transcode_url;
 	}

@@ -58,7 +58,7 @@ class Itunes extends PE_Controller {
 		
 		if (in_array(strtolower($this->segments[3]), $multi))
 		{
-			if ($this->segments[3] == 'playlists')
+			if ($this->segments[3] == 'Playlists')
 			{
 				// upcase playlist string.
 				$segments 		= explode('/', $content);

@@ -66,7 +66,7 @@ $autoload['helper'] = array('plugins', 'text', 'inflector', 'html', 'form', 'url
 |
 */
 
-$autoload['config'] = array('plex_over');
+$autoload['config'] = array('plex_over', 'user_pref');
 
 
 /*

@@ -1,0 +1,24 @@
+Plugins:
+
+Types de vues "Directory" (défini par viewgroup dans les attributs généraux du xml)
+
+Dans les éléments détaillés, on retrouve: title, summary, key, subtitle
+
+- List : simple liste de noms
+contient: thumb, name, key. Généralement de type directory.
+Les items n'ont pas de thumb, donc utiliser la thumb générale
+
+- Menu: un liste
+contient key, title, summary, thumb, name
+
+- Details: Liste des éléments, généralement les items elles même.
+
+- Pictures: spécifique aux image. Plex l'utilise pour affiche les thumbs.
+Les items sont de type Photo
+
+- InfoList : Liste des éléments. Les items contiennent toutes les infos
+contient art, title1, 
+
+
+Certains media containers n'ont pas de view group, il faut donc tenter de se fier aux nom des items (Track, Movie, Photo)
+pour définir la vue. dans ce cas il sera pertinent de passer cette vue dans "details"

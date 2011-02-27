@@ -248,6 +248,29 @@ $(function(){
 		maxWidth:400
 	});
 	
+	$('input[name="search"]').search('.item', function(on) {
+  	on.all(function(results) {
+  	  var size = results ? results.size() : 0
+  	  $(this).next('span').find('a').text(size);
+  	});
+		
+  	on.reset(function() {
+  	  $('#none').hide();
+  	  $('.item').show();
+  	});
+		
+  	on.empty(function() {
+  	  $('#none').show();
+		  $('.item').hide();
+  	});
+		
+  	on.results(function(results) {
+  	  $('#none').hide();
+		  $('.item').hide();
+  	  results.show();
+		});
+	});
+
 	// summary read more
 	$('#summary .button').click(function(){$('#summary span').slideToggle()});
 });

@@ -35,7 +35,6 @@
 						<td><?= character_limiter($track->track, 70) ?></td>
 						<td>
 							<a href="<?= link_itunes($link, $album, $track) ?>"
-		    		    class="tip" 
 		    		    id="song_<?=$i?>"
 		    		    title="<?= $track->album ?>"
 		    		    album="<?= $track->album ?>"
@@ -58,7 +57,7 @@
 	
 	<div id="content-bottom" class="dark-gradient">
 		<div class="left">
-		    <audio controls></audio>
+		    <audio id="audio" controls></audio>
 		</div>
 		<div class="left listenning"></div>
 	</div>

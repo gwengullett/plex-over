@@ -31,8 +31,8 @@ function split_summary($text = '')
 	{
 		$parts		= str_split($text,  strrpos(substr($text, 0, $length), '.')+1);
 		$summary	= array_shift($parts);
-		$text  = $summary.'<span style="display:none">'.implode('', $parts).'</span>';
-		$text .= '<strong><a class="button rounded gradient">'.lang('read_more').'</a></strong>';
+		$text			= $summary.'<span style="display:none">'.implode('', $parts).'</span>';
+		$text		 .= '<strong><a class="button rounded gradient">'.lang('read_more').'</a></strong>';
 	}
 	return nl2br($text);
 }

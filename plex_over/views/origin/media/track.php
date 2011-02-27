@@ -30,7 +30,6 @@
 						<td><?= character_limiter($track->title, 70) ?></td>
 						<td>
 							<a href="<?= $this->plex_url.$track->media->Part->attributes()->key ?>"
-		    		    class="tip" 
 		    		    id="song_<?=$i?>"
 		    		    album="<?= $item->title2 ?>"
 		    		    rel="<?= $track->title ?>">
@@ -50,7 +49,7 @@
 
 	<div id="content-bottom" class="dark-gradient">
 		<div class="left">
-		    <div id="audio"></div>
+		  <audio id="audio" controls></audio>
 		</div>
 		<div class="left listenning"></div>
 	</div>

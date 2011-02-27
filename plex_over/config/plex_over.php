@@ -2,31 +2,9 @@
 
 /*
 | -------------------------------------------------------------------
-|  AUTHENTIFICATION
-| -------------------------------------------------------------------
-| If you run your server over the web, you'll need to be authenticate
-| before accessing files served. 
-| See here about how the password is accepted by Plex Server:
-| http://getsatisfaction.com/plex/topics/api_documentation-1bo5rc#reply_3813016
-|
-*/
-
-$config['username'] = '';
-$config['password']	= '';
-
-/*
-| -------------------------------------------------------------------
 |  APPLICATION CONFIGURATION
 | -------------------------------------------------------------------
 */
-
-// Specify the template folder
-$config['template'] = "origin";
-// enable transcoding
-$config['video_transcode'] = false;
-// subtitles folder
-$config['subtitles_folder'] = "cache/subtitles/";
-// Cache folder for thumbs
 $config['thumbs_folder']	= 'cache/thumbs/';
 // set the cache expiration (empty for no cache)
 $config['cache_expire']	= '';
@@ -38,21 +16,8 @@ $config['home_section']	= null;
 $config['debug_uri']		= false;
 // General Codeigniter debugging
 $config['debug_ci']			= false;
-// primitive bool for video conversion
+// primitive bool for video conversion with ffmpeg, experimental ATM.
 $config['video_conv']		= false;
-
-/*
-| -------------------------------------------------------------------
-|  PLEX SERVER URLS
-| -------------------------------------------------------------------
-*/
-// the PRIVATE url of the Plex Server (no trailing slash !!!!)
-// Used to retrive xml files. If your running plex server on same
-// host, prefer localhost (no name/dns resolution required = faster)
-$config['plex_local']		= 'http://localhost:32400';
-// the PUBLIC url of the Plex Server (no trailing slash !!!!)
-// used in frontend for downloads and images
-$config['plex_url']			= 'http://localhost:32400';
 
 // -------------------------------------------------------------------
 // Serveur sections path (if it change some time)
@@ -67,8 +32,8 @@ $config['meta_url']			= 'library/metadata/';
 */
 
 // Music
-$config['artist_filters']	= array('albums', 'genre', 'all', 'recentlyadded', 'artists','podcasts', 'ratings', 'playlists');
+$config['artist_filters']	= array('albums', 'collection', 'genre', 'all', 'recentlyadded', 'artists','podcasts', 'ratings', 'playlists');
 // Movies
-$config['movie_filters']	= array('all', 'genre', 'recentlyadded', 'recentlyviewed', 'actor', 'director');
+$config['movie_filters']	= array('all', 'collection', 'genre', 'recentlyadded', 'recentlyviewed', 'actor', 'director');
 // TV Shows
-$config['show_filters']		= $config['movie_filters'];
+$config['show_filters']		= array('all', 'collection', 'genre', 'recentlyadded', 'recentlyviewed', 'newest') ;
