@@ -26,9 +26,15 @@ $config['template'] = "origin";
 
 // enable plex h264 transcoding (true/false)
 $config['video_transcode'] = false;
-$config['video_quality'] 	 = 5; /* 0 to 5 */
+// quality: 1 (lower) to 5 (higher)
+$config['video_quality'] 	 = 5; 
 
-// subtitles folder (copied in it if subtitles are found
+/* subtitles folder (copied in it if subtitles are found
+Subtitles should be placed in the movie's directory and named as the movie
+ie:
+- /folder/my-movie.mov
+- /folder/my-movie.srt
+*/
 $config['subtitles_folder'] = "cache/subtitles/";
 
 // set the cache expiration in minutes (empty for no cache)
