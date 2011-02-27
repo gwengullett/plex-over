@@ -21,11 +21,11 @@ $config['password']	= '';
 |  GENRAL SETTINGS
 | -------------------------------------------------------------------
 */
-// Specify the template folder
+// Specify the template folder (plex_over/views/)
 $config['template'] = "origin";
 
-// enable plex h264 transcoding
-$config['video_transcode'] = true;
+// enable plex h264 transcoding (true/false)
+$config['video_transcode'] = false;
 $config['video_quality'] 	 = 5; /* 0 to 5 */
 
 // subtitles folder (copied in it if subtitles are found
