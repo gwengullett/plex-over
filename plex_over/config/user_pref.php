@@ -18,7 +18,7 @@ $config['password']	= '';
 
 /*
 | -------------------------------------------------------------------
-|  GENRAL SETTINGS
+|  GENERAL SETTINGS
 | -------------------------------------------------------------------
 */
 // Specify the template folder (plex_over/views/)
@@ -29,7 +29,8 @@ $config['video_transcode'] = false;
 // quality: 1 (lower) to 5 (higher)
 $config['video_quality'] 	 = 5; 
 
-/* subtitles folder (copied in it if subtitles are found
+/*
+subtitles folder (copied inside if subtitles are found)
 Subtitles should be placed in the movie's directory and named as the movie
 ie:
 - /folder/my-movie.mov
@@ -37,8 +38,12 @@ ie:
 */
 $config['subtitles_folder'] = "cache/subtitles/";
 
-// set the cache expiration in minutes (empty for no cache)
-$config['cache_expire']	= '';
+/*
+Set the cache expiration in minutes (empty for no cache)
+For more informations about how the cache works: http://codeigniter.com/user_guide/general/caching.html
+In our context, cache will stop Plex Over querying xml files from PMS.
+*/
+$config['cache_expire']	= 30;
 
 /*
 | -------------------------------------------------------------------

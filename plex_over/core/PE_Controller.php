@@ -26,11 +26,15 @@ class PE_Controller extends CI_Controller {
 		$this->meta_url			= $this->config->item('meta_url');
 		$this->home_url			= $this->config->item('home_section');
 		$this->template			= $this->config->item('template');
-		//$this->authentication	= $this->plex->authentication_headers();
 				
 		// create a segment object
 		$this->segments = $this->uri->segment_array();
 		
+		// Cache cannot handle POST requests (ajax test: for videos in plugins).
+		if ($_POST AND $this->input->is_ajax_request())
+		{
+			$this->config->set_item('cache_expire', '');
+		}
 		// set the cache if defined in config
 		if ($cache_dur = $this->config->item('cache_expire') AND is_numeric($cache_dur))
 		{
