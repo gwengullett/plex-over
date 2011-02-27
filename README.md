@@ -1,15 +1,18 @@
-## Plex over preview
+## Plex Over early preview
+Get You Plex Content within a web browser.
+
 ### requirement: 
 #### server side:  
 - PHP 5.2 or newer
 - PHP-cURL
+- Plex Media Server running
 
 ##### Client side:  
 - A modern browser (Safari requiered if you enable video transcoding)
 - Javascript enabled
 
 ### installation:
-Copy plex_over folder content somewhere where plex_over can be served.  
+Copy plex_over folder content somewhere where Plex Over can be served.  
 
 In root folder, you'll find a subfolder "config" with 2 aliases: codeigniter and user_pref.  
 Open codeigniter, then set:  
@@ -34,3 +37,6 @@ However, Plex Over can communicate with PMS with authentication header. You can 
 - As video and audio players are html5, some format can't be played on any browser (ie: mp3 and firefox)
 
 - Not all plugins are compatible.
+
+### More informations:
+- CodeIgniter Website: http://codeigniter.com/
