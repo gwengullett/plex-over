@@ -14,19 +14,20 @@ Get You Plex Content within a web browser.
 ### installation:
 Copy plex_over folder content somewhere where Plex Over can be served.  
 
-In root folder, you'll find a subfolder "config" with 2 aliases: codeigniter and user_pref.  
-Open codeigniter, then set:  
+In root folder, you'll find a subfolder "plex_over/config"  
+Open config.php, then set:  
 `$config['base_url'] = "plex_over url";`  
 `$config['language'] = "english" or "french";`  
 
-localization files are available in plex_over/languages. Feel free to submit your own.
+localization files are available in plex_over/languages. Feel free to submit your own.  
+More infos about Codeigniter configuration: http://codeigniter.com/user_guide/installation/index.html
 
-Open user_pref, then set:  
+Open user_pref.php, then set:  
 `$config['plex_local'] = "Plex media server access for plex_over";`  
 `$config['plex_url'] = "Plex media server access browsers";`
 
 ### configuration:
-Read comments in two above aliases for more details about configuration.
+Please, read comments in two above files for more details about other configuration parameters.
 
 ### issues / Limitations:
 - No 'Secure Server Access' for files served over internet.
@@ -41,4 +42,4 @@ However, Plex Over can communicate with PMS with authentication header. You can 
 - Not all plugins are compatible.
 
 ### More informations:
-- CodeIgniter Website: http://codeigniter.com/
+Plex Over is build on the top of Codeigniter php framework. For more informations about Codeigniter, visit their website: http://codeigniter.com/
