@@ -75,7 +75,6 @@ $lang['playlist.part_3']	= "Partie 3";
 $lang['watch']		= "Regarder";
 $lang['download'] = "Télécharger";
 
-
 // iphoto
 $lang['events']		= 'évènements';
 $lang['albums']		= 'albums';
@@ -83,4 +82,8 @@ $lang['keywords']	= 'mots clé';
 $lang['rating']		= 'classement';
 $lang['element']	= '&eacute;l&eacute;ment';
 $lang['library']	= 'bibliothèque';
+
+// Message erreur model
+$lang['error.plex']								= 'Message PMS';
+$lang['error.offline'] = "rien... PMS semble être hors ligne";
 

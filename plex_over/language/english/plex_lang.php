@@ -74,10 +74,12 @@ $lang['playlist.part_3']					= "Part 3";
 $lang['watch']										= "Watch";
 $lang['download']									= "Download";
 
-
 // iphoto
 $lang['events']										= 'Events';
 $lang['keywords']									= 'Keywords';
 $lang['element']									= 'Element';
 $lang['library']									= 'Library';
 
+// Error msg
+$lang['error.plex']								= 'PMS said';
+$lang['error.offline']						= "Nothing... PMS seem's to be offline!";

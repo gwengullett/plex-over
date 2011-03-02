@@ -27,7 +27,11 @@ Open user_pref.php, then set:
 `$config['plex_url'] = "Plex media server access browsers";`
 
 ### configuration:
-Please, read comments in two above files for more details about other configuration parameters.
+- Please, read comments in two above files for more details about other configuration parameters.
+- rename htaccess.txt to .htaccess. If Plex Over is accessible as a subfolder (ie: http://example.com/po_folder/), you may have to modify line 6:  
+`RewriteRule ^(.*)$ index.php/$1 [L]`  
+to  
+`RewriteRule ^(.*)$ /po_folder/index.php/$1 [L]`  
 
 ### issues / Limitations:
 - No 'Secure Server Access' for files served over internet.

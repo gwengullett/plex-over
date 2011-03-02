@@ -205,7 +205,8 @@ class Plex extends CI_Model {
 	}
 	
 	/**
-	 * curl_load function.
+	 * load_xml function.
+	 * Load PMS xml files with simplexml classs and curl
 	 * 
 	 * @access private
 	 * @return void
@@ -223,11 +224,11 @@ class Plex extends CI_Model {
 		{
 			if ($infos['http_code'] === 0)
 			{
-				$code = "Nothing... PMS seem's to be offline!";
+				$code = lang('plex_model.offline');
 				$infos['http_code'] = 404;
 			}
 			exit(show_error(
-				'Plex Media Server said: '.str_replace('h1', 'strong', ($xml) ? $xml : $code).'<p><em>'.$url.'</em></p>',
+				lang('error.plex').': '.str_replace('h1', 'strong', ($xml) ? $xml : $code).'<p><em>'.$url.'</em></p>',
 				$infos['http_code']
 			));
 		}
@@ -246,7 +247,7 @@ class Plex extends CI_Model {
 	public function load($url = '')
 	{
 		// build uri request
-		$request = $this->plex_local.str_ireplace('//', '/', '/'.$url);
+		$request = $this->plex_local.str_replace('//', '/', '/'.$url);
 		
 		$xml		= $this->load_xml($request);
 		$object = @simplexml_load_string($xml);
