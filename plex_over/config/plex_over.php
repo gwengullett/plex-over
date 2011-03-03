@@ -6,8 +6,6 @@
 | -------------------------------------------------------------------
 */
 $config['thumbs_folder']	= 'cache/thumbs/';
-// set the cache expiration (empty for no cache)
-$config['cache_expire']	= '';
 // Size of thumbs (fit the width)
 $config['thumb_width']	= 150;
 // You can set a specific section to load from your home page

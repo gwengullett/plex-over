@@ -13,8 +13,11 @@ body {
 a {
 	color: inherit;
 	text-decoration: none;
+	outline: none;
 }
-
+img {
+	border: none;
+}
 strong {
 	font-weight: 600;
 }
@@ -103,6 +106,36 @@ strong {
 	color: #748192;
 	height: 100%;
 }
+
+#sidebar input[type="submit"] {
+	text-indent: -9999px;
+	background: none;
+	border: none;
+	height: 18px;
+	width: 74px;
+	background: #e1e1e1 url(icons/switch-view.png) center 2px no-repeat;
+	cursor: pointer;
+}
+.test {
+	color: #1f477e;
+}
+
+#sidebar form {
+	background: #73A2DC;
+	-webkit-box-shadow: inset 0 0 10px #1f477e;
+	-moz-box-shadow: inset 0 0 10px #1f477e;
+	box-shadow: inset 0 0 10px #1f477e;
+	border-bottom: 1px solid gray;
+}
+
+#sidebar form :nth-child(1) {
+	background-position: center -15px;
+}
+
+#sidebar form .active {
+	background-color: transparent;
+}
+
 #sidebar h4 {
 	text-transform: uppercase;
 	margin-top: 1em;
@@ -127,7 +160,7 @@ strong {
 }
 
 
-#sidebar .active {
+#sidebar .active, .item-flat:hover {
 	color: #fff;
 	background-color: #2d67b8;
 	background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(45,103,184)),color-stop(1, rgb(115,162,220)));
@@ -149,6 +182,25 @@ strong {
 .sb-artist, .sb-music, .sb-itunes {
 	list-style-image: url(icons/icon-music.png);
 }
+
+.item-flat {
+	background: 5px center no-repeat;
+}
+.movie {
+	background-image: url(icons/icon-movie.png);
+}
+
+.show, .episode {
+	background-image: url(icons/icon-show.png);
+}
+.photos {
+	background-image: url(icons/icon-photos.png);
+}
+
+.artist, .music, .itunes, .album {
+	background-image: url(icons/icon-music.png);
+}
+
 
  /* TOP NAV */
  /* TOP NAV */
@@ -248,7 +300,7 @@ strong {
 }
 
 #browser {
-	margin-top: 25px;
+	margin-top: 40px;
 	overflow: hidden;
 	min-height: 90%;
 }
@@ -258,8 +310,14 @@ strong {
 	margin: 5px;
 }
 
+#browser .item.item-flat {
+	padding: 5px 10px 5px 25px;
+	float: none;
+	margin: 0;
+}
+
 .item {
-		position: relative;
+	position: relative;
 }
 
 .item .img, .h3 {
@@ -267,7 +325,6 @@ strong {
 	text-align: center;
 	left: 0;
 }
-
 
 .h3 {
 	bottom: 0;
@@ -311,9 +368,17 @@ background: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(12
 	width: 170px;
 	height: 220px;
 }
+#section.home .item {
+	width: 180px;
+	height: 180px;
+}
 
 #section .item .img .rounded {
 	width: 110px;
+}
+
+#section.home .item .img .rounded {
+	width: 180px;
 }
 
 #section .item .img, .h3 {
@@ -492,13 +557,15 @@ table {
 .album-container .play, .show-list h3 {
 	color: #9cf;
 }
-
+.album-container .track  a {
+	background: left center no-repeat;
+}
 .album-container .track .play a {
-	background: url(icons/sound-on.png) left center no-repeat;
+	background-image: url(icons/sound-on.png);
 }
 
 .album-container .track .pause a {
-	background: url(icons/sound-off.png) left center no-repeat;	
+	background-image: url(icons/sound-off.png);	
 }
 
 .album-container .pause {
@@ -529,10 +596,11 @@ table {
 	display: block;
 	text-indent: -9999px;
 	right: 0;
-	width:80%;
+	width: 80%;
+	background: url(icons/sound.png) 10px -35px no-repeat;
 }
-.album-content .play a, .album-content .pause a {
-	background: url(icons/sound.png) 10px -18px no-repeat;
+.album-content .play a {
+	background-position: 10px -18px;
 } 
 .album-content .play {
 	color: #9CF;
@@ -574,7 +642,7 @@ table {
 }
 
 .alt {
-	background-color: #333;
+	background-color: #353535;
 }
 
 #audio {
@@ -659,7 +727,7 @@ table {
 	padding-left: 20px;
 }
 
-.media-prod a {
+a {
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
 	-o-transition: all 0.2s;

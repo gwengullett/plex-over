@@ -40,7 +40,7 @@ class Itunes extends PE_Controller {
 			$data['items']		= $this->audio->find_by($this->segments);
 			$data['filters']	= $this->_top_nav($this->directory, 'artist');
 			$data['id']				= 'music';
-			$this->render('music/itunes', $data);
+			$this->render('section/'.$this->section_view, $data);
 		}
 	}
 	

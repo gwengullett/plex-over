@@ -41,6 +41,7 @@ class Section extends Plex {
 		return $return;
 	}
 	
+	
 	/**
 	 * sort_sections function.
 	 * Sort sections by type.

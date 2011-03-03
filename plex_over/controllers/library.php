@@ -11,17 +11,29 @@ class Library extends PE_Controller {
 	public function __construct()
 	{
 		parent::__construct(__CLASS__);
+		$this->load->helper('sections');
 	}
 	
 	/**
 	 * index function.
+	 * home page
 	 * 
 	 * @access public
 	 * @return void
 	 */
 	public function index()
 	{
-		redirect($this->controller.'sections');
+		$data = $this->_prepare_links();
+		$data['active_sb']		= $this->uri->segment(3);
+		$data['items']				= $this->sidebar_library;
+		foreach ($data['items']->content as $key => $item)
+		{
+			$item->addAttribute('ratingKey', $item->key.'/all');
+		}
+		$data['links']->item	= 'library/sections/';
+		$data['link']					= 'library/sections';
+		$this->breadcrumb[]		= '';
+		$this->render('section/'.$this->section_view, $data);
 	}
 	
 	/**
@@ -34,11 +46,10 @@ class Library extends PE_Controller {
 	 * @return void
 	 */
 	public function sections($section_type = 'movie')
-	{
-		$this->load->helper('sections');
-		
+	{		
 		$data = $this->_prepare_links();
 		$data['active_sb']	= $this->uri->segment(3);
+		$data['link']				= 'medias';
 
 		// Get section's content
 		if (count($this->segments == 5))
@@ -60,10 +71,10 @@ class Library extends PE_Controller {
 		// (actors don't even have a viewGroup property)
 		if (! isset($data['items']->viewGroup) OR $data['items']->viewGroup == 'secondary')
 		{
-			$data['links']->item = $this->uri->uri_string();
+			$data['link'] = $this->uri->uri_string();
 		}
 		// here we come...
-		$this->render('section/index', $data);
+		$this->render('section/'.$this->section_view, $data);
 	}
 	
 	

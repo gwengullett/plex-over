@@ -141,6 +141,24 @@ function transcode_img($item, $opts = array(), $as_url = false)
 }
 
 /**
+ * title function.
+ * 
+ * @access public
+ * @param mixed $item
+ * @return void
+ */
+function title($item)
+{
+	$maybe = array('album', 'artist', 'title', 'genre');
+	
+	foreach ($maybe as $title)
+	{
+		if (isset($item->$title)) return $item->$title;
+	}
+}
+
+
+/**
  * get_ci function.
  * Call Codeigniter instance
  * 

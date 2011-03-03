@@ -43,7 +43,7 @@ Set the cache expiration in minutes (empty for no cache)
 For more informations about how the cache works: http://codeigniter.com/user_guide/general/caching.html
 In our context, cache will stop Plex Over querying xml files from PMS.
 */
-$config['cache_expire']	= 30;
+$config['cache_expire']	= '';
 
 /*
 | -------------------------------------------------------------------

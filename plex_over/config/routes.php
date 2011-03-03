@@ -32,7 +32,7 @@
 | would be loaded.
 */
 
-$route['default_controller'] = "Library";
+$route['default_controller'] = "library";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

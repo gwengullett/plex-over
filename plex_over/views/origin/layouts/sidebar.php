@@ -1,4 +1,9 @@
 <div id="sidebar" class="fit">
+		<?= form_open('user/set_view') ?>
+			<?= form_submit('flat', 'flat' , 'class="'.active_item('flat', $this->section_view).'"') ?>
+			<?= form_submit('grid', 'grid', 'class="'.active_item('grid', $this->section_view).'"') ?>
+			<?= form_hidden('redirect', $this->uri->uri_string()) ?>
+		<?= form_close() ?>
 	
 	<h4><?= pluralize($sections->size, lang('lib_section')) ?></h4>
 	<ul>

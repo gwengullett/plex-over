@@ -27,7 +27,8 @@ class Plugins extends PE_Controller {
 	public function index()
 	{
 		$data['items']->content = $this->directory;
-		$this->render('third/index', $data);
+		$data['link'] = $this->uri->segment(1);
+		$this->render('section/'.$this->section_view, $data);
 	}
 	
 	/**

@@ -1,21 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * title function.
- * 
- * @access public
- * @param mixed $item
- * @return void
- */
-function title($item)
-{
-	$maybe = array('album', 'artist', 'title', 'genre');
-	
-	foreach ($maybe as $title)
-	{
-		if (isset($item->$title)) return $item->$title;
-	}
-}
 
 /**
  * link_itunes function.
