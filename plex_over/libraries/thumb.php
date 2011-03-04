@@ -15,12 +15,12 @@ class Thumb {
 		
 		if (! file_exists($main_cache) OR ! is_dir($main_cache))
 		{
-			mkdir($main_cache, DIR_WRITE_MODE);
+			@mkdir($main_cache, DIR_WRITE_MODE);
 		}
 		
 		if (! file_exists($this->cache_folder) OR ! is_dir($this->cache_folder))
 		{
-			mkdir($this->cache_folder, DIR_WRITE_MODE);
+			@mkdir($this->cache_folder, DIR_WRITE_MODE);
 		}
 		
 		$this->ci->load->library('image_lib'); 
