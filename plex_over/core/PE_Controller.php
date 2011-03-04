@@ -26,7 +26,7 @@ class PE_Controller extends CI_Controller {
 		$this->meta_url			= $this->config->item('meta_url');
 		$this->home_url			= $this->config->item('home_section');
 		$this->template			= $this->config->item('template');
-		$this->section_view	= ($cookie = $this->input->cookie('po_section-view')) ? $cookie : 'grid';
+		$this->section_view	= ($cookie = $this->input->cookie('po_section_view')) ? $cookie : 'grid';
 				
 		// create a segment object
 		$this->segments = $this->uri->segment_array();

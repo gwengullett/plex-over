@@ -19,10 +19,10 @@ class User extends PE_Controller {
 	{
 		$redirect = $this->input->post('redirect', TRUE);
 		$view			= ($this->input->post('grid', TRUE)) ? $this->input->post('grid', TRUE) : $this->input->post('flat', TRUE);
-		$current	= $this->input->cookie('po_section-view', TRUE);
+		$current	= $this->input->cookie('po_section_view', TRUE);
 
 		$cookie = array(
-		  'name'   => 'section-view',
+		  'name'   => 'section_view',
 		  'value'  => $view,
 		  'expire' => '2592000',
 		  'prefix' => 'po_'

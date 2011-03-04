@@ -14,7 +14,7 @@ $(function(){
 });
 
 </script>
-<div id="breadcrumb" class="gradient fixed">
+<div id="breadcrumb" class="soft-gradient fixed">
 
 	<div class="b-path left">
 		<?php if (isset($this->breadcrumb)): ?>

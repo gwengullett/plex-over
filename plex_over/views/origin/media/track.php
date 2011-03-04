@@ -27,7 +27,7 @@
 				<?php $i = 0; foreach ($item->content as $track): ?>
 					<tr id="index_<?= $i ?>" class="item <?= css_alt($i) ?>">
 						<td><?= $i+1 ?></td>
-						<td><?= character_limiter($track->title, 70) ?></td>
+						<td><?= character_limiter($track->title, 50) ?></td>
 						<td>
 							<a href="<?= $this->plex_url.$track->media->Part->attributes()->key ?>"
 		    		    id="song_<?=$i?>"
@@ -35,7 +35,7 @@
 		    		    rel="<?= $track->title ?>">
 		    		    link to song
 							</a>
-							<span><?= character_limiter($item->title1, 70) ?></span>
+							<span><?= character_limiter($item->title1, 20) ?></span>
 						</td>
 						<td><?= duration($track->duration)." ".lang('minutes.short' )?></td>
 						<td><?=byte_format($track->media->Part->attributes()->size) ?></td>

@@ -10,6 +10,7 @@ $lang['album.childs']		= "Pistes";
 
 $lang['track']					= "piste";
 $lang['album']					= "album";
+$lang['item']						= "element";
 
 // ksidebar itunes library
 $lang['lib_section']	= "Librarie";
@@ -35,7 +36,7 @@ $lang['read_more']= "lire la suite";
 
 
 // filters dropdown menu
-$lang['all films']								= 'Tous les films';
+$lang['all']											= 'Tous';
 $lang['all artists']							= 'Tous les artistes';
 $lang['all shows']								= 'Toutes les séries';
 $lang['recently added']						= 'Ajoutés récement';

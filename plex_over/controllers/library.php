@@ -66,7 +66,7 @@ class Library extends PE_Controller {
 			$bclink = $data['links']->top_nav.'/'.$this->uri->segment(5);
 			$this->breadcrumb[$bclink] = $this->uri->segment(5);
 		}
-		$this->breadcrumb[] = @$data['items']->title2;
+		$this->breadcrumb[] = @$data['items']->title2.' ('.pluralize(count($data['items']->content), lang('item')).')';
 		// try to get correct back links for medias if secondary viewGroup is found
 		// (actors don't even have a viewGroup property)
 		if (! isset($data['items']->viewGroup) OR $data['items']->viewGroup == 'secondary')

@@ -224,7 +224,7 @@ class Plex extends CI_Model {
 		{
 			if ($infos['http_code'] === 0)
 			{
-				$code = lang('plex_model.offline');
+				$code = lang('error.offline');
 				$infos['http_code'] = 404;
 			}
 			exit(show_error(
