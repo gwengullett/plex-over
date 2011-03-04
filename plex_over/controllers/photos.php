@@ -31,7 +31,7 @@ class Photos extends PE_Controller {
 
 		if ($key = $this->uri->segment(4))
 		{
-			$data['link']	= $this->plex_url.$this->uri->uri_string();
+			$data['link']	= $this->plex_url.'/'.$this->uri->uri_string();
 			$data['item'] = $this->plex->load(implode('/', $this->segments));
 			$bctitle  = lang(strtolower($data['item']->attributes()->title1)).' ';
 			$bctitle .= '('.pluralize(count($data['item']->Photo), lang('element')).')';
