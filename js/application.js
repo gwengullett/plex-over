@@ -245,7 +245,7 @@ function resize_media(container, distance) {
 	  return this.each(function() {
 	  
 			var currentSelected = $(this).find(':selected');
-			$(this).after('<span class="customStyleSelectBox rounded-st"><span class="customStyleSelectBoxInner">'+currentSelected.text()+'</span></span>').css({position:'absolute', opacity:0,fontSize:$(this).next().css('font-size')});
+			$(this).after('<span class="customStyleSelectBox rounded-st"><span class="customStyleSelectBoxInner">'+currentSelected.text()+'</span></span>').css({position:'absolute', left: '0', opacity:0,fontSize:$(this).next().css('font-size')});
 			var selectBoxSpan = $(this).next();
 			var selectBoxWidth = parseInt($(this).width()) - parseInt(selectBoxSpan.css('padding-left')) -parseInt(selectBoxSpan.css('padding-right'));			
 			var selectBoxSpanInner = selectBoxSpan.find(':first-child');
@@ -299,7 +299,7 @@ $(function(){
 	});
 
 	// summary read more
-	$('#summary .button').click(function(){$('#summary span').slideToggle(800)});
+	$('#summary .button').click(function(){$('#summary span').slideToggle(600)});
 	// select
 	$('select#top_nav').customStyle();
 	

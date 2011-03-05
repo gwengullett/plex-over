@@ -29,7 +29,7 @@ $(function(){
 		<?php if (isset($filters)): ?>
 	    	<?= topnav_select($links->top_nav, $filters, $this->segments) ?>
 	   <?php endif ?>
-			<input type="search" name="search" id="search" placeholder="<?= lang('search') ?>" />
+			<input type="search" name="search" id="search" class="rounded-st" />
 	</div>
 
 </div>

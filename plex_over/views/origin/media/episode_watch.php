@@ -1,7 +1,10 @@
 <script>
  $(function(){
 		$('a.tip').tipTip({maxWidth: 400, delay : 1000, fadeOut:0, defaultPosition: 'top'});
-		var myPlayer = VideoJS.setup("show-player");
+		var player = VideoJS.setup("show-player");
+		var ratio = $(player.video).attr('data-ratio');
+		var curWidth = $('#show-player').width();
+		$('#show-player').height(Math.round(curWidth / ratio)+'px');
  });
 </script>
 <div id="content" class="fit">
@@ -48,16 +51,14 @@
 	
 	<div id="movie-content">
 		<div id="episode-details" class="dark-gradient bb">	
-			<h1 class="left">
+			<h1>
 			  <?= $episode->title ?> 
 			  <small>- <?= lang('episode')." ".$episode->index ?></small>
 			 </h1>
-		  <h1 class="right"><small><?= $item->title1." ".$item->title2 ?></small></h1>
 		</div>
-		
 		<div id="episode-player">
 			<div class="video-js-box left">
-				<video id="show-player" class="video-js" controls="controls" poster="<?= $this->plex_url.thumb($episode) ?>" >
+				<video data-ratio="<?= $episode->attributes->aspectRatio ?>" id="show-player" class="video-js" controls="controls">
 					<source src="<?= $this->transcode->video($episode->media->part[0], array('ratingKey' => $item->key)) ?>"  type="video/mp4" />
 					<track kind="subtitles" src="<?= $episode->media->part[0]->subtitles ?>" srclang="en-US" label="English"></track>
 				</video>
@@ -66,7 +67,7 @@
 
 		<div id="episodes">
 		  <?php foreach ($item->content as $friend): ?>
-		  	<div class="jacket left">
+		  	<div class="jacket">
 		  		<a href="<?= link_media($link, $friend->ratingKey.$show_link, $this->uri->segment(9)) ?>"
 		  			title="<h3><?= $friend->title ?></h3> <?= $friend->summary ?>" 
 		  			class="tp" >

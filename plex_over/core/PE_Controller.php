@@ -80,9 +80,10 @@ class PE_Controller extends CI_Controller {
 		$data['title']			 	= implode(' - ', $this->breadcrumb);
 
 		$this->load->vars($data);
-		$this->load->view($this->template.'/layouts/head');
-		$this->load->view($this->template.'/layouts/sidebar');
-		$this->load->view($this->template.'/'.$view);
+		$app['head_view']		 = $this->load->view($this->template.'/layouts/head', '', true);
+		$app['sidebar_view'] = $this->load->view($this->template.'/layouts/sidebar', '', true);
+		$app['main_view']		 = $this->load->view($this->template.'/'.$view, '', true);
+		$this->load->view($this->template.'/layouts/application', $app);
 
 	}
 	

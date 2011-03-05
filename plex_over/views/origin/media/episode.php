@@ -12,7 +12,7 @@
 		<?php foreach ($item->content as $episode): ?>
 			
 			<?php if (isset($episode->ratingKey)): ?>
-				<div class="show-list bb">
+				<div class="item show-list bb">
 						<?= transcode_img($episode, array('width' => 130, 'height' => 72, 'align' => 'left', 'type' => 'src'))?>
 					<div class="show-list-txt">
 						<h3>

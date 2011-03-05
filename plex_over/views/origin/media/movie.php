@@ -13,20 +13,22 @@ $(function(){
 	var toMove		= $('#movie-prod');
 	var playerDiv = $('#player');
 	
-	$('.button').eq(0).stop().toggle(
+	$('#movie-actions .button').eq(0).stop().toggle(
 	function(){
-		toMove.hide(uiEffect, { direction: 'up' }, uiSpeed,function(){
-			playerDiv.show(uiEffect, { direction: 'down' }, uiSpeed);
+		toMove.fadeTo(uiSpeed, 0, function(){
+			$(this).slideUp(0);
+			playerDiv.fadeTo(uiSpeed, 1);
 		});
 		playlist.show();
 	},function(){
-		playerDiv.hide(uiEffect, { direction: 'down' }, uiSpeed, function(){
-			toMove.show(uiEffect, { direction: 'up' }, uiSpeed);
+		playerDiv.fadeTo(uiSpeed, 0, function(){
+			$(this).slideUp(0);
+			toMove.fadeTo(uiSpeed, 1);
 		});
 		playlist.hide();
 	});
 	
-	$('.button').eq(1).stop().toggle(
+	$('#movie-actions .button').eq(1).stop().toggle(
 	function(){
 		if (player) {
 			$('a.'+playing).switchClass(playing, paused);
@@ -38,7 +40,7 @@ $(function(){
 	});
 	
 	
-	$('.button').toggle(
+	$('#movie-actions .button').toggle(
 		function(){
 		$('.current').click();
 			$(this).addClass('current');
