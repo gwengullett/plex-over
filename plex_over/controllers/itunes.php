@@ -23,7 +23,7 @@ class Itunes extends PE_Controller {
 
 		if ($key = $this->uri->segment(4))
 		{
-			$data['link']	= $this->plex_url.$this->uri->uri_string();
+			$data['link']	= $this->plex_url.'/'.$this->uri->uri_string();
 			$data['item'] = $this->_load_content('/iTunes/'.$this->uri->segment(3).'/'.rawurlencode($key));
 
 			$this->breadcrumb[$this->uri->segment(1).'/'.__FUNCTION__] = 'iTunes';
