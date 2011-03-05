@@ -85,7 +85,7 @@ function topnav_select($link, $filters, $segments)
 	
 	foreach ($filters->content as $item)
 	{
-	  $value = $link.'/'.$item->key;
+	  $value = '/'.$link.'/'.$item->key;
 	  $menu[$value] = ($txt = lang(strtolower(strval($item->title)))) ? $txt : lang('all');
 	  
 	  if (in_array($item->key, $segments)) $active = $value;
