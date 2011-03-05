@@ -171,7 +171,7 @@ $(function(){
 			<div id="player" class="shadow dark-gradient" style="display:none">
 				<div class="video-js-box">
 					<video id="show-player" class="video-js vim-css">
-						<source type="video/mp4" />
+						<source type="video/mp4">
 						<track kind="subtitles" src="" srclang="en-US" label="English"></track>
 					</video>
 				</div>

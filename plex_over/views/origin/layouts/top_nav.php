@@ -4,7 +4,7 @@ $(function(){
 	
 	var current_val = $('#top_nav option:selected').val();
 	
-	$('#top_nav').click(function() {
+	$('#top_nav').change(function() {
 		var new_val = $('#top_nav option:selected').val();
 		if (current_val != new_val)
 		{

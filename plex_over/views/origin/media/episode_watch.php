@@ -59,7 +59,7 @@
 		<div id="episode-player">
 			<div class="video-js-box left">
 				<video data-ratio="<?= $episode->attributes->aspectRatio ?>" id="show-player" class="video-js" controls="controls">
-					<source src="<?= $this->transcode->video($episode->media->part[0], array('ratingKey' => $item->key)) ?>"  type="video/mp4" />
+					<source src="<?= $this->transcode->video($episode->media->part[0], array('ratingKey' => $item->key)) ?>"  type="video/mp4">
 					<track kind="subtitles" src="<?= $episode->media->part[0]->subtitles ?>" srclang="en-US" label="English"></track>
 				</video>
 			</div>
