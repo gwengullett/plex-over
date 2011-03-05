@@ -15,7 +15,7 @@
   $(function() {
 		var sum_length	= 400;
     
-    $('img[data-src]').attr('src', '<?=site_url('/images/blank.png')?>');
+    $('img[data-src]').attr('src', '<?= base_url().'/images/blank.png' ?>');
   	$('img[data-src]').live('inview', function(event, isVisible) {
   		if (!isVisible) { return; }
   		var img = $(this);

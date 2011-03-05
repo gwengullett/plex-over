@@ -23,7 +23,7 @@ $config['base_url']	= "http://localhost/plex_over";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "";
+$config['index_page'] = "index.php";
 
 /*
 |--------------------------------------------------------------------------

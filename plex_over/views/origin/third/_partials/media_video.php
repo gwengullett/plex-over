@@ -20,7 +20,7 @@ $(function(){
 });
 
 function raw_media(clip) {
-	flowplayer("flash-media", '<?= site_url('js/flowplayer/flowplayer-3.2.5.swf') ?>', {
+	flowplayer("flash-media", '<?= base_url().'js/flowplayer/flowplayer-3.2.5.swf' ?>', {
 		clip: {
 			url:clip.url,
 		  scaling: 'fit'
@@ -29,7 +29,7 @@ function raw_media(clip) {
 }
 
 function stream_media(clip) {
-	flowplayer("flash-media", '<?= site_url('js/flowplayer/flowplayer-3.2.5.swf') ?>', {
+	flowplayer("flash-media", '<?= base_url().'js/flowplayer/flowplayer-3.2.5.swf' ?>', {
 		clip: {
 		  url:clip.url,
 		  provider: 'rtmp',
@@ -37,7 +37,7 @@ function stream_media(clip) {
 		},
 		plugins: {
 		  rtmp: {
-		  	url: '<?= site_url('js/flowplayer/flowplayer.rtmp-3.2.3.swf') ?>',
+		  	url: '<?= base_url().'js/flowplayer/flowplayer.rtmp-3.2.3.swf' ?>',
 		  	netConnectionUrl : clip.connexion_url
 		  }
 		}

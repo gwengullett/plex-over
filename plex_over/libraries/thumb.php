@@ -50,7 +50,7 @@ class Thumb {
 			$thumb = $this->cache_path.$cached_filename;
 		}
 		
-		return ($thumb) ? site_url($thumb) : $thumb;
+		return ($thumb) ? base_url().$thumb : $thumb;
 	}
 	
 	/**

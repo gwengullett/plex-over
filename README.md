@@ -26,12 +26,6 @@ Open user_pref.php, then set:
 `$config['plex_local'] = "Plex media server access for plex_over";`  
 `$config['plex_url'] = "Plex media server access browsers";`
 
-### configuration:
-- Please, read comments in two above files for more details about other configuration parameters.
-- rename htaccess.txt to .htaccess. If Plex Over is accessible as a subfolder (ie: http://example.com/po_folder/), you may have to modify line 6:  
-`RewriteRule ^(.*)$ index.php/$1 [L]`  
-to  
-`RewriteRule ^(.*)$ /po_folder/index.php/$1 [L]`  
 
 ### issues / Limitations:
 - No 'Secure Server Access' for files served over internet.
@@ -46,4 +40,5 @@ However, Plex Over can communicate with PMS with authentication header. You can 
 - Not all plugins are compatible.
 
 ### More informations:
+Check Wiki for doc (currently in progress).  
 Plex Over is build on the top of Codeigniter php framework. For more informations about Codeigniter, visit their website: http://codeigniter.com/

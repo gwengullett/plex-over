@@ -40,7 +40,7 @@ class Subtitles {
 						$encoded = $this->encode($subtitle);
 						$this->copy($encoded, FCPATH.$subtitle_path);
 					}
-					$part->subtitles = site_url($subtitle_path);
+					$part->subtitles = base_url().$subtitle_path;
 				}
 				else
 				{
