@@ -55,7 +55,7 @@ class Download extends PE_Controller {
 	{
 		$uri = $this->uri->segment_array();
 		array_shift($uri);
-		$this->file = '/'.implode('/', $uri);
+		$this->file = urldecode('/'.implode('/', $uri));
 		$this->index();
 		return;
 	}

@@ -267,6 +267,8 @@ function resize_media(container, distance) {
 // DOM ready plugins and stuff configurations
 // --------------------------------------------------------------------
 $(function(){
+	// hide search bar
+	if ($('.item').length == 0) $('#search').hide();
 	// tooltips
 	var defTipPos = ($('.tip').eq(0).parent('td').length > 0) ? 'left' : 'top';
 	$('.tip').tipTip({
