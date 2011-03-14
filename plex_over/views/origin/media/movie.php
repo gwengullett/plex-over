@@ -47,22 +47,7 @@ $(function(){
 		},function() {
 			$(this).removeClass('current');
 	});
-	
-	function convert_vid(file, aRatio)
-	{
-		$('#video-player h2').text('Conversion au format h264...');
-		$.ajax({
-			type: 'POST',
-			data: {path: file, ratio: aRatio},
-			url: '<?= site_url('convert/h264') ?>',
-			success:function(response)
-			{
-				load_video(response);
-				return;
-			}
-		})
-	}
-	
+		
 	// PLaylist video player controls
 	$('.playlist-section a').click(function(){
 	
@@ -96,7 +81,7 @@ $(function(){
 		return false;
 	});
 	
-	// Player playlisy interactions
+	// Player playlist interactions
 	$('.vjs-play-control').live('click', function(){
 		if(player.video.paused) {
 			$('a.'+playing).switchClass(playing, paused);
@@ -170,7 +155,7 @@ $(function(){
 			
 			<div id="player" class="shadow dark-gradient" style="display:none">
 				<div class="video-js-box">
-					<video id="show-player" class="video-js vim-css">
+					<video id="show-player" class="video-js" x-webkit-airplay="allow">
 						<source type="video/mp4">
 						<track kind="subtitles" src="" srclang="en-US" label="English"></track>
 					</video>
