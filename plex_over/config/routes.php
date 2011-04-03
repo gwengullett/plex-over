@@ -37,11 +37,14 @@ $route['default_controller'] = "library";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
 
-$route['music/iTunes']					= "iTunes";
-$route['music/iTunes/(:any)']		= "iTunes/$1";
+$route['music/iTunes']					= "itunes";
+$route['music/iTunes/(:any)']		= "itunes/$1";
+
+// Catch iphoto specific controller function
 $route['photos/iPhoto']					= "photos/iPhoto";
 $route['photos/iPhoto/(:any)']	= "photos/iPhoto/$1";
 
+// plugins routes
 $route['music/(:any)']	= "plugins/music/$1";
 $route['music']					= "plugins/music";
 $route['photos/(:any)'] = "plugins/photos/$1";
