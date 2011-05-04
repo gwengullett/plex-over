@@ -34,9 +34,6 @@
 
 $route['default_controller'] = "library";
 
-/* End of file routes.php */
-/* Location: ./application/config/routes.php */
-
 $route['music/iTunes']					= "itunes";
 $route['music/iTunes/(:any)']		= "itunes/$1";
 
