@@ -1,4 +1,3 @@
-
 <div id="content" class="fit">
 	
 	<?php $this->load->view($this->template.'/layouts/top_nav');?>
@@ -21,11 +20,11 @@
 	<?php foreach ($item->content as $album): if (@$album->ratingKey): ?>
 			<div class="item left jacket">
 				<a href="<?=link_media($links->item, $album->ratingKey.$artist_link, $this->uri->segment(5))?>">
-			  	<?= $this->transcode->img($album, array('width' => 130, 'type' => 'src')) ?>
+			  	<?= $this->transcode->img($album, array('width' => 130)) ?>
 			  	<h4 class="h4">
 			  		<?= character_limiter($album->title, 15)?>
 			  	</h4>
-			  	<span><?=$album->year?> : <?=pluralize($album->leafCount, lang('track'))?></span>
+			  	<span><?=(($album->year) ? $album->year . ' : ' : '')?><?=pluralize($album->leafCount, lang('track'))?></span>
 			  </a>
 			</div>
 	<?php endif; endforeach ?>
