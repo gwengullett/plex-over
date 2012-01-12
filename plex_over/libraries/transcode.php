@@ -58,13 +58,15 @@ class Transcode {
 	 */
 	public function img($item, $opts = array(), $as_url = false)
 	{
-		$opts		= $this->extend($opts, $this->img_opts);
+		$opts	= $this->extend($opts, $this->img_opts);
 		$thumb	= thumb($item, $opts->force);
 
-	  $params->width	= $opts->width;
-	  $params->height	= $opts->height;
-	  $params->url		= $this->ci->plex_url.$thumb;
-		
+		$params->width	= $opts->width;
+		$params->height	= $opts->height;
+		$params->url		= $this->ci->plex_url.$thumb;
+		$tkn = "X-Plex-Token";
+		$params->$tkn = $this->ci->plex->myplex_auth(); 
+
 		if (is_relative_link($thumb))
 		{
 			$thumb = $this->ci->plex_url.$this->img_transpath.http_build_query($params);

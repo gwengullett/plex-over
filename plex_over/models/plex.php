@@ -18,7 +18,6 @@ class Plex extends CI_Model {
 	public function __construct($root_segment = '')
 	{
 		parent::__construct();
-		
 		$this->root		= $root_segment;
 		$this->debug	= $this->config->item('debug_uri');
 	}
@@ -192,6 +191,7 @@ class Plex extends CI_Model {
 			$this->user	= $this->config->item('username');
 			$this->pass	= $this->config->item('password');
 			$this->pass = sha1(strtolower($this->user).sha1($this->pass));
+			
 		}
 		if ($as_query == false)
 		{
@@ -205,6 +205,65 @@ class Plex extends CI_Model {
 	}
 	
 	/**
+	 * 
+	 * handle auth for myPlex
+	 */
+	public function myplex_auth(){
+		$token = $this->session->userdata('AuthToken'); 
+		if ($token){
+			return $token;	
+		}
+		
+		$headers = array("X-Plex-Client-Identifier"=>"PlexOverDev");
+		$user	= $this->config->item('username');
+		$password	= $this->config->item('password');
+		
+		$headers = array("X-Plex-Client-Identifier: abc");
+
+		$ch = curl_init();
+		$url = "https://my.plexapp.com/users/sign_in.xml";
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		curl_setopt($ch, CURLOPT_USERPWD, $user.":".$password);
+		curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
+		curl_setopt($ch, CURLOPT_VERBOSE, 1);
+		
+		$opts = array(
+		CURLOPT_POSTFIELDS     => array(),    // this are my post vars 
+		CURLOPT_SSL_VERIFYHOST => 0,            // don't verify ssl 
+		CURLOPT_SSL_VERIFYPEER => false,        // 
+		);
+		curl_setopt_array($ch, $opts);
+		$xml = curl_exec($ch);
+		$infos	= curl_getinfo($ch);
+		$code		= '';
+		
+		if ($infos['http_code'] != 201)
+		{
+			if ($infos['http_code'] === 0)
+			{
+				$code = lang('error.offline');
+				$infos['http_code'] = 404;
+			}
+			exit(show_error(
+				lang('error.plex').': '.str_replace('h1', 'strong', ($xml) ? $xml : $code).'<p><em>'.$url.'</em></p>',
+				$infos['http_code']
+			));
+		}else{
+			$obj = @simplexml_load_string($xml);
+			$at = "authentication-token";
+			$token = (string)$obj->$at;
+			$this->session->set_userdata("AuthToken", $token);
+		}
+		
+		
+		return $token;
+	}
+	
+	/**
 	 * load_xml function.
 	 * Load PMS xml files with simplexml classs and curl
 	 * 
@@ -213,8 +272,11 @@ class Plex extends CI_Model {
 	 */
 	private function load_xml($url)
 	{
+		$auth_token = $this->myplex_auth();	
+		
 		if (! $this->ch) $this->ch = curl_init();
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+		$url .= "?X-Plex-Token=".$auth_token;
 		curl_setopt($this->ch, CURLOPT_URL, $url);
 		curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->authentication_headers());
 		$xml		= curl_exec($this->ch);
@@ -249,7 +311,7 @@ class Plex extends CI_Model {
 		// build uri request
 		$request = $this->plex_local.str_replace('//', '/', '/'.$url);
 		
-		$xml		= $this->load_xml($request);
+		$xml = $this->load_xml($request);
 		$object = @simplexml_load_string($xml);
 		// enble uri debugging
 		if ($this->debug === true) 

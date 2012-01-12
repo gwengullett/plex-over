@@ -40,6 +40,7 @@ class Download extends PE_Controller {
 			fclose($fp);
 			return;
 		}
+		echo $this->file;
 		show_404();
 	}
 	

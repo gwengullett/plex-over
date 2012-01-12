@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/plex_over";
+$config['base_url']	= "http://localhost/plex-over";
 
 /*
 |--------------------------------------------------------------------------
@@ -218,7 +218,7 @@ $config['cache_path'] = FCPATH.'cache/html/';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = "";
+$config['encryption_key'] = "abc123cba321";
 
 /*
 |--------------------------------------------------------------------------

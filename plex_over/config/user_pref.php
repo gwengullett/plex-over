@@ -11,7 +11,7 @@
 \ communications ATM.
 | See here about how the password is accepted by Plex Server:
 | http://getsatisfaction.com/plex/topics/api_documentation-1bo5rc#reply_3813016
-|
+| Now with myPlex authentication goodness!
 */
 $config['username'] = '';
 $config['password']	= '';
@@ -53,9 +53,11 @@ $config['cache_expire']	= '';
 // the PRIVATE url of the Plex Server (no trailing slash !!!!)
 // Used to retreive xml files. If your running plex server on same
 // host, prefer localhost (no name/dns resolution required = faster)
+// like 'http://internal-external-ip:32400'
 $config['plex_local'] = 'http://localhost:32400';
 // the PUBLIC url of the Plex Server (no trailing slash !!!!)
 // used in frontend for downloads and images
+// like 'http://external-ip:32400'
 $config['plex_url'] = 'http://localhost:32400';
 
 

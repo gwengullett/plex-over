@@ -34,7 +34,7 @@ class Section extends Plex {
 	{
 		$sections = $this->load($this->section_url);
 		
-		$return						= $this->get_attributes($sections);
+		$return				= $this->get_attributes($sections);
 		$return->content	= $this->get_childrens($sections);
 		usort($return->content, array($this, 'sort_sections'));
 

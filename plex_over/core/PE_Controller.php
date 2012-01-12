@@ -48,7 +48,17 @@ class PE_Controller extends CI_Controller {
 		// load base xml
 		$this->load_base();
 	}
-		
+	
+	private function myPlex_auth(){
+		$this->load->library('session');
+		$token = $this->session->userdata('AuthToken'); 
+		if (!$token){
+			$token = $this->plex->myplex_auth();
+			$this->session->set_userdata("AuthToken", $token);	
+		}
+		return $token;
+	}
+	
 	/**
 	 * load_base function.
 	 * Load xml for sidebar. 
@@ -61,7 +71,7 @@ class PE_Controller extends CI_Controller {
 		$this->load->model('section');
 
 		$this->sidebar_library	= $this->section->all();
-		$this->sidebar_third		= $this->plex->third_party();
+		$this->sidebar_third	= $this->plex->third_party();
 	}
 	
 	/**
